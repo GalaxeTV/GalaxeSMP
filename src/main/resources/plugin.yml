@@ -1,0 +1,8 @@
+name: Galaxesmp
+version: '${version}'
+main: tv.galaxe.galaxesmp.GalaxeSMP
+api-version: 1.18
+prefix: GalaxeSMP
+authors: [ garrettsummerfi3ld ]
+description: A general plugin to help manage the GalaxeSMP
+website: https://github.com/garrettsummerfi3ld/GalaxeSMP
