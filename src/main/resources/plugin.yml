@@ -1,4 +1,4 @@
-name: Galaxesmp
+name: GalaxeSMP
 version: '${version}'
 main: tv.galaxe.galaxesmp.GalaxeSMP
 api-version: 1.18
@@ -6,3 +6,8 @@ prefix: GalaxeSMP
 authors: [ garrettsummerfi3ld ]
 description: A general plugin to help manage the GalaxeSMP
 website: https://github.com/garrettsummerfi3ld/GalaxeSMP
+commands:
+  invisibleitemframe:
+    description: Toggles item frame visibility
+    usage: /invisibleitemframe
+    aliases: [invisframe, iframe, ifr, invframe]
