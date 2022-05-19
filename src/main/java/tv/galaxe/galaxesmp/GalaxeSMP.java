@@ -51,7 +51,7 @@ public final class GalaxeSMP extends JavaPlugin {
             .build();
 
     twitchClient.getChat().joinChannel("galaxe");
-    twitchClient.getClientHelper().enableFollowEventListener("galaxe");
+    twitchClient.getClientHelper().enableStreamEventListener("galaxe");
     twitchClient.getClientHelper().enableFollowEventListener("galaxe");
 
     Objects.requireNonNull(getCommand("invisibleitemframe")).setExecutor(new InvisibleItemFrames());
