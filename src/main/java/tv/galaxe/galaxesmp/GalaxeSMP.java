@@ -40,14 +40,13 @@ public final class GalaxeSMP extends JavaPlugin {
     this.saveDefaultConfig();
     FileConfiguration config = getConfig();
 
-    String token = config.getString("twitch.oauth_token");
-
     // Build TwitchClient
     twitchClient =
         TwitchClientBuilder.builder()
             .withClientId(config.getString("twitch.client_id"))
             .withClientSecret(config.getString("twitch.client_secret"))
             .withEnableHelix(true)
+            .withEnableChat(true)
             .build();
 
     twitchClient.getChat().joinChannel("galaxe");

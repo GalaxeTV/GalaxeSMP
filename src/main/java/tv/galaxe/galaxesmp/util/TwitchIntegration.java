@@ -16,20 +16,20 @@ import tv.galaxe.galaxesmp.GalaxeSMP;
 public class TwitchIntegration {
   private final GalaxeSMP plugin;
 
-    /**
-     * Plugin instance from the server
-     *
-     * @param plugin Sets current instance of plugin
-     */
+  /**
+   * Plugin instance from the server
+   *
+   * @param plugin Sets current instance of plugin
+   */
   public TwitchIntegration(GalaxeSMP plugin) {
     this.plugin = plugin;
   }
 
-    /**
-     * Gets a going live event from the Twitch API
-     *
-     * @param event Stream information
-     */
+  /**
+   * Gets a going live event from the Twitch API
+   *
+   * @param event Stream information
+   */
   @EventSubscriber
   public void onStreamUp(ChannelGoLiveEvent event) {
     Stream stream = event.getStream();
