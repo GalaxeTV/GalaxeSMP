@@ -20,6 +20,7 @@ repositories {
 
 dependencies {
     compileOnly 'io.papermc.paper:paper-api:1.18.2-R0.1-SNAPSHOT'
+    implementation group: 'com.github.twitch4j', name: 'twitch4j', version: '1.9.0'
 }
 
 def targetJavaVersion = 17

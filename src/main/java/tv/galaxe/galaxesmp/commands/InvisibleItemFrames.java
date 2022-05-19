@@ -10,6 +10,16 @@ import org.jetbrains.annotations.NotNull;
 
 public class InvisibleItemFrames implements CommandExecutor {
 
+  /**
+   * Checks if used is currently looking at an ITEM_FRAME or a GLOWING_ITEM_FRAME and toggles
+   * visibility of those blocks, otherwise it will return an error message to the user
+   *
+   * @param sender Source of the command
+   * @param command Command which was executed
+   * @param label Alias of the command which was used
+   * @param args Passed command arguments
+   * @return Proper command executed to the server
+   */
   @Override
   public boolean onCommand(
       @NotNull CommandSender sender,
