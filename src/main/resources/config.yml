@@ -1,0 +1,4 @@
+# Twitch Integration
+twitch:
+  client_id: ""
+  client_secret: ""

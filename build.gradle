@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'com.diffplug.spotless' version '6.6.1'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
 group = 'tv.galaxe'
@@ -20,6 +21,7 @@ repositories {
 
 dependencies {
     compileOnly 'io.papermc.paper:paper-api:1.18.2-R0.1-SNAPSHOT'
+    implementation group: 'com.github.twitch4j', name: 'twitch4j', version: '1.9.0'
 }
 
 def targetJavaVersion = 17
@@ -68,6 +70,6 @@ spotless {
         // make sure every file has the following copyright header.
         // optionally, Spotless can set copyright years by digging
         // through git history (see "license" section below)
-        licenseHeader '/* (C)$YEAR */'
+        licenseHeader '/* (C)$YEAR Galaxe*/'
     }
 }
