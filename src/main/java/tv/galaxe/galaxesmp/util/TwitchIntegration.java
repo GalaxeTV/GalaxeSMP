@@ -35,8 +35,7 @@ public class TwitchIntegration {
     Stream stream = event.getStream();
 
     final TextComponent streamUrl =
-        Component.text("twitch.tv/galaxe").color(TextColor.color(0x9146FF));
-    streamUrl.clickEvent(ClickEvent.openUrl("https://twitch.tv/galaxe"));
+        Component.text("twitch.tv/galaxe").color(TextColor.color(0x9146FF)).clickEvent(ClickEvent.openUrl("https://twitch.tv/galaxe"));
 
     final TextComponent streamTitle =
         Component.text(stream.getTitle(), NamedTextColor.LIGHT_PURPLE);
