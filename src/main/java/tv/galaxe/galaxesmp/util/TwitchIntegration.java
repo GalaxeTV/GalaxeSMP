@@ -1,4 +1,4 @@
-/* (C)2022 */
+/* (C)2022 Galaxe*/
 package tv.galaxe.galaxesmp.util;
 
 import com.github.philippheuer.events4j.simple.domain.EventSubscriber;
@@ -35,7 +35,9 @@ public class TwitchIntegration {
     Stream stream = event.getStream();
 
     final TextComponent streamUrl =
-        Component.text("twitch.tv/galaxe").color(TextColor.color(0x9146FF)).clickEvent(ClickEvent.openUrl("https://twitch.tv/galaxe"));
+        Component.text("twitch.tv/galaxe")
+            .color(TextColor.color(0x9146FF))
+            .clickEvent(ClickEvent.openUrl("https://twitch.tv/galaxe"));
 
     final TextComponent streamTitle =
         Component.text(stream.getTitle(), NamedTextColor.LIGHT_PURPLE);

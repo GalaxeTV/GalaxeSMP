@@ -1,4 +1,4 @@
-/* (C)2022 */
+/* (C)2022 Galaxe*/
 package tv.galaxe.galaxesmp.commands;
 
 import org.bukkit.ChatColor;
