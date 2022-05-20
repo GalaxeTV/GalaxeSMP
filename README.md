@@ -9,11 +9,14 @@ Compatible on Paper 1.18+
 Requirements:
 
 - Java 17
+- Gradle
 
 Steps:
 
 1. Clone repository
-2. `./gradlew build`
+2. `./gradlew shadowJar`
+
+The reason for shadowing is an issue with the Twitch4J library used for Twitch integration. This results in a larger plugin however it remains similarly functional.
 
 ## Code conventions
 
