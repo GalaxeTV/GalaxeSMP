@@ -26,7 +26,7 @@ public class TwitchIntegration {
   }
 
   /**
-   * Gets a going live event from the Twitch API
+   * Fetches a "Going Live" event from the Twitch API
    *
    * @param event Stream information
    */
