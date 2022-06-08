@@ -20,4 +20,27 @@ The reason for shadowing is an issue with the Twitch4J library used for Twitch i
 
 ## Code conventions
 
-Attempts to follow [Google Java Styleguide](https://google.github.io/styleguide/javaguide.html), with a check if there are issues powered by [Spotless](https://github.com/diffplug/spotless)
+Attempts to follow [Google Java Styleguide](https://google.github.io/styleguide/javaguide.html), with a check if there are issues powered by [Spotless](https://github.com/diffplug/spotless).
+
+
+## Default Configuration
+
+```yaml
+# Twitch Integration
+twitch:
+  client_id: ""
+  client_secret: ""
+```
+
+## Commands
+
+### `/invisibleitemframe`
+
+Toggles currently looked at item frame, is aliased to be:
+
+* `/invisframe`
+* `/iframe`
+* `/ifr`
+* `/invframe`
+
+Permission is set to be on for all players by default.
