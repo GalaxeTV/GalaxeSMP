@@ -1,7 +1,7 @@
 name: GalaxeSMP
 version: '${version}'
 main: tv.galaxe.galaxesmp.GalaxeSMP
-api-version: 1.18
+api-version: 1.19
 prefix: GalaxeSMP
 authors: [ garrettsummerfi3ld ]
 description: A general plugin to help manage the GalaxeSMP
