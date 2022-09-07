@@ -17,11 +17,16 @@ repositories {
         name = 'sonatype'
         url = 'https://oss.sonatype.org/content/groups/public/'
     }
+    maven {
+        name = 'fren_gor'
+        url = 'https://nexus.frengor.com/repository/public/'
+    }
 }
 
 dependencies {
     compileOnly 'io.papermc.paper:paper-api:1.19.2-R0.1-SNAPSHOT'
     implementation group: 'com.github.twitch4j', name: 'twitch4j', version: '1.11.0'
+    implementation group: 'com.frengor', name: 'ultimateadvancementapi', version: '2.2.0'
 }
 
 def targetJavaVersion = 17
@@ -70,6 +75,6 @@ spotless {
         // make sure every file has the following copyright header.
         // optionally, Spotless can set copyright years by digging
         // through git history (see "license" section below)
-        licenseHeader '/* (C)$YEAR Galaxe*/'
+        licenseHeader '/* (C)$YEAR Galaxe */'
     }
 }
