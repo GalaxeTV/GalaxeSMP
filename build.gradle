@@ -25,7 +25,8 @@ repositories {
 
 dependencies {
     compileOnly 'io.papermc.paper:paper-api:1.19.2-R0.1-SNAPSHOT'
-    implementation group: 'com.github.twitch4j', name: 'twitch4j', version: '1.11.0'
+    compileOnly 'net.luckperms:api:5.4'
+    implementation group: 'com.github.twitch4j', name: 'twitch4j', version: '1.12.0'
     implementation group: 'com.frengor', name: 'ultimateadvancementapi', version: '2.2.0'
 }
 

@@ -1,4 +1,4 @@
-/* (C)2022 Galaxe*/
+/* (C)2022 Galaxe */
 package tv.galaxe.galaxesmp.util;
 
 import com.github.philippheuer.events4j.simple.domain.EventSubscriber;
