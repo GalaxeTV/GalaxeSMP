@@ -4,6 +4,8 @@ main: tv.galaxe.galaxesmp.GalaxeSMP
 api-version: 1.19
 prefix: GalaxeSMP
 authors: [ garrettsummerfi3ld ]
+depend:
+  - LuckPerms
 description: A general plugin to help manage the GalaxeSMP
 website: https://github.com/garrettsummerfi3ld/GalaxeSMP
 commands:

@@ -1,19 +1,24 @@
-/* (C)2022 Galaxe*/
+/* (C)2022 Galaxe */
 package tv.galaxe.galaxesmp;
 
 import com.github.philippheuer.events4j.simple.SimpleEventHandler;
 import com.github.twitch4j.ITwitchClient;
 import com.github.twitch4j.TwitchClientBuilder;
 import java.util.Objects;
+import net.luckperms.api.LuckPerms;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
-import tv.galaxe.galaxesmp.commands.InvisibleItemFrames;
-import tv.galaxe.galaxesmp.util.TwitchIntegration;
+import tv.galaxe.galaxesmp.advancements.*;
+import tv.galaxe.galaxesmp.commands.*;
+import tv.galaxe.galaxesmp.util.*;
 
 public final class GalaxeSMP extends JavaPlugin {
 
-  private ITwitchClient twitchClient;
   private static GalaxeSMP instance;
+  private ITwitchClient twitchClient;
+  private RegisteredServiceProvider<LuckPerms> luckPerms;
 
   /**
    * Gets the plugin instance to be used
@@ -33,12 +38,23 @@ public final class GalaxeSMP extends JavaPlugin {
     return this.twitchClient;
   }
 
+  /**
+   * Gets the LuckPerms API
+   *
+   * @return LuckPerms API
+   */
+  public LuckPerms getLuckPerms() {
+    return this.luckPerms.getProvider();
+  }
+
   @Override
   public void onEnable() {
     instance = this;
 
     this.saveDefaultConfig();
     FileConfiguration config = getConfig();
+
+    luckPerms = Bukkit.getServicesManager().getRegistration(LuckPerms.class);
 
     // Build TwitchClient
     twitchClient =
@@ -55,14 +71,23 @@ public final class GalaxeSMP extends JavaPlugin {
 
     Objects.requireNonNull(getCommand("invisibleitemframe")).setExecutor(new InvisibleItemFrames());
 
+    getServer().getPluginManager().registerEvents(new KillAdvancement(this), this);
+
     twitchClient
         .getEventManager()
         .getEventHandler(SimpleEventHandler.class)
         .registerListener(new TwitchIntegration(this));
+
+    getServer().getConsoleSender().sendMessage("[+] GalaxeSMP enabled!");
   }
 
   @Override
   public void onDisable() {
-    if (twitchClient != null) twitchClient.close();
+    if (twitchClient != null) {
+      twitchClient.getEventManager().close();
+      twitchClient.close();
+      twitchClient = null;
+    }
+    getServer().getConsoleSender().sendMessage("[-] GalaxeSMP disabled!");
   }
 }
