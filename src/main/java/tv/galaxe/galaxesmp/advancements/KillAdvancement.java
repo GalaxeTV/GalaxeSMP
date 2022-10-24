@@ -34,6 +34,24 @@ public class KillAdvancement implements Listener {
   }
 
   /***
+   * Handles item metas of a player's currently held hand
+   *
+   * @param item Item to be checked
+   * @return Returns a text component of a formatted item name with associated events
+   */
+  private TextComponent itemMetaCheck(ItemStack item) {
+    if (item.hasItemMeta() && item != null) {
+      return Component.text("a " + item.getItemMeta().getDisplayName())
+              .hoverEvent(item.asHoverEvent());
+    } else if (item.getType() == Material.AIR) {
+      return Component.text("Fists");
+    } else {
+      return Component.text("a " + item.getType().name().replace("_", " "))
+              .hoverEvent(item.asHoverEvent());
+    }
+  }
+
+  /***
    * Fetches a "Kill" event from the server
    *
    * @param death Player information
@@ -43,41 +61,34 @@ public class KillAdvancement implements Listener {
     final Player player = death.getEntity();
     Player killer = player.getKiller();
     final EntityDamageEvent lastDamageCause = player.getLastDamageCause();
+
+    // Checks to ensure the player was killed by a player, regardless of item, weapon, or entity
     if (lastDamageCause != null && killer == null) {
       final Entity lastDamageCauseEntity = lastDamageCause.getEntity();
-
       if (lastDamageCauseEntity instanceof Player) {
         killer = (Player) lastDamageCauseEntity;
-
       } else if (lastDamageCauseEntity instanceof final Projectile projectile) {
-
         if (projectile.getShooter() instanceof Player) {
           killer = (Player) projectile.getShooter();
         }
       }
     }
 
+    // Check if player killed a staff member and if the killer is not null
     if (killer != null && player.hasPermission("group.admin")) {
+      // Set names of killer and killed player
       final Component killerName = killer.playerListName();
       final Component playerName = player.playerListName();
 
+      // Gets item in main hand of killer
       final ItemStack item = killer.getInventory().getItemInMainHand();
-      TextComponent itemName;
+
+      // Gets the item name of the killer's main hand
+      TextComponent itemName = itemMetaCheck(item);
       final Sound deathSound =
           Sound.sound(Key.key("minecraft:entity.ender_dragon.death"), Sound.Source.PLAYER, 1, 1);
 
-      if (item.hasItemMeta() && item != null) {
-        itemName =
-            Component.text("a " + item.getItemMeta().getDisplayName())
-                .hoverEvent(item.asHoverEvent());
-      } else if (item.getType() == Material.AIR) {
-        itemName = Component.text("Fists");
-      } else {
-        itemName =
-            Component.text("a " + item.getType().name().replace("_", " "))
-                .hoverEvent(item.asHoverEvent());
-      }
-
+      // Sends a message to everyone on the server that a staff member was killed and plays a death sound
       for (Player p : plugin.getServer().getOnlinePlayers()) {
         p.sendMessage(
             Component.text("[KILL] ")
@@ -94,11 +105,14 @@ public class KillAdvancement implements Listener {
         p.playSound(deathSound);
       }
 
+      // Sets a random value between 20 and 30 to give experience levels to the killer
       int expLevels = ThreadLocalRandom.current().nextInt(20, 31);
       killer.giveExpLevels(expLevels);
-      killer.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 999999, 1));
-      killer.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 999999, 5));
-      killer.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 999999, 5));
+
+      // Adds multiple potion effects to the killer
+      killer.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 72000, 1));
+      killer.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 72000, 5));
+      killer.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 72000, 5));
     }
   }
 }
