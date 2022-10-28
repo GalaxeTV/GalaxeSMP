@@ -41,6 +41,7 @@ To do this:
 ```yaml
 # Twitch Integration
 twitch:
+  channel: ""
   client_id: ""
   client_secret: ""
 ```

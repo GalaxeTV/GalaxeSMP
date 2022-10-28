@@ -7,7 +7,7 @@ authors: [ garrettsummerfi3ld ]
 depend:
   - LuckPerms
 description: A general plugin to help manage the GalaxeSMP
-website: https://github.com/garrettsummerfi3ld/GalaxeSMP
+website: https://github.com/GalaxeTV/GalaxeSMP-Plugin
 commands:
   invisibleitemframe:
     description: Toggles item frame visibility

@@ -1,4 +1,4 @@
-/* (C)2022 Galaxe */
+/* (C)2022 GalaxeTV */
 package tv.galaxe.galaxesmp;
 
 import com.github.philippheuer.events4j.simple.SimpleEventHandler;
@@ -51,9 +51,11 @@ public final class GalaxeSMP extends JavaPlugin {
   public void onEnable() {
     instance = this;
 
+    // Get config
     this.saveDefaultConfig();
     FileConfiguration config = getConfig();
 
+    // Register LuckPerms
     luckPerms = Bukkit.getServicesManager().getRegistration(LuckPerms.class);
 
     // Build TwitchClient
@@ -65,12 +67,15 @@ public final class GalaxeSMP extends JavaPlugin {
             .withEnableChat(true)
             .build();
 
-    twitchClient.getChat().joinChannel("galaxe");
-    twitchClient.getClientHelper().enableStreamEventListener("galaxe");
-    twitchClient.getClientHelper().enableFollowEventListener("galaxe");
+    // Register Twitch Events
+    twitchClient.getChat().joinChannel(config.getString("twitch.channel"));
+    twitchClient.getClientHelper().enableStreamEventListener(config.getString("twitch.channel"));
+    twitchClient.getClientHelper().enableFollowEventListener(config.getString("twitch.channel"));
 
+    // Register commands
     Objects.requireNonNull(getCommand("invisibleitemframe")).setExecutor(new InvisibleItemFrames());
 
+    // Register server events
     getServer().getPluginManager().registerEvents(new KillAdvancement(this), this);
 
     twitchClient

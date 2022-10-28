@@ -41,3 +41,9 @@ jobs:
       uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee
       with:
         arguments: shadowJar
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: artifact
+        path: build/libs/*.jar
+        if-no-files-found: error
