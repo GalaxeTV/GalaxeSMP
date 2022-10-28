@@ -1,4 +1,4 @@
-/* (C)2022 Galaxe */
+/* (C)2022 GalaxeTV */
 package tv.galaxe.galaxesmp.advancements;
 
 import java.util.concurrent.ThreadLocalRandom;
@@ -42,12 +42,12 @@ public class KillAdvancement implements Listener {
   private TextComponent itemMetaCheck(ItemStack item) {
     if (item.hasItemMeta() && item != null) {
       return Component.text("a " + item.getItemMeta().getDisplayName())
-              .hoverEvent(item.asHoverEvent());
+          .hoverEvent(item.asHoverEvent());
     } else if (item.getType() == Material.AIR) {
       return Component.text("Fists");
     } else {
       return Component.text("a " + item.getType().name().replace("_", " "))
-              .hoverEvent(item.asHoverEvent());
+          .hoverEvent(item.asHoverEvent());
     }
   }
 
@@ -75,7 +75,7 @@ public class KillAdvancement implements Listener {
     }
 
     // Check if player killed a staff member and if the killer is not null
-    if (killer != null && player.hasPermission("group.admin")) {
+    if (killer != null && killer != player && player.hasPermission("group.admin")) {
       // Set names of killer and killed player
       final Component killerName = killer.playerListName();
       final Component playerName = player.playerListName();
@@ -88,7 +88,8 @@ public class KillAdvancement implements Listener {
       final Sound deathSound =
           Sound.sound(Key.key("minecraft:entity.ender_dragon.death"), Sound.Source.PLAYER, 1, 1);
 
-      // Sends a message to everyone on the server that a staff member was killed and plays a death sound
+      // Sends a message to everyone on the server that a staff member was killed and plays a death
+      // sound
       for (Player p : plugin.getServer().getOnlinePlayers()) {
         p.sendMessage(
             Component.text("[KILL] ")
