@@ -40,7 +40,7 @@ public class KillAdvancement implements Listener {
    * @return Returns a text component of a formatted item name with associated events
    */
   private TextComponent itemMetaCheck(ItemStack item) {
-    if (item.hasItemMeta() && item != null) {
+    if (item.hasItemMeta() && item.getItemMeta().hasDisplayName()) {
       return Component.text("a " + item.getItemMeta().getDisplayName())
           .hoverEvent(item.asHoverEvent());
     } else if (item.getType() == Material.AIR) {
