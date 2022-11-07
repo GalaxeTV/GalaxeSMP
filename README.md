@@ -18,9 +18,14 @@ Steps:
 
 The reason for shadowing is an issue with the Twitch4J library used for Twitch integration. This results in a larger plugin however it remains similarly functional.
 
-## Code conventions
+## Code conventions/quality gates
 
-Attempts to follow [Google Java Styleguide](https://google.github.io/styleguide/javaguide.html), with a check if there are issues powered by [Spotless](https://github.com/diffplug/spotless).
+This repository currently has a couple of checks in place to ensure code quality. These are:
+
+- Syntax check powered by [Spotless](https://github.com/diffplug/spotless)
+- [CodeQL](https://codeql.github.com/) analysis on pull requests
+- [Dependabot](https://github.com/dependabot) to keep dependencies up to date
+- [Qodana](https://www.jetbrains.com/qodana/) to check for code smells
 
 ## Twitch.TV integration
 

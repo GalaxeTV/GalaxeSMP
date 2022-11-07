@@ -1,4 +1,4 @@
-/* (C)2022 Galaxe*/
+/* (C)2022 GalaxeTV */
 package tv.galaxe.galaxesmp.commands;
 
 import org.bukkit.ChatColor;
@@ -26,9 +26,7 @@ public class InvisibleItemFrames implements CommandExecutor {
       @NotNull Command command,
       @NotNull String label,
       @NotNull String[] args) {
-    if (sender instanceof Player) {
-      Player player = ((Player) sender).getPlayer();
-
+    if (sender instanceof Player player) {
       Entity block = player.getTargetEntity(10);
 
       if (block != null) {
