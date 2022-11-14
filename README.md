@@ -4,6 +4,8 @@ A general plugin to help manage the GalaxeSMP
 
 Compatible on Paper 1.19.2+
 
+Code of Conduct is located in the [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) file.
+
 ## Building
 
 Requirements:
@@ -16,7 +18,13 @@ Steps:
 1. Clone repository
 2. `./gradlew shadowJar`
 
-The reason for shadowing is an issue with the Twitch4J library used for Twitch integration. This results in a larger plugin however it remains similarly functional.
+The reason for shadowing is an issue with the [Twitch4J](https://github.com/twitch4j/twitch4j) library used for Twitch integration. This results in a larger plugin however it remains similarly functional.
+
+## Dependencies for your Minecraft Server
+
+This plugin requires the following plugins to be installed on your server:
+
+- LuckPerms
 
 ## Code conventions/quality gates
 
@@ -26,6 +34,8 @@ This repository currently has a couple of checks in place to ensure code quality
 - [CodeQL](https://codeql.github.com/) analysis on pull requests
 - [Dependabot](https://github.com/dependabot) to keep dependencies up to date
 - [Qodana](https://www.jetbrains.com/qodana/) to check for code smells
+
+There is also no allowing of force pushing to the main branch. Everything has to be done through a pull request. If you have a new feature that you want to add, please create a new branch and open a pull request. This will allow for code review and discussion before merging.
 
 ## Twitch.TV integration
 
