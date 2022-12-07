@@ -73,7 +73,8 @@ public final class GalaxeSMP extends JavaPlugin {
     twitchClient.getClientHelper().enableFollowEventListener(config.getString("twitch.channel"));
 
     // Register commands
-    Objects.requireNonNull(getCommand("invisibleitemframe")).setExecutor(new InvisibleItemFrames());
+    Objects.requireNonNull(getCommand("invisibleitemframe")).setExecutor(new InvisibleItemFramesCmd());
+    Objects.requireNonNull(getCommand("twitch")).setExecutor(new TwitchCmd());
 
     // Register server events
     getServer().getPluginManager().registerEvents(new KillAdvancement(this), this);
