@@ -15,6 +15,7 @@ import tv.galaxe.galaxesmp.GalaxeSMP;
 
 public class TwitchIntegration {
   private final GalaxeSMP plugin;
+  private static boolean isLive = false;
 
   /**
    * Plugin instance from the server
@@ -26,12 +27,22 @@ public class TwitchIntegration {
   }
 
   /**
+   * Checks if the Twitch stream is live
+   *
+   * @return Returns true if the stream is live
+   */
+  public static boolean isTwitchStreamLive() {
+    return isLive;
+  }
+
+  /**
    * Fetches a "Going Live" event from the Twitch API
    *
    * @param event Stream information
    */
   @EventSubscriber
   public void onStreamUp(ChannelGoLiveEvent event) {
+    isLive = true;
     Stream stream = event.getStream();
 
     final TextComponent streamUrl =
@@ -52,5 +63,15 @@ public class TwitchIntegration {
     for (Player p : Bukkit.getOnlinePlayers()) {
       p.sendMessage(announcement);
     }
+  }
+
+  /**
+   * Fetches a "Going Offline" event from the Twitch API
+   *
+   * @param event Stream information
+   */
+  @EventSubscriber
+  public void onStreamDown(ChannelGoLiveEvent event) {
+    isLive = false;
   }
 }
