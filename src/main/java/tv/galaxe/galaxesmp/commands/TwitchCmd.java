@@ -33,7 +33,8 @@ public class TwitchCmd implements CommandExecutor {
               .clickEvent(ClickEvent.openUrl("https://twitch.tv/" + twitchChannel));
       if (TwitchIntegration.isTwitchStreamLive()) {
         player.sendMessage(
-            Component.text(twitchChannel + "'s stream is currently live! Watch now at ").append(twitchUrl));
+            Component.text(twitchChannel + "'s stream is currently live! Watch now at ")
+                .append(twitchUrl));
       } else {
         player.sendMessage(
             Component.text(twitchChannel + "'s  stream is currently offline. Check back later at ")
