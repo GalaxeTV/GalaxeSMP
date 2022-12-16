@@ -17,12 +17,26 @@ public class TwitchCmd implements CommandExecutor {
 
   private GalaxeSMP plugin = null;
 
+  /**
+   * Plugin instance from the server
+   *
+   * @param plugin Sets current instance of plugin
+   */
   public TwitchCmd(GalaxeSMP plugin) {
     this.plugin = plugin;
   }
 
   private final String twitchChannel = plugin.getConfig().getString("twitch.channel");
 
+  /**
+   * Sends a clickable link to the Twitch channel
+   *
+   * @param sender Command sender
+   * @param command Command
+   * @param label Command label
+   * @param args Command arguments
+   * @return Returns true if the command was executed
+   */
   @Override
   public boolean onCommand(
       @NotNull CommandSender sender,

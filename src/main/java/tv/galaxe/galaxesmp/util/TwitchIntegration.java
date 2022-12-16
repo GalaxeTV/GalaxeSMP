@@ -14,7 +14,7 @@ import org.bukkit.entity.Player;
 import tv.galaxe.galaxesmp.GalaxeSMP;
 
 public class TwitchIntegration {
-  private final GalaxeSMP plugin;
+  private GalaxeSMP plugin = null;
   private static boolean isLive = false;
 
   /**
@@ -35,6 +35,8 @@ public class TwitchIntegration {
     return isLive;
   }
 
+  private final String twitchChannel = plugin.getConfig().getString("twitch.channel");
+
   /**
    * Fetches a "Going Live" event from the Twitch API
    *
@@ -46,14 +48,14 @@ public class TwitchIntegration {
     Stream stream = event.getStream();
 
     final TextComponent streamUrl =
-        Component.text("twitch.tv/galaxe")
-            .color(TextColor.color(0x9146FF))
-            .clickEvent(ClickEvent.openUrl("https://twitch.tv/galaxe"));
+        Component.text("https://twitch.tv/" + twitchChannel)
+            .clickEvent(ClickEvent.openUrl("https://twitch.tv/" + twitchChannel))
+            .color(TextColor.color(0x9146FF));
 
     final TextComponent streamTitle =
         Component.text(stream.getTitle(), NamedTextColor.LIGHT_PURPLE);
     final TextComponent announcement =
-        Component.text("[Twitch] ")
+        Component.text("[Twitch]  ")
             .color(TextColor.color(0x9146FF))
             .append(Component.text("AYO GALAXE JUST WENT LIVE: "))
             .append(streamTitle)
