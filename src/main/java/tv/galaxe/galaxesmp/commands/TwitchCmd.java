@@ -3,6 +3,8 @@ package tv.galaxe.galaxesmp.commands;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.ClickEvent;
+import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -30,14 +32,17 @@ public class TwitchCmd implements CommandExecutor {
     if (sender instanceof Player player) {
       final Component twitchUrl =
           Component.text("https://twitch.tv/" + twitchChannel)
-              .clickEvent(ClickEvent.openUrl("https://twitch.tv/" + twitchChannel));
+              .clickEvent(ClickEvent.openUrl("https://twitch.tv/" + twitchChannel))
+              .color(TextColor.color(0x9146FF));
       if (TwitchIntegration.isTwitchStreamLive()) {
         player.sendMessage(
             Component.text(twitchChannel + "'s stream is currently live! Watch now at ")
+                .color(NamedTextColor.LIGHT_PURPLE)
                 .append(twitchUrl));
       } else {
         player.sendMessage(
             Component.text(twitchChannel + "'s  stream is currently offline. Check back later at ")
+                .color(NamedTextColor.LIGHT_PURPLE)
                 .append(twitchUrl));
       }
     } else {
