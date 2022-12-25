@@ -35,7 +35,8 @@ public class TwitchIntegration {
     return isLive;
   }
 
-  private final String twitchChannel = plugin.getConfig().getString("twitch.channel");
+  private final String twitchChannel =
+      GalaxeSMP.getInstance().getConfig().getString("twitch.channel");
 
   /**
    * Fetches a "Going Live" event from the Twitch API

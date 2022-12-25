@@ -26,7 +26,8 @@ public class TwitchCmd implements CommandExecutor {
     this.plugin = plugin;
   }
 
-  private final String twitchChannel = plugin.getConfig().getString("twitch.channel");
+  private final String twitchChannel =
+      GalaxeSMP.getInstance().getConfig().getString("twitch.channel");
 
   /**
    * Sends a clickable link to the Twitch channel
@@ -55,7 +56,7 @@ public class TwitchCmd implements CommandExecutor {
                 .append(twitchUrl));
       } else {
         player.sendMessage(
-            Component.text(twitchChannel + "'s  stream is currently offline. Check back later at ")
+            Component.text(twitchChannel + "'s stream is currently offline. Check back later at ")
                 .color(NamedTextColor.LIGHT_PURPLE)
                 .append(twitchUrl));
       }
@@ -72,6 +73,6 @@ public class TwitchCmd implements CommandExecutor {
                 + twitchChannel);
       }
     }
-    return false;
+    return true;
   }
 }

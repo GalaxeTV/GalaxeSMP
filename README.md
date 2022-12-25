@@ -73,3 +73,9 @@ Toggles currently looked at item frame, is aliased to be:
 * `/invframe`
 
 Permission is set to be on for all players by default.
+
+### `/twitch`
+
+Checks if the current streamer is live.
+
+Permission is set to be on for all players by default.
