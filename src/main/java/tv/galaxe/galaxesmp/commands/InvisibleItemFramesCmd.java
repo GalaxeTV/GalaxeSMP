@@ -8,7 +8,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.*;
 import org.jetbrains.annotations.NotNull;
 
-public class InvisibleItemFrames implements CommandExecutor {
+public class InvisibleItemFramesCmd implements CommandExecutor {
 
   /**
    * Checks if used is currently looking at an ITEM_FRAME or a GLOWING_ITEM_FRAME and toggles

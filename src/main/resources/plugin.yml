@@ -13,3 +13,6 @@ commands:
     description: Toggles item frame visibility
     usage: /invisibleitemframe
     aliases: [invisframe, iframe, ifr, invframe]
+  twitch:
+    description: Shows the Galaxe Twitch channel
+    usage: /twitch
