@@ -56,7 +56,7 @@ public class TwitchIntegration {
     final TextComponent streamTitle =
         Component.text(stream.getTitle(), NamedTextColor.LIGHT_PURPLE);
     final TextComponent announcement =
-        Component.text("[Twitch]  ")
+        Component.text("[Twitch] ")
             .color(TextColor.color(0x9146FF))
             .append(Component.text("AYO GALAXE JUST WENT LIVE: "))
             .append(streamTitle)
