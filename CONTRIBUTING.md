@@ -28,20 +28,18 @@ To add a new feature to this project, follow these steps:
 8. Pull the latest changes from the main repository
 9. Delete the fork
 10. Celebrate!
-11. Repeat
-12. Repeat
-13. Repeat
 
 GitHub is a great tool for collaboration. If you are not familiar with it, you can learn more about it [here](https://guides.github.com/activities/hello-world/).
 
-We follow GitHub Flow for our development process. For more information, see [Understanding the Github Flow](https://guides.github.com/introduction/flow/).
+We follow GitHub Flow for our development process. For more information, see [Understanding the GitHub Flow](https://guides.github.com/introduction/flow/).
 
 Branches are named using the following convention:
 
 - `feature/` for new features
 - `bugfix/` for bug fixes
 - `release/` for releases
-- `cleanup/` for cleanup tasks
+
+Other branches may be created as needed.
 
 ### Reporting a bug
 
@@ -75,6 +73,15 @@ Pull requests are accepted with the following process:
   * We use [Spotless](https://github.com/diffplug/spotless) to enforce this
   * You can run `./gradlew spotlessApply` to automatically format your code
 * CodeQL must pass
+* Qodana must pass
 * Manual review must be completed by two maintainers or from `@galaxetv/crew`
 
 Pull requests should be descriptive and be clearly documented. Pull requests should be small and concise.
+
+Documentation is generated using [Javadoc](https://docs.oracle.com/javase/8/docs/technotes/tools/windows/javadoc.html). Documentation should be added to all public methods and classes.
+
+### Validation on server
+
+To validate changes to the plugin, we will be using this plugin on a test server. This is after the pull request has been merged.
+
+This will help us to ensure that the plugin is working as intended, and if we catch any issues we can resolve before making a release and pushing to the production server.
