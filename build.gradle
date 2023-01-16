@@ -20,7 +20,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'org.jetbrains:annotations:23.1.0'
+    compileOnly 'org.jetbrains:annotations:24.0.0'
     compileOnly 'io.papermc.paper:paper-api:1.19.3-R0.1-SNAPSHOT'
     compileOnly 'net.luckperms:api:5.4'
     implementation 'com.github.twitch4j:twitch4j:1.12.0'
