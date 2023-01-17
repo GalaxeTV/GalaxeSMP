@@ -1,4 +1,4 @@
-/* (C)2022 GalaxeTV */
+/* (C)2022-2023 GalaxeTV */
 package tv.galaxe.galaxesmp.commands;
 
 import net.kyori.adventure.text.Component;
@@ -15,7 +15,7 @@ import tv.galaxe.galaxesmp.util.TwitchIntegration;
 
 public class TwitchCmd implements CommandExecutor {
 
-  private GalaxeSMP plugin = null;
+  private GalaxeSMP plugin;
 
   /**
    * Plugin instance from the server

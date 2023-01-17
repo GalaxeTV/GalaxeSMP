@@ -1,6 +1,7 @@
-/* (C)2022 GalaxeTV */
+/* (C)2022-2023 GalaxeTV */
 package tv.galaxe.galaxesmp.advancements;
 
+import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.sound.Sound;
@@ -41,7 +42,8 @@ public class KillAdvancement implements Listener {
    */
   private TextComponent itemMetaCheck(ItemStack item) {
     if (item.hasItemMeta() && item.getItemMeta().hasDisplayName()) {
-      return Component.text("a " + item.getItemMeta().getDisplayName())
+      return Component.text("a ")
+          .append(Objects.requireNonNull(item.getItemMeta().displayName()))
           .hoverEvent(item.asHoverEvent());
     } else if (item.getType() == Material.AIR) {
       return Component.text("Fists");

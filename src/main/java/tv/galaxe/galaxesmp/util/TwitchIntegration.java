@@ -1,4 +1,4 @@
-/* (C)2022 GalaxeTV */
+/* (C)2022-2023 GalaxeTV */
 package tv.galaxe.galaxesmp.util;
 
 import com.github.philippheuer.events4j.simple.domain.EventSubscriber;
@@ -14,7 +14,7 @@ import org.bukkit.entity.Player;
 import tv.galaxe.galaxesmp.GalaxeSMP;
 
 public class TwitchIntegration {
-  private GalaxeSMP plugin = null;
+  private GalaxeSMP plugin;
   private static boolean isLive = false;
 
   /**
