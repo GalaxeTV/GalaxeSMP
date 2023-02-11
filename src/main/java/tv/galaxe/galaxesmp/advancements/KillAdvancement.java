@@ -77,7 +77,7 @@ public class KillAdvancement implements Listener {
     }
 
     // Check if player killed a staff member and if the killer is not null
-    if (killer != null && killer != player && player.hasPermission("group.admin")) {
+    if (killer != null && killer != player && player.hasPermission("galaxesmp.staff")) {
       // Set names of killer and killed player
       final Component killerName = killer.playerListName();
       final Component playerName = player.playerListName();
