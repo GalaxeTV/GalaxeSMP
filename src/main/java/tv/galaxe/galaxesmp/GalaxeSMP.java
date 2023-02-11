@@ -1,4 +1,4 @@
-/* (C)2022 GalaxeTV */
+/* (C)2022-2023 GalaxeTV */
 package tv.galaxe.galaxesmp;
 
 import com.github.philippheuer.events4j.simple.SimpleEventHandler;
@@ -58,19 +58,32 @@ public final class GalaxeSMP extends JavaPlugin {
     // Register LuckPerms
     luckPerms = Bukkit.getServicesManager().getRegistration(LuckPerms.class);
 
-    // Build TwitchClient
-    twitchClient =
-        TwitchClientBuilder.builder()
-            .withClientId(config.getString("twitch.client_id"))
-            .withClientSecret(config.getString("twitch.client_secret"))
-            .withEnableHelix(true)
-            .withEnableChat(true)
-            .build();
+    // Check if Twitch integration is enabled
+    if (config.getBoolean("twitch.enabled")) {
+      getServer().getConsoleSender().sendMessage("[+] Twitch integration is enabled!");
+      // Build TwitchClient
+      twitchClient =
+          TwitchClientBuilder.builder()
+              .withClientId(config.getString("twitch.client_id"))
+              .withClientSecret(config.getString("twitch.client_secret"))
+              .withEnableHelix(true)
+              .withEnableChat(true)
+              .build();
 
-    // Register Twitch Events
-    twitchClient.getChat().joinChannel(config.getString("twitch.channel"));
-    twitchClient.getClientHelper().enableStreamEventListener(config.getString("twitch.channel"));
-    twitchClient.getClientHelper().enableFollowEventListener(config.getString("twitch.channel"));
+      // Register Twitch Events
+      twitchClient.getChat().joinChannel(config.getString("twitch.channel"));
+      twitchClient.getClientHelper().enableStreamEventListener(config.getString("twitch.channel"));
+      twitchClient.getClientHelper().enableFollowEventListener(config.getString("twitch.channel"));
+
+      // Register Twitch event handler
+      twitchClient
+          .getEventManager()
+          .getEventHandler(SimpleEventHandler.class)
+          .registerListener(new TwitchIntegration(this));
+    } else {
+      twitchClient = null;
+      getServer().getConsoleSender().sendMessage("[!] Twitch integration is disabled!");
+    }
 
     // Register commands
     Objects.requireNonNull(getCommand("invisibleitemframe"))
@@ -79,11 +92,6 @@ public final class GalaxeSMP extends JavaPlugin {
 
     // Register server events
     getServer().getPluginManager().registerEvents(new KillAdvancement(this), this);
-
-    twitchClient
-        .getEventManager()
-        .getEventHandler(SimpleEventHandler.class)
-        .registerListener(new TwitchIntegration(this));
 
     getServer().getConsoleSender().sendMessage("[+] GalaxeSMP enabled!");
   }

@@ -1,5 +1,6 @@
 # Twitch Integration
 twitch:
+  enabled: false
   channel: ""
   client_id: ""
   client_secret: ""

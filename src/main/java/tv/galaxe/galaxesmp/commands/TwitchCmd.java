@@ -44,33 +44,37 @@ public class TwitchCmd implements CommandExecutor {
       @NotNull Command command,
       @NotNull String label,
       @NotNull String[] args) {
-    if (sender instanceof Player player) {
-      final Component twitchUrl =
-          Component.text("https://twitch.tv/" + twitchChannel)
-              .clickEvent(ClickEvent.openUrl("https://twitch.tv/" + twitchChannel))
-              .color(TextColor.color(0x9146FF));
-      if (TwitchIntegration.isTwitchStreamLive()) {
-        player.sendMessage(
-            Component.text(twitchChannel + "'s stream is currently live! Watch now at ")
-                .color(NamedTextColor.LIGHT_PURPLE)
-                .append(twitchUrl));
-      } else {
-        player.sendMessage(
-            Component.text(twitchChannel + "'s stream is currently offline. Check back later at ")
-                .color(NamedTextColor.LIGHT_PURPLE)
-                .append(twitchUrl));
-      }
+    if (GalaxeSMP.getInstance().getConfig().getBoolean("twitch.enabled") == false) {
+      sender.sendMessage("Twitch integration is disabled on this server.");
     } else {
-      if (TwitchIntegration.isTwitchStreamLive()) {
-        sender.sendMessage(
-            twitchChannel
-                + "'s Twitch stream is live! Watch now at https://twitch.tv/"
-                + twitchChannel);
+      if (sender instanceof Player player) {
+        final Component twitchUrl =
+            Component.text("https://twitch.tv/" + twitchChannel)
+                .clickEvent(ClickEvent.openUrl("https://twitch.tv/" + twitchChannel))
+                .color(TextColor.color(0x9146FF));
+        if (TwitchIntegration.isTwitchStreamLive()) {
+          player.sendMessage(
+              Component.text(twitchChannel + "'s stream is currently live! Watch now at ")
+                  .color(NamedTextColor.LIGHT_PURPLE)
+                  .append(twitchUrl));
+        } else {
+          player.sendMessage(
+              Component.text(twitchChannel + "'s stream is currently offline. Check back later at ")
+                  .color(NamedTextColor.LIGHT_PURPLE)
+                  .append(twitchUrl));
+        }
       } else {
-        sender.sendMessage(
-            twitchChannel
-                + "'s Twitch stream is not live! You can join offline chat at: https://twitch.tv/"
-                + twitchChannel);
+        if (TwitchIntegration.isTwitchStreamLive()) {
+          sender.sendMessage(
+              twitchChannel
+                  + "'s Twitch stream is live! Watch now at https://twitch.tv/"
+                  + twitchChannel);
+        } else {
+          sender.sendMessage(
+              twitchChannel
+                  + "'s Twitch stream is not live! You can join offline chat at: https://twitch.tv/"
+                  + twitchChannel);
+        }
       }
     }
     return true;

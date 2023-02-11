@@ -41,7 +41,9 @@ There is also no allowing of force pushing to the main branch. Everything has to
 
 To utilize the Twitch integration, you need to create an application in the Twitch developer console.
 
-To do this:
+By default, this is disabled.
+
+To enable this integration and get the Client ID and Client Secret, do:
 1. Go to the [Twitch Developer Console](https://dev.twitch.tv/console/apps)
 2. Click "Register Your Application"
 3. Fill out the form with the following:
@@ -50,12 +52,14 @@ To do this:
     - Category: Game Integration
 4. Click "Register"
 5. Copy the Client ID and Client Secret into the `config.yml` file in their respective spots
+6. Set `twitch.enabled` to `true`
 
 ## Default Configuration
 
 ```yaml
 # Twitch Integration
 twitch:
+  enabled: false
   channel: ""
   client_id: ""
   client_secret: ""
