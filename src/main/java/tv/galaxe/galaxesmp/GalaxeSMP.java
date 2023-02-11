@@ -1,11 +1,10 @@
-/* (C)2022 GalaxeTV */
+/* (C)2022-2023 GalaxeTV */
 package tv.galaxe.galaxesmp;
 
 import com.github.philippheuer.events4j.simple.SimpleEventHandler;
 import com.github.twitch4j.ITwitchClient;
 import com.github.twitch4j.TwitchClientBuilder;
 import java.util.Objects;
-import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import tv.galaxe.galaxesmp.advancements.*;
