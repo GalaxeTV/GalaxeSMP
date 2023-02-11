@@ -5,10 +5,8 @@ import com.github.philippheuer.events4j.simple.SimpleEventHandler;
 import com.github.twitch4j.ITwitchClient;
 import com.github.twitch4j.TwitchClientBuilder;
 import java.util.Objects;
-import net.luckperms.api.LuckPerms;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import tv.galaxe.galaxesmp.advancements.*;
 import tv.galaxe.galaxesmp.commands.*;
@@ -18,7 +16,6 @@ public final class GalaxeSMP extends JavaPlugin {
 
   private static GalaxeSMP instance;
   private ITwitchClient twitchClient;
-  private RegisteredServiceProvider<LuckPerms> luckPerms;
 
   /**
    * Gets the plugin instance to be used
@@ -38,15 +35,6 @@ public final class GalaxeSMP extends JavaPlugin {
     return this.twitchClient;
   }
 
-  /**
-   * Gets the LuckPerms API
-   *
-   * @return LuckPerms API
-   */
-  public LuckPerms getLuckPerms() {
-    return this.luckPerms.getProvider();
-  }
-
   @Override
   public void onEnable() {
     instance = this;
@@ -54,9 +42,6 @@ public final class GalaxeSMP extends JavaPlugin {
     // Get config
     this.saveDefaultConfig();
     FileConfiguration config = getConfig();
-
-    // Register LuckPerms
-    luckPerms = Bukkit.getServicesManager().getRegistration(LuckPerms.class);
 
     // Build TwitchClient
     twitchClient =
