@@ -5,7 +5,21 @@
 
 version: 2
 updates:
+    # Maintain dependencies for Gradle
   - package-ecosystem: "gradle" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
+    assignees: 
+      - "garrettsummerfi3ld"
+    reviewers:
+      - "garrettsummerfi3ld"
+    # Maintain dependencies for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    assignees: 
+      - "garrettsummerfi3ld"
+    reviewers:
+      - "garrettsummerfi3ld"
