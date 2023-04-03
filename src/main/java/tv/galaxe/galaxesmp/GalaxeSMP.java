@@ -9,6 +9,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import tv.galaxe.galaxesmp.advancements.*;
 import tv.galaxe.galaxesmp.commands.*;
+import tv.galaxe.galaxesmp.events.SilkTouchAmethyst;
 import tv.galaxe.galaxesmp.util.*;
 
 public final class GalaxeSMP extends JavaPlugin {
@@ -63,6 +64,7 @@ public final class GalaxeSMP extends JavaPlugin {
 
     // Register server events
     getServer().getPluginManager().registerEvents(new KillAdvancement(this), this);
+    getServer().getPluginManager().registerEvents(new SilkTouchAmethyst(this), this);
 
     twitchClient
         .getEventManager()
