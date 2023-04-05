@@ -4,8 +4,6 @@ main: tv.galaxe.galaxesmp.GalaxeSMP
 api-version: 1.19
 prefix: GalaxeSMP
 authors: [ garrettsummerfi3ld ]
-depend:
-  - LuckPerms
 description: A general plugin to help manage the GalaxeSMP
 website: https://github.com/GalaxeTV/GalaxeSMP-Plugin
 commands:
@@ -13,6 +11,12 @@ commands:
     description: Toggles item frame visibility
     usage: /invisibleitemframe
     aliases: [invisframe, iframe, ifr, invframe]
+    default: true
   twitch:
     description: Shows the Galaxe Twitch channel
     usage: /twitch
+    default: true
+permissions:
+  galaxesmp.staff:
+    description: Sets staff permissions for KillAdvancement
+    default: op

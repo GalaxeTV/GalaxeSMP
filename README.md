@@ -20,12 +20,6 @@ Steps:
 
 The reason for shadowing is an issue with the [Twitch4J](https://github.com/twitch4j/twitch4j) library used for Twitch integration. This results in a larger plugin however it remains similarly functional.
 
-## Dependencies for your Minecraft Server
-
-This plugin requires the following plugins to be installed on your server:
-
-- LuckPerms
-
 ## Code conventions/quality gates
 
 This repository currently has a couple of checks in place to ensure code quality. These are:
