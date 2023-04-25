@@ -1,11 +1,13 @@
 /* (C)2022 GalaxeTV */
 package tv.galaxe.galaxesmp;
 
+import com.github.philippheuer.credentialmanager.domain.OAuth2Credential;
 import com.github.philippheuer.events4j.simple.SimpleEventHandler;
 import com.github.twitch4j.ITwitchClient;
 import com.github.twitch4j.TwitchClientBuilder;
 import java.util.Objects;
 import net.luckperms.api.LuckPerms;
+import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.RegisteredServiceProvider;
@@ -58,11 +60,17 @@ public final class GalaxeSMP extends JavaPlugin {
     // Register LuckPerms
     luckPerms = Bukkit.getServicesManager().getRegistration(LuckPerms.class);
 
+    // Build credential when possible
+    String token = config.getString("oauth_token");
+    OAuth2Credential credential = StringUtils.isNotBlank(token) ? new OAuth2Credential("twitch", token) : null;
+
     // Build TwitchClient
     twitchClient =
         TwitchClientBuilder.builder()
             .withClientId(config.getString("twitch.client_id"))
             .withClientSecret(config.getString("twitch.client_secret"))
+            .withChatAccount(credential)
+            .withDefaultAuthToken(credential)
             .withEnableHelix(true)
             .withEnableChat(true)
             .build();
