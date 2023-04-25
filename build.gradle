@@ -23,7 +23,7 @@ dependencies {
     compileOnly 'org.jetbrains:annotations:24.0.1'
     compileOnly 'io.papermc.paper:paper-api:1.19.4-R0.1-SNAPSHOT'
     compileOnly 'net.luckperms:api:5.4'
-    implementation 'com.github.twitch4j:twitch4j:1.14.0'
+    implementation 'com.github.twitch4j:twitch4j:1.15.0'
 }
 
 def targetJavaVersion = 17
