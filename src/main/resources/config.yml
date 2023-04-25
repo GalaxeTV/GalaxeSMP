@@ -3,3 +3,4 @@ twitch:
   channel: ""
   client_id: ""
   client_secret: ""
+  oauth_token: ""
