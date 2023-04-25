@@ -7,7 +7,6 @@ import com.github.twitch4j.ITwitchClient;
 import com.github.twitch4j.TwitchClientBuilder;
 import java.util.Objects;
 import org.apache.commons.lang.StringUtils;
-import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import tv.galaxe.galaxesmp.advancements.*;
@@ -48,7 +47,8 @@ public final class GalaxeSMP extends JavaPlugin {
 
     // Build credential when possible
     String token = config.getString("oauth_token");
-    OAuth2Credential credential = StringUtils.isNotBlank(token) ? new OAuth2Credential("twitch", token) : null;
+    OAuth2Credential credential =
+        StringUtils.isNotBlank(token) ? new OAuth2Credential("twitch", token) : null;
 
     // Build TwitchClient
     twitchClient =
