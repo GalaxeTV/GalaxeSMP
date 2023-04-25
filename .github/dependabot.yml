@@ -13,7 +13,7 @@ updates:
     assignees: 
       - "garrettsummerfi3ld"
     reviewers:
-      - "garrettsummerfi3ld"
+      - "GalaxeTV/lead-devs"
     # Maintain dependencies for GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"
@@ -22,4 +22,4 @@ updates:
     assignees: 
       - "garrettsummerfi3ld"
     reviewers:
-      - "garrettsummerfi3ld"
+      - "GalaxeTV/lead-devs"
