@@ -32,7 +32,7 @@ jobs:
     - name: Change Gradle Permissions
       run: chmod +x gradlew
     - name: Setup Gradle to generate and submit dependency graphs
-      uses: gradle/gradle-build-action@dependency-graph
+      uses: gradle/gradle-build-action@v2.6.0
       with:
         dependency-graph: generate-and-submit
     - name: Build with Gradle
