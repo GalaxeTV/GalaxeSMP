@@ -32,11 +32,11 @@ jobs:
     - name: Change Gradle Permissions
       run: chmod +x gradlew
     - name: Build with Gradle
-      uses: gradle/gradle-build-action@v2.6.0
+      uses: gradle/gradle-build-action@v2.7.0
       with:
         arguments: build
     - name: Shadow Jar
-      uses: gradle/gradle-build-action@v2.6.0
+      uses: gradle/gradle-build-action@v2.7.0
       with:
         arguments: shadowJar
     - name: Upload Artifact
