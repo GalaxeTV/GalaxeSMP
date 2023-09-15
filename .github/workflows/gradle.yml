@@ -36,11 +36,11 @@ jobs:
       with:
         dependency-graph: generate-and-submit
     - name: Build with Gradle
-      uses: gradle/gradle-build-action@v2.7.0
+      uses: gradle/gradle-build-action@v2.8.0
       with:
         arguments: build
     - name: Shadow Jar
-      uses: gradle/gradle-build-action@v2.7.0
+      uses: gradle/gradle-build-action@v2.8.0
       with:
         arguments: shadowJar
     - name: Upload Artifact
