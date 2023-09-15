@@ -11,7 +11,7 @@ updates:
     schedule:
       interval: "weekly"
     assignees: 
-      - "garrettsummerfi3ld"
+      - "GalaxeTV/lead-devs"
     reviewers:
       - "GalaxeTV/lead-devs"
     # Maintain dependencies for GitHub Actions
@@ -20,6 +20,6 @@ updates:
     schedule:
       interval: "weekly"
     assignees: 
-      - "garrettsummerfi3ld"
+      - "GalaxeTV/lead-devs"
     reviewers:
       - "GalaxeTV/lead-devs"
