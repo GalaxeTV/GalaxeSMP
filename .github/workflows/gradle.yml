@@ -62,13 +62,11 @@ jobs:
           name: GalaxeSMP-dev.jar
           path: build/libs/
       - name: Deploy to SFTP
-        uses: appleboy/scp-action@v0.1.4
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          host: wings01.pizzabyte.net
+          server: ${{ secrets.DEV_HOST }}
           username: ${{ secrets.DEV_USERNAME }}
           password: ${{ secrets.DEV_PASSWORD }}
-          port: 2022
-          source: build/libs/*-all.jar
-          target: /plugins/
-          strip_components: 1
-          timeout: 120s
+          port: ${{ secrets.DEV_PORT }}
+          local-dir: build/libs/*-all.jar
+          server-dir: /plugins/
