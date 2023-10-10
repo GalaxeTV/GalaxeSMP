@@ -62,11 +62,12 @@ jobs:
           name: GalaxeSMP-dev.jar
           path: build/libs/
       - name: Deploy to SFTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
           server: ${{ secrets.DEV_HOST }}
           username: ${{ secrets.DEV_USERNAME }}
           password: ${{ secrets.DEV_PASSWORD }}
           port: ${{ secrets.DEV_PORT }}
-          local-dir: build/libs/
-          server-dir: /plugins/
+          local_path: 'build/libs/*'
+          remote_path: '/plugins/'
+          sftp_only: true
