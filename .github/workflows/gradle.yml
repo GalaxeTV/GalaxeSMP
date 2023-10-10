@@ -46,6 +46,28 @@ jobs:
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:
-        name: artifact
-        path: build/libs/*.jar
+        name: GalaxeSMP-dev.jar
+        path: build/libs/*-all.jar
         if-no-files-found: error
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    needs: build
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Pull plugin from successful build
+      uses: actions/download-artifact@v2
+      with:
+          name: GalaxeSMP-dev.jar
+          path: build/libs
+    - name: Deploy to dev
+      uses: milanmk/actions-file-deployer@master
+      with:
+        remote-protocol: "sftp"
+        remote-host: ${{ secrets.SFTP_HOST }}
+        remote-port: ${{ secrets.SFTP_PORT}}
+        remote-username: ${{ secrets.SFTP_USERNAME }}
+        remote-password: ${{ secrets.SFTP_PASSWORD }}
+        remote-path: "/plugins/"
+        local-path: "build/libs/"
