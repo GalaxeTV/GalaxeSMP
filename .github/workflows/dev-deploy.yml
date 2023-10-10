@@ -1,3 +1,5 @@
+name: Deploy
+
 on:
   push:
     branches: [ main ]
@@ -39,9 +41,8 @@ jobs:
           username: ${{ secrets.SFTP_USERNAME }}
           password: ${{ secrets.SFTP_PASSWORD }}
           port: ${{ secrets.SFTP_PORT }}
-          source: "build/libs/*.jar"
+          source: "build/libs/*-all.jar"
           target: "/plugins/"
           strip_components: 1
           rm: true
-          skip_clean: true
           timeout: 120s
