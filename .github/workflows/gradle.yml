@@ -18,6 +18,7 @@ permissions:
 
 jobs:
   build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -51,6 +52,7 @@ jobs:
         if-no-files-found: error
   deploy:
     needs: build
+    name: Deploy
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
@@ -60,7 +62,7 @@ jobs:
           name: GalaxeSMP-dev.jar
           path: build/libs/
       - name: Deploy to SFTP
-        uses: appleboy/scp-action@master
+        uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.DEV_HOST }}
           username: ${{ secrets.DEV_USERNAME }}
