@@ -54,8 +54,6 @@ jobs:
     if: github.ref == 'refs/heads/main'
     needs: build
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
     - name: Pull plugin from successful build
       uses: actions/download-artifact@v2
       with:
@@ -69,5 +67,6 @@ jobs:
         remote-port: ${{ secrets.SFTP_PORT}}
         remote-user: ${{ secrets.SFTP_USERNAME }}
         remote-password: ${{ secrets.SFTP_PASSWORD }}
+        sync: "full"
         remote-path: "/plugins/"
         local-path: "build/libs/"
