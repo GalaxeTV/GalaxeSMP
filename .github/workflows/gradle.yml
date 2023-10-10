@@ -67,7 +67,7 @@ jobs:
         remote-protocol: "sftp"
         remote-host: ${{ secrets.SFTP_HOST }}
         remote-port: ${{ secrets.SFTP_PORT}}
-        remote-username: ${{ secrets.SFTP_USERNAME }}
+        remote-user: ${{ secrets.SFTP_USERNAME }}
         remote-password: ${{ secrets.SFTP_PASSWORD }}
         remote-path: "/plugins/"
         local-path: "build/libs/"
