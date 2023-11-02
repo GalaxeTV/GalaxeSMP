@@ -1,0 +1,18 @@
+name: GalaxeSMP
+author: [ garrettsummerfi3ld, josefbaltz ]
+version: '${version}'
+main: tv.galaxe.smp.Core
+prefix: GalaxeSMP
+api-version: 1.19
+description: Custom GalaxeSMP Plugin
+website: https://github.com/GalaxeTV/GalaxeSMP-Plugin
+commands:
+  invisibleitemframe:
+    description: Toggles item frame visibility
+    usage: /invisibleitemframe
+    aliases: [iif, invisframe, iframe, ifr, invframe]
+    default: true
+permissions:
+  galaxesmp.staff:
+    description: Permission marking someone as staff member for kill buffs.
+    default: op
