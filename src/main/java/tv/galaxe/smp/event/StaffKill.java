@@ -1,4 +1,4 @@
-package tv.galaxe.smp.advancement;
+package tv.galaxe.smp.event;
 
 import java.util.Collection;
 import java.util.HashSet;

@@ -23,4 +23,5 @@ public final class SilkTouchAmethyst implements Listener {
             event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.BUDDING_AMETHYST, 1));
         }
     }
+    
 }

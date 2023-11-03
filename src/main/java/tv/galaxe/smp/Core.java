@@ -3,12 +3,13 @@ package tv.galaxe.smp;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import tv.galaxe.smp.advancement.StaffKill;
 import tv.galaxe.smp.cmd.HelpGUI;
 import tv.galaxe.smp.cmd.InvisibleItemFrame;
 import tv.galaxe.smp.event.SilkTouchAmethyst;
+import tv.galaxe.smp.event.StaffKill;
 
 public class Core extends JavaPlugin implements Listener {
+    
     @Override
     public void onEnable() {
         getServer().getConsoleSender().sendMessage("GalaxeSMP Plugin Enabled");
