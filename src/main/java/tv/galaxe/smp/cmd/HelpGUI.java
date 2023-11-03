@@ -39,9 +39,11 @@ public class HelpGUI implements CommandExecutor {
             // Add white pane filler
             help.setItem(3, 3, ItemBuilder.from(Material.WHITE_STAINED_GLASS_PANE).asGuiItem());
             help.setItem(3, 7, ItemBuilder.from(Material.WHITE_STAINED_GLASS_PANE).asGuiItem());
-            for (int i=2; i<=4; i++) { help.setItem(i, 4, ItemBuilder.from(Material.WHITE_STAINED_GLASS_PANE).asGuiItem()); }
+            for (int i=2; i<=4; i++) { 
+                help.setItem(i, 4, ItemBuilder.from(Material.WHITE_STAINED_GLASS_PANE).asGuiItem());
+                help.setItem(i, 6, ItemBuilder.from(Material.WHITE_STAINED_GLASS_PANE).asGuiItem());
+            }
             for (int i=1; i<=6; i++) { help.setItem(i, 5, ItemBuilder.from(Material.WHITE_STAINED_GLASS_PANE).asGuiItem()); }
-            for (int i=2; i<=4; i++) { help.setItem(i, 6, ItemBuilder.from(Material.WHITE_STAINED_GLASS_PANE).asGuiItem()); }
 
             // Add phantom membranes
             help.setItem(2, 5, ItemBuilder.from(Material.PHANTOM_MEMBRANE).asGuiItem(event -> { /*Event Handling Here*/ }));
