@@ -9,7 +9,6 @@ import tv.galaxe.smp.event.SilkTouchAmethyst;
 import tv.galaxe.smp.event.StaffKill;
 
 public class Core extends JavaPlugin implements Listener {
-    
     @Override
     public void onEnable() {
         getServer().getConsoleSender().sendMessage("GalaxeSMP Plugin Enabled");
@@ -28,5 +27,4 @@ public class Core extends JavaPlugin implements Listener {
     public void onDisable() {
         getServer().getConsoleSender().sendMessage("GalaxeSMP Plugin Disabled");
     }
-
 }
