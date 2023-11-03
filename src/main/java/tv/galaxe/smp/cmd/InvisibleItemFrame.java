@@ -17,7 +17,7 @@ public final class InvisibleItemFrame implements CommandExecutor {
         } else {
             Player player = (Player)sender;
             Entity lookingAt = player.getTargetEntity(10);
-            if (lookingAt.getType() != null) { // Error handling in case player is not looking at an entity
+            if (lookingAt != null) { // Error handling in case player is not looking at an entity
                 switch(lookingAt.getType()) {
                     case ITEM_FRAME:
                         ItemFrame itemFrame = (ItemFrame)lookingAt;
