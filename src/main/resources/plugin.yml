@@ -12,6 +12,9 @@ commands:
     usage: /invisibleitemframe
     aliases: [iif, invisframe, iframe, ifr, invframe]
     default: true
+  help:
+    description: GalaxeSMP Help Menu
+    usage: /help
 permissions:
   galaxesmp.staff:
     description: Permission marking someone as staff member for kill buffs.
