@@ -24,9 +24,9 @@ public final class StaffKill implements Listener {
 
     // Declare potion effects to be given
     Collection<PotionEffect> buffSet = Stream.of(
-        new PotionEffect(PotionEffectType.GLOWING, PotionEffect.INFINITE_DURATION, 1),
-        new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, PotionEffect.INFINITE_DURATION, 3),
-        new PotionEffect(PotionEffectType.INCREASE_DAMAGE, PotionEffect.INFINITE_DURATION, 3)
+        new PotionEffect(PotionEffectType.GLOWING, PotionEffect.INFINITE_DURATION, 0),
+        new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, PotionEffect.INFINITE_DURATION, 2),
+        new PotionEffect(PotionEffectType.INCREASE_DAMAGE, PotionEffect.INFINITE_DURATION, 2)
         ).collect(Collectors.toCollection(HashSet::new));
 
     @EventHandler
