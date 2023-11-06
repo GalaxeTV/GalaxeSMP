@@ -2,7 +2,7 @@
 
 A general plugin to help manage the GalaxeSMP
 
-Compatible on Paper 1.19.2+
+Compatible on Paper 1.19.4+
 
 Code of Conduct is located in the [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) file.
 
@@ -16,9 +16,7 @@ Requirements:
 Steps:
 
 1. Clone repository
-2. `./gradlew shadowJar`
-
-The reason for shadowing is an issue with the [Twitch4J](https://github.com/twitch4j/twitch4j) library used for Twitch integration. This results in a larger plugin however it remains similarly functional.
+2. `./gradlew shadowjar`
 
 ## Code conventions/quality gates
 

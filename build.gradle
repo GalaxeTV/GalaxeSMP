@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'com.diffplug.spotless' version '6.21.0'
+    id 'com.diffplug.spotless' version '6.22.0'
     id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
 
@@ -9,21 +9,13 @@ version = '2.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
-    maven {
-        name = 'papermc-repo'
-        url = 'https://papermc.io/repo/repository/maven-public/'
-    }
-    maven {
-        name = 'sonatype'
-        url = 'https://oss.sonatype.org/content/groups/public/'
-    }
+    maven { url = "https://repo.papermc.io/repository/maven-public" }
+    maven { url = "https://repo.mattstudios.me/artifactory/public/" }
 }
 
 dependencies {
-    compileOnly 'org.jetbrains:annotations:24.0.1'
-    compileOnly 'io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT'
-    compileOnly 'net.luckperms:api:5.4'
-    implementation 'com.github.twitch4j:twitch4j:1.15.0'
+    compileOnly group: 'io.papermc.paper', name: 'paper-api', version: '1.19.4-R0.1-SNAPSHOT'
+    implementation group: 'dev.triumphteam', name: 'triumph-gui', version: '3.1.7'
 }
 
 def targetJavaVersion = 17
@@ -42,6 +34,12 @@ tasks.withType(JavaCompile).configureEach {
     }
 }
 
+tasks.withType(Jar) {
+    if (project.properties.containsKey("workspace")) {
+        destinationDir = file("$rootDir/.papermc/plugins")
+    }
+}
+
 processResources {
     def props = [version: version]
     inputs.properties props
@@ -52,26 +50,21 @@ processResources {
 }
 
 spotless {
-    // optional: limit format enforcement to just the files changed by this feature branch
     ratchetFrom 'origin/main'
 
     format 'misc', {
-        // define the files to apply `misc` to
         target '*.gradle', '*.md', '.gitignore'
 
-        // define the steps to apply to those files
         trimTrailingWhitespace()
         indentWithSpaces()
         endWithNewline()
     }
-    java {
-        // don't need to set target, it is inferred from java
 
-        // apply a specific flavor of google-java-format
-        googleJavaFormat('1.15.0').reflowLongStrings()
-        // make sure every file has the following copyright header.
-        // optionally, Spotless can set copyright years by digging
-        // through git history (see "license" section below)
-        licenseHeader '/* (C)$YEAR GalaxeTV */'
+    java {
+        importOrder()
+        removeUnusedImports()
+        cleanthat()
+        eclipse()
+        formatAnnotations()
     }
 }

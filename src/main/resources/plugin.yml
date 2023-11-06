@@ -1,22 +1,21 @@
 name: GalaxeSMP
+author: [ garrettsummerfi3ld, josefbaltz ]
 version: '${version}'
-main: tv.galaxe.galaxesmp.GalaxeSMP
-api-version: 1.19
+main: tv.galaxe.smp.Core
 prefix: GalaxeSMP
-authors: [ garrettsummerfi3ld ]
-description: A general plugin to help manage the GalaxeSMP
+api-version: 1.19
+description: Custom GalaxeSMP Plugin
 website: https://github.com/GalaxeTV/GalaxeSMP-Plugin
 commands:
   invisibleitemframe:
     description: Toggles item frame visibility
     usage: /invisibleitemframe
-    aliases: [invisframe, iframe, ifr, invframe]
+    aliases: [iif, invisframe, iframe, ifr, invframe]
     default: true
-  twitch:
-    description: Shows the Galaxe Twitch channel
-    usage: /twitch
-    default: true
+  help:
+    description: GalaxeSMP Help Menu
+    usage: /help
 permissions:
   galaxesmp.staff:
-    description: Sets staff permissions for KillAdvancement
+    description: Permission marking someone as staff member for kill buffs.
     default: op

@@ -120,3 +120,6 @@ run/
 # VSCode Extensions
 .vscode/
 bin/
+
+# Docker
+.docker/
