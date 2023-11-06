@@ -61,6 +61,10 @@ spotless {
     }
 
     java {
-        googleJavaFormat('1.15.0').reflowLongStrings()
+        importOrder()
+        removeUnusedImports()
+        cleanthat()
+        eclipse()
+        formatAnnotations()
     }
 }
