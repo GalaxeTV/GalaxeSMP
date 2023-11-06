@@ -10,13 +10,13 @@ Code of Conduct is located in the [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) file.
 
 Requirements:
 
-- Java 17
-- Gradle
+- Java 17 JDK
 
 Steps:
 
 1. Clone repository
-2. `./gradlew shadowjar`
+2. `./gradlew spotlessApply`
+3. `./gradlew shadowJar`
 
 ## Code conventions/quality gates
 
@@ -25,33 +25,8 @@ This repository currently has a couple of checks in place to ensure code quality
 - Syntax check powered by [Spotless](https://github.com/diffplug/spotless)
 - [CodeQL](https://codeql.github.com/) analysis on pull requests
 - [Dependabot](https://github.com/dependabot) to keep dependencies up to date
-- [Qodana](https://www.jetbrains.com/qodana/) to check for code smells
 
 There is also no allowing of force pushing to the main branch. Everything has to be done through a pull request. If you have a new feature that you want to add, please create a new branch and open a pull request. This will allow for code review and discussion before merging.
-
-## Twitch.TV integration
-
-To utilize the Twitch integration, you need to create an application in the Twitch developer console.
-
-To do this:
-1. Go to the [Twitch Developer Console](https://dev.twitch.tv/console/apps)
-2. Click "Register Your Application"
-3. Fill out the form with the following:
-    - Name: GalaxeSMP
-    - OAuth Redirect URLs: `https://localhost`
-    - Category: Game Integration
-4. Click "Register"
-5. Copy the Client ID and Client Secret into the `config.yml` file in their respective spots
-
-## Default Configuration
-
-```yaml
-# Twitch Integration
-twitch:
-  channel: ""
-  client_id: ""
-  client_secret: ""
-```
 
 ## Commands
 
@@ -59,15 +34,16 @@ twitch:
 
 Toggles currently looked at item frame, is aliased to be:
 
-* `/invisframe`
-* `/iframe`
-* `/ifr`
-* `/invframe`
+* `/iif`  
+* `/invisframe`  
+* `/iframe`  
+* `/ifr`  
+* `/invframe`  
 
-Permission is set to be on for all players by default.
+Permission is set to be on for all players.
 
-### `/twitch`
+### `/help`
 
-Checks if the current streamer is live.
+GUI Help Menu.
 
-Permission is set to be on for all players by default.
+Permission is set to be on for all players.
