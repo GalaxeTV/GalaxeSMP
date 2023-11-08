@@ -16,6 +16,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: ${{ github.workflow }}@${{ github.ref }}+${{ github.run_id }}-${{ github.run_number }}-${{ github.run_attempt }}
+  cancel-in-progress: false
+
 jobs:
   build:
     name: Build
@@ -43,10 +47,10 @@ jobs:
     - name: Shadow Jar
       uses: gradle/gradle-build-action@v2.8.0
       with:
-        arguments: shadowJar
+        arguments: clean shadowJar
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:
-        name: GalaxeSMP-dev.jar
+        name: GalaxeSMP
         path: build/libs/*-all.jar
         if-no-files-found: error

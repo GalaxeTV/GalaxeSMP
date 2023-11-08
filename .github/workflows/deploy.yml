@@ -1,0 +1,39 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ main ]
+
+concurrency:
+  group: ${{ github.workflow }}@${{ github.ref }}+${{ github.run_id }}-${{ github.run_number }}-${{ github.run_attempt }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: GalaxeSMP
+          path: build/libs/
+
+      - name: Deploy to Pterodactyl SFTP
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SFTP_HOST }}
+          username: ${{ secrets.SFTP_USERNAME }}
+          password: ${{ secrets.SFTP_PASSWORD }}
+          port: ${{ secrets.SFTP_PORT }}
+          source: "build/libs/*.jar"
+          target: "/plugins/"
+          strip_components: 1
+          rm: true
+          skip_clean: true
+          timeout: 120s

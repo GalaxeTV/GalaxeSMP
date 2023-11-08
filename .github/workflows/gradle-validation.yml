@@ -1,6 +1,10 @@
 name: "Validate Gradle Wrapper"
 on: [push, pull_request]
 
+concurrency:
+  group: ${{ github.workflow }}@${{ github.ref }}+${{ github.run_id }}-${{ github.run_number }}-${{ github.run_attempt }}
+  cancel-in-progress: false
+
 jobs:
   validation:
     name: "Validation"
