@@ -4,6 +4,7 @@ version: '${version}'
 main: tv.galaxe.smp.Core
 prefix: GalaxeSMP
 api-version: 1.19
+depend: [ LuckPerms ]
 description: Custom GalaxeSMP Plugin
 website: https://github.com/GalaxeTV/GalaxeSMP-Plugin
 commands:
@@ -15,6 +16,11 @@ commands:
   help:
     description: GalaxeSMP Help Menu
     usage: /help
+  pronouns:
+    description: Sets your pronouns
+    usage: /pronouns <pronouns>
+    aliases: [pronoun]
+    default: true
 permissions:
   galaxesmp.staff:
     description: Permission marking someone as staff member for kill buffs.

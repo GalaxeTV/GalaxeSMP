@@ -4,6 +4,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import tv.galaxe.smp.cmd.HelpGUI;
 import tv.galaxe.smp.cmd.InvisibleItemFrame;
+import tv.galaxe.smp.cmd.Pronouns;
 import tv.galaxe.smp.event.SilkTouchAmethyst;
 import tv.galaxe.smp.event.StaffKill;
 
@@ -16,6 +17,7 @@ public class Core extends JavaPlugin implements Listener {
 		// Commands
 		getCommand("invisibleitemframe").setExecutor(new InvisibleItemFrame());
 		getCommand("help").setExecutor(new HelpGUI());
+		getCommand("pronouns").setExecutor(new Pronouns());
 
 		// Listeners
 		getServer().getPluginManager().registerEvents(new SilkTouchAmethyst(), this);
