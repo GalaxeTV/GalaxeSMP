@@ -12,6 +12,16 @@ import net.kyori.adventure.text.Component;
 
 public class Pronouns implements CommandExecutor {
 
+	// Define valid pronouns
+	enum pronouns {
+		HE_HIM,
+		SHE_HER,
+		THEY_THEM,
+		XE_XEM,
+		HE_THEY,
+		SHE_THEY
+	};
+
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		if (!(sender instanceof Player)) {
@@ -19,15 +29,28 @@ public class Pronouns implements CommandExecutor {
 			return false;
 		} else {
 			Player player = (Player) sender;
-			if (args.length == 0) {
-				player.sendMessage("You must specify your pronouns!");
-				return false;
-			} else {
-				if (args[0] == null || args[0].isEmpty()) {
-					PronounsGUI(player);
-				}
-				else {
-					
+			if (args[0].isEmpty()) {
+				PronounsGUI(player);
+			}
+			else {
+				String cmd = args[0].toLowerCase();
+				switch (cmd){
+					case "remove":
+						removePronouns(player);
+						break;
+					case "set":
+						String pronoun = args[1].toLowerCase();
+						setPronouns(player, pronoun);
+						break;
+					case "gui":
+						PronounsGUI(player);
+						break;
+					case "help":
+						player.sendMessage("Usage: /pronouns [set|remove|gui|help]");
+						break;
+					default:
+						player.sendMessage("Invalid command!");
+						return false;
 				}
 			}
 			return true;
@@ -71,5 +94,39 @@ public class Pronouns implements CommandExecutor {
 		pronouns.setItem(3, 4, ItemBuilder.from(Material.BARRIER).name(Component.text("Remove Pronouns")).asGuiItem(event -> {
 			/* Event Handling Here */
 		}));
+
+		pronouns.open(player);
+	}
+
+	public Boolean setPronouns(Player player, String pronoun) {
+		switch (pronoun) {
+			case "he/him":
+				// Set pronouns to HE_HIM
+				break;
+			case "she/her":
+				// Set pronouns to SHE_HER
+				break;
+			case "they/them":
+				// Set pronouns to THEY_THEM
+				break;
+			case "xe/xem":
+				// Set pronouns to XE_XEM
+				break;
+			case "he/they":
+				// Set pronouns to HE_THEY
+				break;
+			case "she/they":
+				// Set pronouns to SHE_THEY
+				break;
+			default:
+				player.sendMessage("Invalid pronouns!");
+				return false;
+			}
+		return true;
+	}
+
+	public Boolean removePronouns(Player player) {
+		// Remove player's pronouns
+		return true;
 	}
 }
