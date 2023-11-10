@@ -44,6 +44,9 @@ public class Pronouns implements CommandExecutor {
 						sender.sendMessage("You can not have more than " + maxPronouns + " pronouns set!");
 						return true;
 					}
+					if (args.length < 2) {
+						return false;
+					}
 					newSuffix.append(" (");
 					for (int i = 1; i < args.length; i++) { 
 						if (sender.hasPermission("galaxesmp.pronouns.trusted") || validPronouns.stream().map(String::toLowerCase).collect(Collectors.toList()).contains(args[i].toLowerCase())) {
