@@ -2,17 +2,16 @@ package tv.galaxe.smp.cmd;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 import net.luckperms.api.LuckPerms;
 import net.luckperms.api.cacheddata.CachedMetaData;
 import net.luckperms.api.model.user.User;
 import net.luckperms.api.node.Node;
 import net.luckperms.api.node.NodeType;
 import net.luckperms.api.node.types.SuffixNode;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import tv.galaxe.smp.Core;
 
 public class Pronouns implements CommandExecutor {
@@ -40,7 +39,7 @@ public class Pronouns implements CommandExecutor {
 			Node suffixNode;
 			switch ((args.length == 0) ? "" : args[0].toLowerCase()) {
 				case "set" :
-					if (args.length > maxPronouns+1) {
+					if (args.length > maxPronouns + 1) {
 						sender.sendMessage("You can not have more than " + maxPronouns + " pronouns set!");
 						return true;
 					}
@@ -48,9 +47,11 @@ public class Pronouns implements CommandExecutor {
 						return false;
 					}
 					newSuffix.append(" (");
-					for (int i = 1; i < args.length; i++) { 
-						if (sender.hasPermission("galaxesmp.pronouns.trusted") || validPronouns.stream().map(String::toLowerCase).collect(Collectors.toList()).contains(args[i].toLowerCase())) {
-							newSuffix.append(args[i] + ((i==args.length-1) ? "" : "/"));
+					for (int i = 1; i < args.length; i++) {
+						if (sender.hasPermission("galaxesmp.pronouns.trusted")
+								|| validPronouns.stream().map(String::toLowerCase).collect(Collectors.toList())
+										.contains(args[i].toLowerCase())) {
+							newSuffix.append(args[i] + ((i == args.length - 1) ? "" : "/"));
 						} else {
 							sender.sendMessage("'" + args[i] + "' is not an acceptable pronoun!");
 							return true;
@@ -68,7 +69,7 @@ public class Pronouns implements CommandExecutor {
 					if (!sender.hasPermission("galaxesmp.pronouns.other")) {
 						sender.sendMessage("You do not have permission to use this command!");
 						return true;
-					} else if (args.length > maxPronouns+2) {
+					} else if (args.length > maxPronouns + 2) {
 						sender.sendMessage("You can not set more than " + maxPronouns + " pronouns!");
 						return true;
 					} else if (args.length < 3) {
@@ -80,8 +81,8 @@ public class Pronouns implements CommandExecutor {
 							return true;
 						}
 						newSuffix.append(" (");
-						for (int i = 2; i < args.length; i++) { 
-							newSuffix.append(args[i] + ((i==args.length-1) ? "" : "/"));
+						for (int i = 2; i < args.length; i++) {
+							newSuffix.append(args[i] + ((i == args.length - 1) ? "" : "/"));
 						}
 						newSuffix.append(")");
 						suffixNode = SuffixNode.builder(newSuffix.toString(), 100).build();
@@ -98,13 +99,13 @@ public class Pronouns implements CommandExecutor {
 					});
 					sender.sendMessage("Cleared pronouns!");
 					return true;
-				case "clearother":
+				case "clearother" :
 					if (!sender.hasPermission("galaxesmp.pronouns.other")) {
 						sender.sendMessage("You do not have permission to use this command!");
 						return true;
 					} else if (args.length < 2) {
 						return false;
-					}  else {
+					} else {
 						player = sender.getServer().getPlayer(args[1]);
 						if (player == null) {
 							sender.sendMessage("Could not find player '" + args[1] + "'!");
@@ -124,7 +125,7 @@ public class Pronouns implements CommandExecutor {
 					}
 					sender.sendMessage("Your pronouns are" + suffix + "!");
 					return true;
-				default:
+				default :
 					return false;
 			}
 		}
