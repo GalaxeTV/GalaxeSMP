@@ -117,6 +117,9 @@ public class Pronouns implements CommandExecutor {
 						sender.sendMessage("Cleared " + args[1] + "'s pronouns!");
 						return true;
 					}
+				case "list" :
+					// TODO: List all valid pronouns
+					return true;
 				case "view" :
 				case "" :
 					if (suffix == null) {

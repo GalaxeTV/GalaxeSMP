@@ -18,7 +18,7 @@ commands:
     usage: /help
   pronouns:
     description: Control your pronouns
-    usage: "Usage:\n\n/<command> [set|clear|view] [pronoun pronoun pronoun]\n\n/<command> [setother|clearother] <user> [pronoun pronoun pronoun]\n\n\nExamples:\n\n/<command> set he him\n\n/<command> set she her they"
+    usage: "Usage:\n\n/<command> [set|clear|view|list] [pronoun pronoun pronoun]\n\n/<command> [setother|clearother] <user> [pronoun pronoun pronoun]\n\n\nExamples:\n\n/<command> set he him\n\n/<command> set she her they"
     aliases: [pronoun]
     default: true
     permission: galaxesmp.pronouns
