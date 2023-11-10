@@ -68,7 +68,7 @@ public class Pronouns implements CommandExecutor {
 					if (!sender.hasPermission("galaxesmp.pronouns.other")) {
 						sender.sendMessage("You do not have permission to use this command!");
 						return true;
-					} else if (args.length > maxPronouns+1) {
+					} else if (args.length > maxPronouns+2) {
 						sender.sendMessage("You can not set more than " + maxPronouns + " pronouns!");
 						return true;
 					} else if (args.length < 3) {
