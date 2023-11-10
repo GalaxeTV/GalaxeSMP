@@ -123,7 +123,7 @@ public class Pronouns implements CommandExecutor {
 				if (!sender.hasPermission("galaxesmp.pronouns.other")) {
 					sender.sendMessage("You do not have permission to use this command!");
 					return true;
-				} 
+				}
 				if (args.length < 2) {
 					return false;
 				}
