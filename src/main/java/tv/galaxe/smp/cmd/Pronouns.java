@@ -1,5 +1,6 @@
 package tv.galaxe.smp.cmd;
 
+import java.util.StringJoiner;
 import java.util.stream.Collectors;
 import net.luckperms.api.LuckPerms;
 import net.luckperms.api.model.user.User;
@@ -27,10 +28,12 @@ public class Pronouns implements CommandExecutor {
 		String suffix = (sender instanceof Player)
 				? lp.getPlayerAdapter(Player.class).getMetaData((Player) sender).getSuffix()
 				: null;
-		StringBuilder newSuffix = new StringBuilder(), pronounList = new StringBuilder();
+		StringBuilder pronounList = new StringBuilder();
+		StringJoiner newPronouns = new StringJoiner("/", " (", ")");
 		Node suffixNode;
 		switch ((args.length == 0) ? "" : args[0].toLowerCase()) {
 			case "set" :
+				// Error handling & verification
 				if (!(sender instanceof Player)) {
 					sender.sendMessage("This command must be used as a player!");
 					return true;
@@ -43,85 +46,107 @@ public class Pronouns implements CommandExecutor {
 				if (args.length < 2) {
 					return false;
 				}
-				newSuffix.append(" (");
+
+				// Build new pronouns string
 				for (int i = 1; i < args.length; i++) {
 					if (sender.hasPermission("galaxesmp.pronouns.trusted")
 							|| plugin.getConfig().getStringList("pronouns.valid").stream().map(String::toLowerCase)
 									.collect(Collectors.toList()).contains(args[i].toLowerCase())) {
-						newSuffix.append(args[i] + ((i == args.length - 1) ? "" : "/"));
+						newPronouns.add(args[i]);
 					} else {
 						sender.sendMessage("'" + args[i] + "' is not an acceptable pronoun!");
 						return true;
 					}
 				}
-				newSuffix.append(")");
-				suffixNode = SuffixNode.builder(newSuffix.toString(), 100).build();
+
+				// Build permission node and assign
+				suffixNode = SuffixNode.builder(newPronouns.toString(), 100).build();
 				lp.getUserManager().modifyUser(((Player) sender).getUniqueId(), (User user) -> {
 					user.data().clear(NodeType.SUFFIX::matches);
 					user.data().add(suffixNode);
 				});
-				sender.sendMessage("Set pronouns to" + newSuffix.toString() + "!");
+
+				// Cleanup
+				sender.sendMessage("Set pronouns to" + newPronouns.toString() + "!");
 				return true;
 			case "setother" :
+				// Error handling & verification
 				if (!sender.hasPermission("galaxesmp.pronouns.other")) {
 					sender.sendMessage("You do not have permission to use this command!");
 					return true;
-				} else if (args.length > plugin.getConfig().getInt("pronouns.max") + 2) {
+				}
+				if (args.length > plugin.getConfig().getInt("pronouns.max") + 2) {
 					sender.sendMessage(
 							"You can not set more than " + plugin.getConfig().getInt("pronouns.max") + " pronouns!");
 					return true;
-				} else if (args.length < 3) {
+				}
+				if (args.length < 3) {
 					return false;
-				} else {
-					if (sender.getServer().getPlayer(args[1]) == null) {
-						sender.sendMessage("Could not find player '" + args[1] + "'!");
-						return true;
-					}
-					newSuffix.append(" (");
-					for (int i = 2; i < args.length; i++) {
-						newSuffix.append(args[i] + ((i == args.length - 1) ? "" : "/"));
-					}
-					newSuffix.append(")");
-					suffixNode = SuffixNode.builder(newSuffix.toString(), 100).build();
-					lp.getUserManager().modifyUser(sender.getServer().getPlayer(args[1]).getUniqueId(), (User user) -> {
-						user.data().clear(NodeType.SUFFIX::matches);
-						user.data().add(suffixNode);
-					});
-					sender.sendMessage("Set " + args[1] + "'s pronouns to" + newSuffix.toString() + "!");
+				}
+				if (sender.getServer().getPlayer(args[1]) == null) {
+					sender.sendMessage("Could not find player '" + args[1] + "'!");
 					return true;
 				}
+
+				// Build new pronouns string
+				for (int i = 2; i < args.length; i++) {
+					newPronouns.add(args[i]);
+				}
+
+				// Build permission node and assign
+				suffixNode = SuffixNode.builder(newPronouns.toString(), 100).build();
+				lp.getUserManager().modifyUser(sender.getServer().getPlayer(args[1]).getUniqueId(), (User user) -> {
+					user.data().clear(NodeType.SUFFIX::matches);
+					user.data().add(suffixNode);
+				});
+
+				// Cleanup
+				sender.sendMessage("Set " + args[1] + "'s pronouns to" + newPronouns.toString() + "!");
+				return true;
 			case "clear" :
+				// Error handling & verification
 				if (!(sender instanceof Player)) {
 					sender.sendMessage("This command must be used as a player!");
 					return true;
 				}
+
+				// Find permission node and remove
 				lp.getUserManager().modifyUser(((Player) sender).getUniqueId(), (User user) -> {
 					user.data().clear(NodeType.SUFFIX::matches);
 				});
+
+				// Cleanup
 				sender.sendMessage("Cleared pronouns!");
 				return true;
 			case "clearother" :
+				// Error handling & verification
 				if (!sender.hasPermission("galaxesmp.pronouns.other")) {
 					sender.sendMessage("You do not have permission to use this command!");
 					return true;
-				} else if (args.length < 2) {
+				} 
+				if (args.length < 2) {
 					return false;
-				} else {
-					if (sender.getServer().getPlayer(args[1]) == null) {
-						sender.sendMessage("Could not find player '" + args[1] + "'!");
-						return true;
-					}
-					lp.getUserManager().modifyUser(sender.getServer().getPlayer(args[1]).getUniqueId(), (User user) -> {
-						user.data().clear(NodeType.SUFFIX::matches);
-					});
-					sender.sendMessage("Cleared " + args[1] + "'s pronouns!");
+				}
+				if (sender.getServer().getPlayer(args[1]) == null) {
+					sender.sendMessage("Could not find player '" + args[1] + "'!");
 					return true;
 				}
+
+				// Find permission node and remove
+				lp.getUserManager().modifyUser(sender.getServer().getPlayer(args[1]).getUniqueId(), (User user) -> {
+					user.data().clear(NodeType.SUFFIX::matches);
+				});
+
+				// Cleanup
+				sender.sendMessage("Cleared " + args[1] + "'s pronouns!");
+				return true;
 			case "list" :
+				// Build comma delimiter list of valid pronouns
 				for (int i = 0; i < plugin.getConfig().getStringList("pronouns.valid").size(); i++) {
-					pronounList.append(plugin.getConfig().getStringList("pronouns.valid").get(i)
-							+ ((i == plugin.getConfig().getStringList("pronouns.valid").size() - 1) ? "" : ", "));
+					pronounList.append(plugin.getConfig().getStringList("pronouns.valid").get(i));
 				}
+
+				// Cleanup
 				sender.sendMessage(pronounList.toString());
 				return true;
 			case "view" :
