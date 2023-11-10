@@ -66,7 +66,7 @@ public class Pronouns implements CommandExecutor {
 						sender.sendMessage("You do not have permission to use this command!");
 						return true;
 					} else if (args.length > maxPronouns+1) {
-						sender.sendMessage("You can not set more than 4 pronouns!");
+						sender.sendMessage("You can not set more than " + maxPronouns + " pronouns!");
 						return true;
 					} else if (args.length < 3) {
 						return false;
