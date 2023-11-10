@@ -17,6 +17,7 @@ public final class InvisibleItemFrame implements CommandExecutor {
 		} else {
 			Player player = (Player) sender;
 			Entity lookingAt = player.getTargetEntity(10);
+			// TODO: Java 20 Allows implementing this if into the switch case
 			if (lookingAt != null) { // Workaround for Java 17 error handling
 				switch (lookingAt.getType()) {
 					case ITEM_FRAME :
