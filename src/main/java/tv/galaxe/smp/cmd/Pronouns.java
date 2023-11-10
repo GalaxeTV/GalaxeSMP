@@ -1,125 +1,127 @@
 package tv.galaxe.smp.cmd;
 
-import dev.triumphteam.gui.builder.item.ItemBuilder;
-import dev.triumphteam.gui.guis.Gui;
-import net.kyori.adventure.text.Component;
-import org.bukkit.Material;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import net.luckperms.api.LuckPerms;
+import net.luckperms.api.cacheddata.CachedMetaData;
+import net.luckperms.api.model.user.User;
+import net.luckperms.api.node.Node;
+import net.luckperms.api.node.NodeType;
+import net.luckperms.api.node.types.SuffixNode;
+import tv.galaxe.smp.Core;
 
 public class Pronouns implements CommandExecutor {
 
-	// Define valid pronouns
-	enum pronouns {
-		HE, HIM, SHE, HER, THEY, THEM, XE, XEM
-	};
+	private final LuckPerms lp;
+	private final List<String> validPronouns;
+	private final Integer maxPronouns;
+
+	public Pronouns(LuckPerms lp, Core plugin) {
+		this.lp = lp;
+		this.validPronouns = plugin.getConfig().getStringList("pronouns.valid");
+		this.maxPronouns = plugin.getConfig().getInt("pronouns.max");
+	}
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		if (!(sender instanceof Player)) {
 			sender.sendMessage("This command must be used as a player!");
-			return false;
+			return true;
 		} else {
 			Player player = (Player) sender;
-			if (args[0].isEmpty()) {
-				PronounsGUI(player);
-			} else {
-				String cmd = args[0].toLowerCase();
-				switch (cmd) {
-					case "remove" :
-						removePronouns(player);
-						break;
-					case "set" :
-						String pronoun = args[1].toLowerCase();
-						setPronouns(player, pronoun);
-						break;
-					case "gui" :
-						PronounsGUI(player);
-						break;
-					case "help" :
-						player.sendMessage("Usage: /pronouns [set|remove|gui|help]");
-						break;
-					default :
-						pronounsGUI(player);
-				}
+			CachedMetaData metaData = lp.getPlayerAdapter(Player.class).getMetaData(player);
+			String suffix = metaData.getSuffix();
+			StringBuilder newSuffix = new StringBuilder();
+			Node suffixNode;
+			switch ((args.length == 0) ? "" : args[0].toLowerCase()) {
+				case "set" :
+					if (args.length > maxPronouns+1) {
+						sender.sendMessage("You can not have more than 4 pronouns set!");
+						return true;
+					}
+					newSuffix.append(" (");
+					for (int i = 1; i < args.length; i++) { 
+						if (sender.hasPermission("galaxesmp.pronouns.trusted") || validPronouns.stream().map(String::toLowerCase).collect(Collectors.toList()).contains(args[i].toLowerCase())) {
+							newSuffix.append(args[i] + ((i==args.length-1) ? "" : "/"));
+						} else {
+							sender.sendMessage("'" + args[i] + "' is not an acceptable pronoun!");
+							return true;
+						}
+					}
+					newSuffix.append(")");
+					suffixNode = SuffixNode.builder(newSuffix.toString(), 100).build();
+					lp.getUserManager().modifyUser(player.getUniqueId(), (User user) -> {
+						user.data().clear(NodeType.SUFFIX::matches);
+						user.data().add(suffixNode);
+					});
+					sender.sendMessage("Set pronouns to" + newSuffix.toString() + "!");
+					return true;
+				case "setother" :
+					if (!sender.hasPermission("galaxesmp.pronouns.other")) {
+						sender.sendMessage("You do not have permission to use this command!");
+						return true;
+					} else if (args.length > maxPronouns+1) {
+						sender.sendMessage("You can not set more than 4 pronouns!");
+						return true;
+					} else if (args.length < 3) {
+						return false;
+					} else {
+						player = sender.getServer().getPlayer(args[1]);
+						if (player == null) {
+							sender.sendMessage("Could not find player '" + args[1] + "'!");
+							return true;
+						}
+						newSuffix.append(" (");
+						for (int i = 2; i < args.length; i++) { 
+							newSuffix.append(args[i] + ((i==args.length-1) ? "" : "/"));
+						}
+						newSuffix.append(")");
+						suffixNode = SuffixNode.builder(newSuffix.toString(), 100).build();
+						lp.getUserManager().modifyUser(player.getUniqueId(), (User user) -> {
+							user.data().clear(NodeType.SUFFIX::matches);
+							user.data().add(suffixNode);
+						});
+						sender.sendMessage("Set " + args[1] + "'s pronouns to" + newSuffix.toString() + "!");
+						return true;
+					}
+				case "clear" :
+					lp.getUserManager().modifyUser(player.getUniqueId(), (User user) -> {
+						user.data().clear(NodeType.SUFFIX::matches);
+					});
+					sender.sendMessage("Cleared pronouns!");
+					return true;
+				case "clearother":
+					if (!sender.hasPermission("galaxesmp.pronouns.other")) {
+						sender.sendMessage("You do not have permission to use this command!");
+						return true;
+					} else if (args.length < 2) {
+						return false;
+					}  else {
+						player = sender.getServer().getPlayer(args[1]);
+						if (player == null) {
+							sender.sendMessage("Could not find player '" + args[1] + "'!");
+							return true;
+						}
+						lp.getUserManager().modifyUser(player.getUniqueId(), (User user) -> {
+							user.data().clear(NodeType.SUFFIX::matches);
+						});
+						sender.sendMessage("Cleared " + args[1] + "'s pronouns!");
+						return true;
+					}
+				case "view" :
+				default:
+					if (suffix == null) {
+						sender.sendMessage("You have no set pronouns!");
+						return true;
+					}
+					sender.sendMessage("Your pronouns are" + suffix + "!");
+					return true;
 			}
-			return true;
 		}
-	}
-
-	public void pronounsGUI(Player player) {
-		Gui pronouns = Gui.gui().title(Component.text("Pronouns")).rows(3).create();
-
-		// Disable taking items
-		pronouns.setDefaultClickAction(event -> {
-			event.setCancelled(true);
-		});
-
-		pronouns.getFiller().fill(ItemBuilder.from(Material.GRAY_STAINED_GLASS_PANE).asGuiItem());
-
-		pronouns.setItem(2, 2, ItemBuilder.from(Material.PAPER).name(Component.text("He/Him")).asGuiItem(event -> {
-			/* Event Handling Here */
-		}));
-
-		pronouns.setItem(2, 3, ItemBuilder.from(Material.PAPER).name(Component.text("She/Her")).asGuiItem(event -> {
-			/* Event Handling Here */
-		}));
-
-		pronouns.setItem(2, 3, ItemBuilder.from(Material.PAPER).name(Component.text("They/Them")).asGuiItem(event -> {
-			/* Event Handling Here */
-		}));
-
-		pronouns.setItem(2, 4, ItemBuilder.from(Material.PAPER).name(Component.text("Xe/Xem")).asGuiItem(event -> {
-			/* Event Handling Here */
-		}));
-
-		pronouns.setItem(2, 5, ItemBuilder.from(Material.PAPER).name(Component.text("He/They")).asGuiItem(event -> {
-			/* Event Handling Here */
-		}));
-
-		pronouns.setItem(2, 6, ItemBuilder.from(Material.PAPER).name(Component.text("She/They")).asGuiItem(event -> {
-			/* Event Handling Here */
-		}));
-
-		pronouns.setItem(3, 4,
-				ItemBuilder.from(Material.BARRIER).name(Component.text("Remove Pronouns")).asGuiItem(event -> {
-					/* Event Handling Here */
-				}));
-
-		pronouns.open(player);
-	}
-
-	public Boolean setPronouns(Player player, String pronoun) {
-		switch (pronoun) {
-			case "he/him" :
-				// Set pronouns to HE_HIM
-				break;
-			case "she/her" :
-				// Set pronouns to SHE_HER
-				break;
-			case "they/them" :
-				// Set pronouns to THEY_THEM
-				break;
-			case "xe/xem" :
-				// Set pronouns to XE_XEM
-				break;
-			case "he/they" :
-				// Set pronouns to HE_THEY
-				break;
-			case "she/they" :
-				// Set pronouns to SHE_THEY
-				break;
-			default :
-				player.sendMessage("Invalid pronouns!");
-				return false;
-		}
-		return true;
-	}
-
-	public Boolean removePronouns(Player player) {
-		// Remove player's pronouns
-		return true;
 	}
 }

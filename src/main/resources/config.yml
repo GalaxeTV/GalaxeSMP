@@ -1,0 +1,11 @@
+pronouns:
+  max: 3
+  valid:
+    - 'He'
+    - 'Him'
+    - 'She'
+    - 'Her'
+    - 'They'
+    - 'Them'
+    - 'Xe'
+    - 'Xem'

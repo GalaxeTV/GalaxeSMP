@@ -10,25 +10,25 @@ import tv.galaxe.smp.event.StaffKill;
 import net.luckperms.api.LuckPerms;
 
 public class Core extends JavaPlugin implements Listener {
+
+	private LuckPerms lp;
+
 	@Override
 	public void onEnable() {
 		getServer().getConsoleSender().sendMessage("GalaxeSMP Plugin Enabled");
 		saveDefaultConfig();
 
+		// LuckPerms
+		this.lp = getServer().getServicesManager().load(LuckPerms.class);
+
 		// Commands
 		getCommand("invisibleitemframe").setExecutor(new InvisibleItemFrame());
 		getCommand("help").setExecutor(new HelpGUI());
-		getCommand("pronouns").setExecutor(new Pronouns());
+		getCommand("pronouns").setExecutor(new Pronouns(this.lp, this));
 
 		// Listeners
 		getServer().getPluginManager().registerEvents(new SilkTouchAmethyst(), this);
 		getServer().getPluginManager().registerEvents(new StaffKill(), this);
-
-		// LuckPerms
-		RegisterServiceProvider<LuckPerms> provider = Bukkit.getServicesManager().getRegistration(LuckPerms.class);
-		if (provider != null) {
-			LuckPerms api = provider.getProvider();
-		}
 	}
 
 	@Override
