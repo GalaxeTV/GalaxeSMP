@@ -6,7 +6,6 @@ import net.luckperms.api.model.user.User;
 import net.luckperms.api.node.Node;
 import net.luckperms.api.node.NodeType;
 import net.luckperms.api.node.types.SuffixNode;
-import org.bukkit.Server;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -25,7 +24,7 @@ public class Pronouns implements CommandExecutor {
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-		String suffix = (!(sender instanceof Server))
+		String suffix = (sender instanceof Player)
 				? lp.getPlayerAdapter(Player.class).getMetaData((Player) sender).getSuffix()
 				: null;
 		StringBuilder newSuffix = new StringBuilder(), pronounList = new StringBuilder();
