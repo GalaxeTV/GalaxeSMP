@@ -41,7 +41,7 @@ public class Pronouns implements CommandExecutor {
 			switch ((args.length == 0) ? "" : args[0].toLowerCase()) {
 				case "set" :
 					if (args.length > maxPronouns+1) {
-						sender.sendMessage("You can not have more than 4 pronouns set!");
+						sender.sendMessage("You can not have more than " + maxPronouns + " pronouns set!");
 						return true;
 					}
 					newSuffix.append(" (");
