@@ -31,7 +31,7 @@ public class Pronouns implements CommandExecutor {
 		Player player = (Player) sender;
 		CachedMetaData metaData = lp.getPlayerAdapter(Player.class).getMetaData(player);
 		String suffix = metaData.getSuffix();
-		StringBuilder newSuffix = new StringBuilder();
+		StringBuilder newSuffix = new StringBuilder(), pronounList = new StringBuilder();
 		Node suffixNode;
 		switch ((args.length == 0) ? "" : args[0].toLowerCase()) {
 			case "set" :
@@ -121,7 +121,10 @@ public class Pronouns implements CommandExecutor {
 					return true;
 				}
 			case "list" :
-				// TODO: List all valid pronouns
+				for (int i = 0; i < validPronouns.size(); i++) {
+					pronounList.append(validPronouns.get(i) + ((i == validPronouns.size() - 1) ? "" : ", "));
+				}
+				sender.sendMessage(pronounList.toString());
 				return true;
 			case "view" :
 			case "" :
