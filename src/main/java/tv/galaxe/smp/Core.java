@@ -7,6 +7,7 @@ import tv.galaxe.smp.cmd.InvisibleItemFrame;
 import tv.galaxe.smp.cmd.Pronouns;
 import tv.galaxe.smp.event.SilkTouchAmethyst;
 import tv.galaxe.smp.event.StaffKill;
+import net.luckperms.api.LuckPerms;
 
 public class Core extends JavaPlugin implements Listener {
 	@Override
@@ -22,6 +23,12 @@ public class Core extends JavaPlugin implements Listener {
 		// Listeners
 		getServer().getPluginManager().registerEvents(new SilkTouchAmethyst(), this);
 		getServer().getPluginManager().registerEvents(new StaffKill(), this);
+
+		// LuckPerms
+		RegisterServiceProvider<LuckPerms> provider = Bukkit.getServicesManager().getRegistration(LuckPerms.class);
+		if (provider != null) {
+			LuckPerms api = provider.getProvider();
+		}
 	}
 
 	@Override

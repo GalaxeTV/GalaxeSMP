@@ -1,25 +1,19 @@
 package tv.galaxe.smp.cmd;
 
+import dev.triumphteam.gui.builder.item.ItemBuilder;
+import dev.triumphteam.gui.guis.Gui;
+import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import dev.triumphteam.gui.builder.item.ItemBuilder;
-import dev.triumphteam.gui.guis.Gui;
-import net.kyori.adventure.text.Component;
-
 public class Pronouns implements CommandExecutor {
 
 	// Define valid pronouns
 	enum pronouns {
-		HE_HIM,
-		SHE_HER,
-		THEY_THEM,
-		XE_XEM,
-		HE_THEY,
-		SHE_THEY
+		HE, HIM, SHE, HER, THEY, THEM, XE, XEM
 	};
 
 	@Override
@@ -31,33 +25,31 @@ public class Pronouns implements CommandExecutor {
 			Player player = (Player) sender;
 			if (args[0].isEmpty()) {
 				PronounsGUI(player);
-			}
-			else {
+			} else {
 				String cmd = args[0].toLowerCase();
-				switch (cmd){
-					case "remove":
+				switch (cmd) {
+					case "remove" :
 						removePronouns(player);
 						break;
-					case "set":
+					case "set" :
 						String pronoun = args[1].toLowerCase();
 						setPronouns(player, pronoun);
 						break;
-					case "gui":
+					case "gui" :
 						PronounsGUI(player);
 						break;
-					case "help":
+					case "help" :
 						player.sendMessage("Usage: /pronouns [set|remove|gui|help]");
 						break;
-					default:
-						player.sendMessage("Invalid command!");
-						return false;
+					default :
+						pronounsGUI(player);
 				}
 			}
 			return true;
 		}
 	}
 
-	public void PronounsGUI(Player player) {
+	public void pronounsGUI(Player player) {
 		Gui pronouns = Gui.gui().title(Component.text("Pronouns")).rows(3).create();
 
 		// Disable taking items
@@ -91,37 +83,38 @@ public class Pronouns implements CommandExecutor {
 			/* Event Handling Here */
 		}));
 
-		pronouns.setItem(3, 4, ItemBuilder.from(Material.BARRIER).name(Component.text("Remove Pronouns")).asGuiItem(event -> {
-			/* Event Handling Here */
-		}));
+		pronouns.setItem(3, 4,
+				ItemBuilder.from(Material.BARRIER).name(Component.text("Remove Pronouns")).asGuiItem(event -> {
+					/* Event Handling Here */
+				}));
 
 		pronouns.open(player);
 	}
 
 	public Boolean setPronouns(Player player, String pronoun) {
 		switch (pronoun) {
-			case "he/him":
+			case "he/him" :
 				// Set pronouns to HE_HIM
 				break;
-			case "she/her":
+			case "she/her" :
 				// Set pronouns to SHE_HER
 				break;
-			case "they/them":
+			case "they/them" :
 				// Set pronouns to THEY_THEM
 				break;
-			case "xe/xem":
+			case "xe/xem" :
 				// Set pronouns to XE_XEM
 				break;
-			case "he/they":
+			case "he/they" :
 				// Set pronouns to HE_THEY
 				break;
-			case "she/they":
+			case "she/they" :
 				// Set pronouns to SHE_THEY
 				break;
-			default:
+			default :
 				player.sendMessage("Invalid pronouns!");
 				return false;
-			}
+		}
 		return true;
 	}
 
