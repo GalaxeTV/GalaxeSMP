@@ -32,6 +32,12 @@ public class Pronouns implements CommandExecutor {
 		StringJoiner newPronouns = new StringJoiner("/", " (", ")");
 		Node suffixNode;
 		switch ((args.length == 0) ? "" : args[0].toLowerCase()) {
+
+			/*
+			 * /pronouns set [pronoun (pronoun (pronoun))]
+			 * 
+			 * Command that sets the users pronouns
+			 */
 			case "set" :
 				// Error handling & verification
 				if (!(sender instanceof Player)) {
@@ -69,6 +75,12 @@ public class Pronouns implements CommandExecutor {
 				// Cleanup
 				sender.sendMessage("Set pronouns to" + newPronouns.toString() + "!");
 				return true;
+
+			/*
+			 * /pronouns setother [player] [pronoun (pronoun (pronoun))]
+			 * 
+			 * Command that sets the pronouns of a different user. Intended for moderation.
+			 */
 			case "setother" :
 				// Error handling & verification
 				if (!sender.hasPermission("galaxesmp.pronouns.other")) {
@@ -103,6 +115,12 @@ public class Pronouns implements CommandExecutor {
 				// Cleanup
 				sender.sendMessage("Set " + args[1] + "'s pronouns to" + newPronouns.toString() + "!");
 				return true;
+
+			/*
+			 * /pronouns clear
+			 * 
+			 * Clears the user's own set pronouns
+			 */
 			case "clear" :
 				// Error handling & verification
 				if (!(sender instanceof Player)) {
@@ -118,12 +136,19 @@ public class Pronouns implements CommandExecutor {
 				// Cleanup
 				sender.sendMessage("Cleared pronouns!");
 				return true;
+
+			/*
+			 * /pronouns clearother [user]
+			 * 
+			 * Command that clears the pronouns of a different user. Intended for
+			 * moderation.
+			 */
 			case "clearother" :
 				// Error handling & verification
 				if (!sender.hasPermission("galaxesmp.pronouns.other")) {
 					sender.sendMessage("You do not have permission to use this command!");
 					return true;
-				} 
+				}
 				if (args.length < 2) {
 					return false;
 				}
@@ -140,6 +165,12 @@ public class Pronouns implements CommandExecutor {
 				// Cleanup
 				sender.sendMessage("Cleared " + args[1] + "'s pronouns!");
 				return true;
+
+			/*
+			 * /pronouns list
+			 * 
+			 * Displays a list of all valid pronouns to the user.
+			 */
 			case "list" :
 				// Build comma delimiter list of valid pronouns
 				for (int i = 0; i < plugin.getConfig().getStringList("pronouns.valid").size(); i++) {
@@ -149,6 +180,13 @@ public class Pronouns implements CommandExecutor {
 				// Cleanup
 				sender.sendMessage(pronounList.toString());
 				return true;
+
+			/*
+			 * /pronouns (view)
+			 * 
+			 * The default out put of /pronouns or /pronouns view Shows the player their
+			 * currently set pronouns
+			 */
 			case "view" :
 			case "" :
 				if (!(sender instanceof Player)) {
