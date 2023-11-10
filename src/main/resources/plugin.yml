@@ -22,7 +22,16 @@ commands:
     aliases: [pronoun]
     default: true
     permission: galaxesmp.pronouns
+  galaxereload:
+    description: Reload config file
+    usage: "Usage: /<command>"
+    aliases: [galaxesmpreload]
+    default: op
+    permission: galaxesmp.relaod
 permissions:
+  galaxesmp.reload:
+    description: Permission for reloading config file.
+    default: op
   galaxesmp.staff:
     description: Permission marking someone as staff member for kill buffs.
     default: op

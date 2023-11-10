@@ -1,6 +1,9 @@
 package tv.galaxe.smp;
 
 import net.luckperms.api.LuckPerms;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import tv.galaxe.smp.cmd.HelpGUI;
@@ -25,6 +28,12 @@ public class Core extends JavaPlugin implements Listener {
 		getCommand("invisibleitemframe").setExecutor(new InvisibleItemFrame());
 		getCommand("help").setExecutor(new HelpGUI());
 		getCommand("pronouns").setExecutor(new Pronouns(this.lp, this));
+		getCommand("galaxereload").setExecutor(new CommandExecutor() {
+			public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+				reloadConfig();
+				return true;
+			}
+		});
 
 		// Listeners
 		getServer().getPluginManager().registerEvents(new SilkTouchAmethyst(), this);
