@@ -117,13 +117,15 @@ public class Pronouns implements CommandExecutor {
 						return true;
 					}
 				case "view" :
-				default:
+				case "" :
 					if (suffix == null) {
 						sender.sendMessage("You have no set pronouns!");
 						return true;
 					}
 					sender.sendMessage("Your pronouns are" + suffix + "!");
 					return true;
+				default:
+					return false;
 			}
 		}
 	}
