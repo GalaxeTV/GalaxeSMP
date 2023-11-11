@@ -66,13 +66,13 @@ pronouns:
     - 'Ask'
 ```
 
-You can specify the amount of pronouns that can be used, as well as a valid list of pronouns to be allowed. This can be helpful for keeping chat readable or prevent abuse of pronouns that can be abusive.
+You can specify the amount of pronouns that can be used, as well as a valid list of pronouns to be allowed. This can be helpful for keeping chat readable and preventing abuse of the pronouns system.
 
 ## Commands
 
 ### `/invisibleitemframe`
 
-Toggles currently looked at item frame, is aliased to be:
+Toggles currently looked at item frame's visibility, is aliased to be:
 
 * `/iif`
 * `/invisframe`
@@ -90,7 +90,7 @@ Permission is set to be on for all players.
 
 ### `/galaxereload`
 
-Reloads the plugin configuration.
+Reloads the plugin configuration file.
 
 ### `/pronouns`
 
@@ -112,13 +112,17 @@ Clears your set pronouns.
 
 There are other options for staff members or trusted members of a server to utilize.
 
-* `/pronouns setother [pronoun pronoun pronoun]`
+* `/pronouns setother [username] [pronoun pronoun pronoun]`
 
 Sets pronouns of another player, the list must be space separated and the limit is defined in the configuration file.
 
 * `/pronouns clearother [username]`
 
 Clears another players pronouns.
+
+* `/pronouns list`
+
+View all available pronouns as set in the configuration file.
 
 ## Permissions
 
