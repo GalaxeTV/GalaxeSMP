@@ -74,11 +74,11 @@ You can specify the amount of pronouns that can be used, as well as a valid list
 
 Toggles currently looked at item frame, is aliased to be:
 
-* `/iif`  
-* `/invisframe`  
-* `/iframe`  
-* `/ifr`  
-* `/invframe`  
+* `/iif`
+* `/invisframe`
+* `/iframe`
+* `/ifr`
+* `/invframe`
 
 Permission is set to be on for all players.
 
