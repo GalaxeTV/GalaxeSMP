@@ -28,7 +28,7 @@ public class Pronouns implements CommandExecutor {
 		String suffix = (sender instanceof Player)
 				? lp.getPlayerAdapter(Player.class).getMetaData((Player) sender).getSuffix()
 				: null;
-		StringBuilder pronounList = new StringBuilder();
+		StringJoiner pronounList = new StringJoiner(", ");
 		StringJoiner newPronouns = new StringJoiner("/", " (", ")");
 		Node suffixNode;
 		switch ((args.length == 0) ? "" : args[0].toLowerCase()) {
@@ -174,7 +174,7 @@ public class Pronouns implements CommandExecutor {
 			case "list" :
 				// Build comma delimiter list of valid pronouns
 				for (int i = 0; i < plugin.getConfig().getStringList("pronouns.valid").size(); i++) {
-					pronounList.append(plugin.getConfig().getStringList("pronouns.valid").get(i));
+					pronounList.add(plugin.getConfig().getStringList("pronouns.valid").get(i));
 				}
 
 				// Cleanup
