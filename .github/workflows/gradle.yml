@@ -58,8 +58,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     name: Deploy
-    # Testing SFTP deployment
-    # if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main'
     needs: build
     steps:
       - name: Checkout
@@ -82,4 +81,3 @@ jobs:
           port: ${{ secrets.DEV_PORT }}
           localDir: "build/libs/"
           remoteDir: "plugins/"
-          dryRun: true
