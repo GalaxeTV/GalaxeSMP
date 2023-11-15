@@ -1,11 +1,11 @@
 package tv.galaxe.smp;
 
+import dev.triumphteam.gui.guis.Gui;
+import dev.triumphteam.gui.guis.GuiItem;
 import java.util.Arrays;
 import java.util.HashSet;
-
 import net.kyori.adventure.text.Component;
 import net.luckperms.api.LuckPerms;
-
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -13,9 +13,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import dev.triumphteam.gui.guis.Gui;
-import dev.triumphteam.gui.guis.GuiItem;
 import tv.galaxe.smp.cmd.HelpGUI;
 import tv.galaxe.smp.cmd.InvisibleItemFrame;
 import tv.galaxe.smp.cmd.Pronouns;
@@ -63,8 +60,11 @@ public class Core extends JavaPlugin implements Listener {
 
 	private void buildHelpGUI() {
 		helpGUI = Gui.gui().title(Component.text("GalaxeSMP Help Menu")).rows(6).create();
-		helpGUI.setDefaultClickAction(event -> { event.setCancelled(true); });
-		helpGUI.getFiller().fill(Arrays.asList(new GuiItem(Material.PINK_STAINED_GLASS_PANE), new GuiItem(Material.PURPLE_STAINED_GLASS_PANE)));
+		helpGUI.setDefaultClickAction(event -> {
+			event.setCancelled(true);
+		});
+		helpGUI.getFiller().fill(Arrays.asList(new GuiItem(Material.PINK_STAINED_GLASS_PANE),
+				new GuiItem(Material.PURPLE_STAINED_GLASS_PANE)));
 		helpGUI.setItem(3, 3, new GuiItem(Material.WHITE_STAINED_GLASS_PANE));
 		helpGUI.setItem(3, 7, new GuiItem(Material.WHITE_STAINED_GLASS_PANE));
 		for (int i = 2; i <= 4; i++) {
