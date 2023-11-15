@@ -15,8 +15,7 @@ Requirements:
 Steps:
 
 1. Clone repository
-2. `./gradlew spotlessApply`
-3. `./gradlew shadowJar`
+2. `./gradlew spotlessApply shadowJar`
 
 ## Code conventions/quality gates
 
