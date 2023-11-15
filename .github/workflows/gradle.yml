@@ -58,7 +58,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     name: Deploy
-    if: github.ref == 'refs/heads/main'
+    # Testing SFTP deployment
+    # if: github.ref == 'refs/heads/main'
     needs: build
     steps:
       - name: Checkout
@@ -73,14 +74,12 @@ jobs:
           path: build/libs/
 
       - name: Deploy to Pterodactyl SFTP
-        uses: appleboy/scp-action@master
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          host: ${{ secrets.DEV_HOST }}
+          server: ${{ secrets.DEV_HOST }}
           username: ${{ secrets.DEV_USERNAME }}
           password: ${{ secrets.DEV_PASSWORD }}
           port: ${{ secrets.DEV_PORT }}
-          source: "build/libs/*.jar"
-          target: "/plugins/"
-          strip_components: 1
-          rm: true
-          timeout: 120s
+          local-dir: "build/libs/*.jar"
+          server-dir: "plugins/"
+          dry-run: true
