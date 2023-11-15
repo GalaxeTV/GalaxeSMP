@@ -1,7 +1,7 @@
 package tv.galaxe.smp.cmd;
 
+import java.util.HashSet;
 import java.util.StringJoiner;
-import java.util.stream.Collectors;
 import net.luckperms.api.LuckPerms;
 import net.luckperms.api.model.user.User;
 import net.luckperms.api.node.Node;
@@ -11,17 +11,13 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 import tv.galaxe.smp.Core;
 
 public class Pronouns implements CommandExecutor {
-
-	private final LuckPerms lp;
-	private final Core plugin;
-
-	public Pronouns(LuckPerms lp, Core plugin) {
-		this.lp = lp;
-		this.plugin = plugin;
-	}
+	private final Plugin plugin = Core.plugin;
+	private final LuckPerms lp = Core.lp;
+	private final HashSet<String> validPronouns = Core.validPronouns;
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -56,8 +52,7 @@ public class Pronouns implements CommandExecutor {
 				// Build new pronouns string
 				for (int i = 1; i < args.length; i++) {
 					if (sender.hasPermission("galaxesmp.pronouns.trusted")
-							|| plugin.getConfig().getStringList("pronouns.valid").stream().map(String::toLowerCase)
-									.collect(Collectors.toList()).contains(args[i].toLowerCase())) {
+							|| validPronouns.contains(args[i].toLowerCase())) {
 						newPronouns.add(args[i]);
 					} else {
 						sender.sendMessage("'" + args[i] + "' is not an acceptable pronoun!");
@@ -172,12 +167,8 @@ public class Pronouns implements CommandExecutor {
 			 * Displays a list of all valid pronouns to the user.
 			 */
 			case "list" :
-				// Build comma delimiter list of valid pronouns
-				for (int i = 0; i < plugin.getConfig().getStringList("pronouns.valid").size(); i++) {
-					pronounList.add(plugin.getConfig().getStringList("pronouns.valid").get(i));
-				}
-
-				// Cleanup
+				// Build comma delimiter list of valid pronouns and send to the user
+				validPronouns.forEach((p) -> pronounList.add(p));
 				sender.sendMessage(pronounList.toString());
 				return true;
 
