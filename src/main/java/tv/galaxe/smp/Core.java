@@ -1,6 +1,5 @@
 package tv.galaxe.smp;
 
-import dev.triumphteam.gui.guis.Gui;
 import java.util.HashSet;
 import net.luckperms.api.LuckPerms;
 import org.bukkit.command.Command;
@@ -19,7 +18,6 @@ public class Core extends JavaPlugin implements Listener {
 	public static Plugin plugin;
 	public static LuckPerms lp;
 	public static HashSet<String> validPronouns = new HashSet<String>();
-	public static Gui helpGUI;
 
 	@Override
 	public void onEnable() {
