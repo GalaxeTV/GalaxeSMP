@@ -14,27 +14,25 @@ public final class InvisibleItemFrame implements CommandExecutor {
 		if (!(sender instanceof Player)) { // Only allow players to run command
 			sender.sendMessage("This command must be used as a player!");
 			return false;
-		} else {
-			Player player = (Player) sender;
-			Entity lookingAt = player.getTargetEntity(10);
-			if (lookingAt != null) { // Workaround for Java 17 error handling
-				switch (lookingAt.getType()) {
-					case ITEM_FRAME :
-						ItemFrame itemFrame = (ItemFrame) lookingAt;
-						itemFrame.setVisible(!itemFrame.isVisible());
-						return true;
-					case GLOW_ITEM_FRAME :
-						GlowItemFrame glowItemFrame = (GlowItemFrame) lookingAt;
-						glowItemFrame.setVisible(!glowItemFrame.isVisible());
-						return true;
-					default :
-						sender.sendMessage("You must be looking at an item frame!");
-						return false;
-				}
-			} else {
+		}
+		Player player = (Player) sender;
+		Entity lookingAt = player.getTargetEntity(10);
+		if (lookingAt == null) {
+			sender.sendMessage("You must be looking at an item frame!");
+			return false;
+		}
+		switch (lookingAt.getType()) {
+			case ITEM_FRAME :
+				ItemFrame itemFrame = (ItemFrame) lookingAt;
+				itemFrame.setVisible(!itemFrame.isVisible());
+				return true;
+			case GLOW_ITEM_FRAME :
+				GlowItemFrame glowItemFrame = (GlowItemFrame) lookingAt;
+				glowItemFrame.setVisible(!glowItemFrame.isVisible());
+				return true;
+			default :
 				sender.sendMessage("You must be looking at an item frame!");
 				return false;
-			}
 		}
 	}
 }

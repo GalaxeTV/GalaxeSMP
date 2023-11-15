@@ -1,21 +1,46 @@
 name: GalaxeSMP
-author: [ garrettsummerfi3ld, josefbaltz ]
+api-version: '1.19'
+authors: [ garrettsummerfi3ld, josefbaltz ]
 version: '${version}'
 main: tv.galaxe.smp.Core
 prefix: GalaxeSMP
-api-version: 1.19
+depend: [ LuckPerms ]
 description: Custom GalaxeSMP Plugin
 website: https://github.com/GalaxeTV/GalaxeSMP-Plugin
 commands:
   invisibleitemframe:
     description: Toggles item frame visibility
-    usage: /invisibleitemframe
+    usage: "Usage: /<command>"
     aliases: [iif, invisframe, iframe, ifr, invframe]
     default: true
   help:
     description: GalaxeSMP Help Menu
     usage: /help
+  pronouns:
+    description: Control your pronouns
+    usage: "Usage:\n\n/<command> [set|clear|view|list] [pronoun pronoun pronoun]\n\n/<command> [setother|clearother] <user> [pronoun pronoun pronoun]\n\n\nExamples:\n\n/<command> set he him\n\n/<command> set she her they"
+    aliases: [pronoun]
+    default: true
+    permission: galaxesmp.pronouns
+  galaxereload:
+    description: Reload config file
+    usage: "Usage: /<command>"
+    aliases: [galaxesmpreload]
+    default: op
+    permission: galaxesmp.relaod
 permissions:
+  galaxesmp.reload:
+    description: Permission for reloading config file.
+    default: op
   galaxesmp.staff:
     description: Permission marking someone as staff member for kill buffs.
+    default: op
+  galaxesmp.pronouns:
+    description: Permission for pronouns.
+    default: true
+  galaxesmp.pronouns.other:
+    description: Permission for players to set and clear pronouns of other players.
+    default: op
+  galaxesmp.pronouns.trusted:
+    description: Permission for trusted players to bypass pronoun filter.
     default: op
