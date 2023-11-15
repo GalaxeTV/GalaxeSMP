@@ -2,7 +2,7 @@
 
 A general plugin to help manage the GalaxeSMP
 
-Compatible on Paper 1.19.4+
+Compatible on Paper 1.20.2+
 
 Code of Conduct is located in the [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) file.
 
