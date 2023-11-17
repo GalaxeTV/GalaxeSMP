@@ -1,6 +1,5 @@
 package tv.galaxe.smp.cmd.helpmenus;
 
-//import dev.triumphteam.gui.builder.item.ItemBuilder;
 import dev.triumphteam.gui.guis.Gui;
 import net.kyori.adventure.text.Component;
 import org.bukkit.entity.Player;
@@ -8,10 +7,13 @@ import org.bukkit.entity.Player;
 //import org.bukkit.inventory.meta.SkullMeta;
 
 public class MainHelp {
+	private static Player player = HelpCommand.player;
+	public static Gui gui;
 
 	// Constructor to prevent instantiation
 	public MainHelp() {
-		Gui mainHelp = Gui.gui().title(Component.text("GalaxeSMP Help Menu")).rows(6).create();
+		gui = Gui.gui().title(Component.text("GalaxeSMP Help Menu")).rows(6).create();
+
 	}
 
 	// public static Gui helpGUI;
