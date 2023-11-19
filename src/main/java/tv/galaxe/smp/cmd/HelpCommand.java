@@ -8,7 +8,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
@@ -27,8 +26,11 @@ import tv.galaxe.smp.Core;
 
 public class HelpCommand implements CommandExecutor {
 	private static Player player;
-	private static Gui generalHelp;
-	private static Gui mainHelp;
+	private static Gui generalHelp = createGui("GalaxeSMP General", 6, false, true);
+	private static Gui mainHelp = createGui("GalaxeSMP Help Menu", 6, true, false);
+	private static final int colorUltraViolet = 0x515979;
+	private static final int colorSpaceCadet = 0x262F58;
+	private static final int colorLightOrange = 0xFFDAB6;
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -43,6 +45,16 @@ public class HelpCommand implements CommandExecutor {
 				return true;
 			case "" :
 			default :
+				// Pronouns mainHelp item
+				Component pronouns = Component.text("Pronouns").color(TextColor.color(colorUltraViolet))
+						.decorate(TextDecoration.BOLD);
+				Component pronounsLore = Component.text("How to set your pronouns")
+						.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+				mainHelp.setItem(3, 6,
+						ItemBuilder.from(createHead(player)).name(pronouns).lore(pronounsLore).asGuiItem(event -> {
+							/* Event Handling Here */
+						}));
+
 				mainHelp.open(player);
 				return true;
 		}
@@ -50,57 +62,6 @@ public class HelpCommand implements CommandExecutor {
 
 	// Constructor to prevent instantiation
 	public HelpCommand() {
-		// Create GUIs
-		mainHelp = Gui.gui().title(Component.text("GalaxeSMP Help Menu")).rows(6).create();
-		generalHelp = Gui.gui().title(Component.text("GalaxeSMP Help - General")).rows(6).create();
-
-		// Set GUIs w/open and close sounds
-		mainHelp.setOpenGuiAction(event -> {
-			player.playSound(player.getLocation(), Sound.BLOCK_AMETHYST_BLOCK_STEP, 1, 1);
-		});
-		mainHelp.setCloseGuiAction(event -> {
-			player.playSound(player.getLocation(), Sound.BLOCK_AMETHYST_BLOCK_BREAK, 1, 1);
-		});
-		generalHelp.setOpenGuiAction(event -> {
-			player.playSound(player.getLocation(), Sound.BLOCK_AMETHYST_BLOCK_STEP, 1, 1);
-		});
-		generalHelp.setCloseGuiAction(event -> {
-			player.playSound(player.getLocation(), Sound.BLOCK_AMETHYST_BLOCK_BREAK, 1, 1);
-		});
-
-		// Disable taking items from all GUIs
-		mainHelp.setDefaultClickAction(event -> {
-			event.setCancelled(true);
-		});
-		generalHelp.setDefaultClickAction(event -> {
-			event.setCancelled(true);
-		});
-
-		// Create empty Component for empty item names
-		Component emptyComponent = Component.text("");
-
-		// Add filler to all GUIs
-		mainHelp.getFiller().fill(Arrays.asList(ItemBuilder.from(Material.PINK_STAINED_GLASS_PANE).asGuiItem(),
-				ItemBuilder.from(Material.PURPLE_STAINED_GLASS_PANE).asGuiItem()));
-		generalHelp.getFiller().fill(Arrays.asList(ItemBuilder.from(Material.PINK_STAINED_GLASS_PANE).asGuiItem(),
-				ItemBuilder.from(Material.PURPLE_STAINED_GLASS_PANE).asGuiItem()));
-
-		// Add white pane filler for some GUIs
-		Map<Integer, Integer> whitePaneCoords = Map.of(1, 5, 2, 4, 2, 6, 3, 3, 3, 5, 3, 7, 4, 4, 4, 6, 5, 5, 6, 5);
-		for (Map.Entry<Integer, Integer> coordsEntry : whitePaneCoords.entrySet()) {
-			mainHelp.setItem(coordsEntry.getKey(), coordsEntry.getValue(),
-					ItemBuilder.from(Material.WHITE_STAINED_GLASS_PANE).name(emptyComponent).asGuiItem());
-		}
-
-		// Add back button to some GUIs
-		generalHelp.setItem(6, 5, ItemBuilder.from(Material.BARRIER).name(Component.text("Back"))
-				.lore(List.of(Component.text("Click to go back to the main help menu"))).asGuiItem(event -> {
-					player.performCommand("help");
-				}));
-
-		// Create ItemStack for player's head
-		ItemStack playerSkull = createHead(player);
-
 		// Create ItemStack for Discord head
 		ItemStack discordHead = createHead("b722098ae79c7abf002fe9684c773ea71db8919bb2ef2053ea0c0684c5a1ce4f");
 		ItemMeta discordMeta = discordHead.getItemMeta();
@@ -112,46 +73,50 @@ public class HelpCommand implements CommandExecutor {
 		 * Main help menu
 		 */
 		// TextComponents for item names
-		Component general = Component.text("General").color(TextColor.color(0x515979)).decorate(TextDecoration.BOLD);
-		Component lockItems = Component.text("Locking Items").color(TextColor.color(0x515979))
+		Component general = Component.text("General").color(TextColor.color(colorUltraViolet))
 				.decorate(TextDecoration.BOLD);
-		Component lunarEclipses = Component.text("Lunar Eclipses").color(TextColor.color(0x515979))
+		Component lockItems = Component.text("Locking Items").color(TextColor.color(colorUltraViolet))
 				.decorate(TextDecoration.BOLD);
-		Component mcMMO = Component.text("mcMMO").color(TextColor.color(0x515979)).decorate(TextDecoration.BOLD);
-		Component silkSpawners = Component.text("Silk Spawners").color(TextColor.color(0x515979))
+		Component lunarEclipses = Component.text("Lunar Eclipses").color(TextColor.color(colorUltraViolet))
 				.decorate(TextDecoration.BOLD);
-		Component pronouns = Component.text("Pronouns").color(TextColor.color(0x515979)).decorate(TextDecoration.BOLD);
-		Component towny = Component.text("Towny").color(TextColor.color(0x515979)).decorate(TextDecoration.BOLD);
-		Component sellingItems = Component.text("Selling Items").color(TextColor.color(0x515979))
+		Component mcMMO = Component.text("mcMMO").color(TextColor.color(colorUltraViolet))
 				.decorate(TextDecoration.BOLD);
-		Component graves = Component.text("Graves").color(TextColor.color(0x515979)).decorate(TextDecoration.BOLD);
-		Component events = Component.text("Events").color(TextColor.color(0x515979)).decorate(TextDecoration.BOLD);
+		Component silkSpawners = Component.text("Silk Spawners").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component towny = Component.text("Towny").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component sellingItems = Component.text("Selling Items").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component graves = Component.text("Graves").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component events = Component.text("Events").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
 
 		// TextComponents for Lore on each item
-		Component generalLore = Component.text("General information about the	 server")
-				.color(TextColor.color(0x262F58)).decorate(TextDecoration.ITALIC);
-		Component lockItemsLore = Component.text("How to lock your items like Fort	 Knox")
-				.color(TextColor.color(0x262F58)).decorate(TextDecoration.ITALIC);
-		Component lunarEclipsesLore = Component.text("Why is it dark and	 storming?")
-				.color(TextColor.color(0x262F58)).decorate(TextDecoration.ITALIC);
-		Component mcMMOLore = Component.text("OH YEAH SPECIAL	 SKILLS").color(TextColor.color(0x262F58))
+		Component generalLore = Component.text("General information about the server")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lockItemsLore = Component.text("How to lock your items like Fort Knox")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lunarEclipsesLore = Component.text("Why is it dark and storming?")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component mcMMOLore = Component.text("OH YEAH SPECIAL SKILLS").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
 		Component silkSpawnersLore = Component.text("Spawners will never know what	 hits them")
-				.color(TextColor.color(0x262F58)).decorate(TextDecoration.ITALIC);
-		Component pronounsLore = Component.text("How to set your	 pronouns").color(TextColor.color(0x262F58))
-				.decorate(TextDecoration.ITALIC);
-		Component townyLore = Component.text("If City Skylines was in	 Minecraft").color(TextColor.color(0x262F58))
-				.decorate(TextDecoration.ITALIC);
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyLore = Component.text("If City Skylines was in Minecraft")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component sellingItemsLore = Component
-				.text("How to start your own multi-billion\ndollar company inside of	 GalaxeSMP")
-				.color(TextColor.color(0x262F58)).decorate(TextDecoration.ITALIC);
-		Component gravesLore = Component.text("").color(TextColor.color(0x262F58)).decorate(TextDecoration.ITALIC);
-		Component eventsLore = Component.text("Events, celebrations, and	 more!").color(TextColor.color(0x262F58))
+				.text("How to start your own multi-billion\ndollar company inside of GalaxeSMP")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component gravesLore = Component.text("").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
+		Component eventsLore = Component.text("Events, celebrations, and more!")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 
 		// General mainHelp item
 		mainHelp.setItem(2, 5,
 				ItemBuilder.from(Material.DIAMOND_PICKAXE).name(general).lore(generalLore).asGuiItem(event -> {
+					generalHelp.open(player);
 				}));
 
 		// Events mainHelp item
@@ -181,11 +146,6 @@ public class HelpCommand implements CommandExecutor {
 				ItemBuilder.from(Material.SPAWNER).name(silkSpawners).lore(silkSpawnersLore).asGuiItem(event -> {
 					/* Event Handling Here */
 				}));
-
-		// Pronouns mainHelp item
-		mainHelp.setItem(3, 6, ItemBuilder.from(playerSkull).name(pronouns).lore(pronounsLore).asGuiItem(event -> {
-			/* Event Handling Here */
-		}));
 
 		// Towny mainHelp item
 		mainHelp.setItem(4, 7, ItemBuilder.from(Material.FILLED_MAP).name(towny).lore(townyLore).asGuiItem(event -> {
@@ -245,25 +205,95 @@ public class HelpCommand implements CommandExecutor {
 	}
 
 	/**
+	 * Creates a GUI with the specified title, number of rows, and whether or not to
+	 * fill white panes and add a back button
+	 * 
+	 * @param title
+	 *            The title of the GUI
+	 * @param rows
+	 *            The number of rows in the GUI
+	 * @param fillWhitePanes
+	 *            Whether or not to fill the white panes
+	 * @param addBackButton
+	 *            Whether or not to add a back button to go back to the main help
+	 *            menu
+	 * @return The created GUI
+	 */
+	private static Gui createGui(String title, int rows, Boolean fillWhitePanes, Boolean addBackButton) {
+		// Create title Component for GUI
+		Component titleComponent = Component.text(title).color(TextColor.color(colorSpaceCadet))
+				.decorate(TextDecoration.BOLD);
+
+		// Create GUI
+		Gui gui = Gui.gui().title(titleComponent).rows(rows).create();
+
+		// Set GUI w/open and close sounds
+		gui.setOpenGuiAction(event -> {
+			player.playSound(player.getLocation(), Sound.BLOCK_AMETHYST_BLOCK_STEP, 1, 1);
+		});
+		gui.setCloseGuiAction(event -> {
+			player.playSound(player.getLocation(), Sound.BLOCK_AMETHYST_BLOCK_BREAK, 1, 1);
+		});
+
+		// Disable taking items from all GUIs
+		gui.setDefaultClickAction(event -> {
+			player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_HARP, 1, 1);
+			event.setCancelled(true);
+		});
+
+		// Create empty Component for empty item names
+		Component emptyComponent = Component.text("");
+
+		// Fill empty slots with pink and purple glass panes
+		gui.getFiller()
+				.fill(Arrays.asList(ItemBuilder.from(Material.PINK_STAINED_GLASS_PANE).name(emptyComponent).asGuiItem(),
+						ItemBuilder.from(Material.PURPLE_STAINED_GLASS_PANE).name(emptyComponent).asGuiItem()));
+
+		// Add back button to some GUIs if specified
+		if (addBackButton) {
+			// Add back button to some GUIs
+			gui.setItem(rows, 5, ItemBuilder.from(Material.BARRIER).name(Component.text("Back"))
+					.lore(List.of(Component.text("Click to go back to the main help menu"))).asGuiItem(event -> {
+						player.performCommand("help");
+					}));
+		}
+
+		// Add white pane filler for some GUIs if specified
+		if (fillWhitePanes) {
+			// Format: row1, column1, row2, column2, etc.
+			int[][] whitePaneCoords = {{1, 5}, {2, 4}, {2, 6}, {3, 3}, {3, 5}, {3, 7}, {4, 4}, {4, 6}, {5, 5}, {6, 5}};
+			for (int[] coordsEntry : whitePaneCoords) {
+				gui.setItem(coordsEntry[0], coordsEntry[1],
+						ItemBuilder.from(Material.WHITE_STAINED_GLASS_PANE).name(emptyComponent).asGuiItem());
+			}
+		}
+		return gui;
+	}
+
+	/**
 	 * Creates a player head ItemStack with the specified texture ID
 	 * 
 	 * @param TextureID
 	 *            The texture ID of the head
 	 * @return The player head ItemStack
 	 */
-	public static ItemStack createHead(String TextureID) {
+	public static ItemStack createHead(String textureID) {
 		PlayerProfile headProfile = Core.plugin.getServer().createProfile(UUID.randomUUID());
 		PlayerTextures headTextures = headProfile.getTextures();
+
 		try {
-			headTextures.setSkin(new URL("https://textures.minecraft.net/texture/" + TextureID));
+			headTextures.setSkin(new URL("https://textures.minecraft.net/texture/" + textureID));
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
+
 		headProfile.setTextures(headTextures);
+
 		ItemStack skull = new ItemStack(Material.PLAYER_HEAD);
-		SkullMeta meta = ((SkullMeta) skull.getItemMeta());
+		SkullMeta meta = (SkullMeta) skull.getItemMeta();
 		meta.setPlayerProfile(headProfile);
 		skull.setItemMeta(meta);
+
 		return skull;
 	}
 
@@ -275,6 +305,11 @@ public class HelpCommand implements CommandExecutor {
 	 * @return The player head ItemStack
 	 */
 	public static ItemStack createHead(Player player) {
-		return createHead(player.getPlayerProfile().getId().toString());
+		ItemStack skull = new ItemStack(Material.PLAYER_HEAD);
+		SkullMeta meta = (SkullMeta) skull.getItemMeta();
+		meta.setPlayerProfile(player.getPlayerProfile());
+		skull.setItemMeta(meta);
+
+		return skull;
 	}
 }
