@@ -14,11 +14,13 @@ import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Material;
 import org.bukkit.Sound;
+import org.bukkit.block.CreatureSpawner;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.BlockStateMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.profile.PlayerTextures;
@@ -69,6 +71,15 @@ public class HelpCommand implements CommandExecutor {
 		discordMeta.lore(Arrays.asList(Component.text(""), Component.text("")));
 		discordHead.setItemMeta(discordMeta);
 
+		// Create ItemStack for Mob Spawner
+		ItemStack mobSpawner = new ItemStack(Material.SPAWNER);
+		BlockStateMeta mobSpawnerMeta = (BlockStateMeta) mobSpawner.getItemMeta();
+		CreatureSpawner spawner = (CreatureSpawner) mobSpawnerMeta.getBlockState();
+
+		spawner.setSpawnedType(org.bukkit.entity.EntityType.PLAYER);
+		mobSpawnerMeta.setBlockState(spawner);
+		mobSpawner.setItemMeta(mobSpawnerMeta);
+
 		/*
 		 * Main help menu
 		 */
@@ -97,21 +108,30 @@ public class HelpCommand implements CommandExecutor {
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component lockItemsLore = Component.text("How to lock your items like Fort Knox")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component lunarEclipsesLore = Component.text("Why is it dark and storming?")
+		Component lunarEclipsesLore = Component.text("Why do I hear boss music?")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component mcMMOLore = Component.text("OH YEAH SPECIAL SKILLS").color(TextColor.color(colorLightOrange))
+		Component mcMMOLore = Component.text("Hey, you. You're finally awake.").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
-		Component silkSpawnersLore = Component.text("Spawners will never know what	 hits them")
+		Component silkSpawnersLore = Component.text("Manmade horrors beyond comprehension")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component townyLore = Component.text("If City Skylines was in Minecraft")
-				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component sellingItemsLore = Component
-				.text("How to start your own multi-billion\ndollar company inside of GalaxeSMP")
-				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component gravesLore = Component.text("").color(TextColor.color(colorLightOrange))
+		Component townyLore = Component.text("If City Skylines just Minecraft").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
-		Component eventsLore = Component.text("Events, celebrations, and more!")
+		Component sellingItemsLore1 = Component.text("How to start your own multi-billion")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component sellingItemsLore2 = Component.text("dollar company inside of the GalaxeSMP")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component gravesLore1 = Component.text("Have you or a loved one has been diagnosed with death?")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component gravesLore2 = Component.text("You may be entitled to financial compensation!")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component eventsLore1 = Component.text("\"So you just gonna bring me a birthday gift")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component eventsLore2 = Component.text("on my birthday to my birthday party")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component eventsLore3 = Component.text("on my birthday with a birthday gift?\"")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component eventsLore4 = Component.text(" - Tyler, The Creator").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
 
 		// General mainHelp item
 		mainHelp.setItem(2, 5,
@@ -120,8 +140,8 @@ public class HelpCommand implements CommandExecutor {
 				}));
 
 		// Events mainHelp item
-		mainHelp.setItem(4, 5,
-				ItemBuilder.from(Material.PHANTOM_MEMBRANE).name(events).lore(eventsLore).asGuiItem(event -> {
+		mainHelp.setItem(4, 5, ItemBuilder.from(Material.PHANTOM_MEMBRANE).name(events)
+				.lore(Arrays.asList(eventsLore1, eventsLore2, eventsLore3, eventsLore4)).asGuiItem(event -> {
 					/* Event Handling Here */
 				}));
 
@@ -143,7 +163,7 @@ public class HelpCommand implements CommandExecutor {
 
 		// Silk spawners mainHelp item
 		mainHelp.setItem(3, 4,
-				ItemBuilder.from(Material.SPAWNER).name(silkSpawners).lore(silkSpawnersLore).asGuiItem(event -> {
+				ItemBuilder.from(mobSpawner).name(silkSpawners).lore(silkSpawnersLore).asGuiItem(event -> {
 					/* Event Handling Here */
 				}));
 
@@ -153,14 +173,14 @@ public class HelpCommand implements CommandExecutor {
 		}));
 
 		// Selling items mainHelp item
-		mainHelp.setItem(2, 8,
-				ItemBuilder.from(Material.GOLD_INGOT).name(sellingItems).lore(sellingItemsLore).asGuiItem(event -> {
+		mainHelp.setItem(2, 8, ItemBuilder.from(Material.GOLD_INGOT).name(sellingItems)
+				.lore(Arrays.asList(sellingItemsLore1, sellingItemsLore2)).asGuiItem(event -> {
 					/* Event Handling Here */
 				}));
 
 		// Graves mainHelp item
-		mainHelp.setItem(5, 8,
-				ItemBuilder.from(Material.SKELETON_SKULL).name(graves).lore(gravesLore).asGuiItem(event -> {
+		mainHelp.setItem(5, 8, ItemBuilder.from(Material.SKELETON_SKULL).name(graves)
+				.lore(Arrays.asList(gravesLore1, gravesLore2)).asGuiItem(event -> {
 					/* Event Handling Here */
 				}));
 
@@ -237,7 +257,6 @@ public class HelpCommand implements CommandExecutor {
 
 		// Disable taking items from all GUIs
 		gui.setDefaultClickAction(event -> {
-			player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_HARP, 1, 1);
 			event.setCancelled(true);
 		});
 
