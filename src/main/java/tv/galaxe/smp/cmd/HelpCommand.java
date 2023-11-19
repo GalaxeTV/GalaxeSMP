@@ -3,10 +3,8 @@ package tv.galaxe.smp.cmd;
 import com.destroystokyo.paper.profile.PlayerProfile;
 import dev.triumphteam.gui.builder.item.ItemBuilder;
 import dev.triumphteam.gui.guis.Gui;
-import dev.triumphteam.gui.guis.GuiItem;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 import net.kyori.adventure.text.Component;
@@ -21,15 +19,23 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BlockStateMeta;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.profile.PlayerTextures;
 import tv.galaxe.smp.Core;
 
 public class HelpCommand implements CommandExecutor {
 	private static Player player;
-	private static Gui generalHelp = createGui("GalaxeSMP General", 6, false, true);
 	private static Gui mainHelp = createGui("GalaxeSMP Help Menu", 6, true, false);
+	private static Gui generalHelp = createGui("GalaxeSMP General Help", 6, true, true);
+	private static Gui lockItemsHelp = createGui("GalaxeSMP Locking Items Help", 6, false, true);
+	private static Gui lunarEclipsesHelp = createGui("GalaxeSMP Lunar Eclipses Help", 6, false, true);
+	private static Gui mcMMOHelp = createGui("GalaxeSMP mcMMO Help", 6, false, true);
+	private static Gui silkSpawnersHelp = createGui("GalaxeSMP Silk Spawners Help", 6, false, true);
+	private static Gui townyHelp = createGui("GalaxeSMP Towny Help", 6, false, true);
+	private static Gui sellingItemsHelp = createGui("GalaxeSMP Selling Items Help", 6, false, true);
+	private static Gui gravesHelp = createGui("GalaxeSMP Graves Help", 6, false, true);
+	private static Gui eventsHelp = createGui("GalaxeSMP Events Help", 6, false, true);
+	private static Gui pronounsHelp = createGui("GalaxeSMP Pronouns Help", 6, false, true);
 	private static final int colorUltraViolet = 0x515979;
 	private static final int colorSpaceCadet = 0x262F58;
 	private static final int colorLightOrange = 0xFFDAB6;
@@ -45,6 +51,33 @@ public class HelpCommand implements CommandExecutor {
 			case "general" :
 				generalHelp.open(player);
 				return true;
+			case "lockitems" :
+				lockItemsHelp.open(player);
+				return true;
+			case "lunareclipses" :
+				lunarEclipsesHelp.open(player);
+				return true;
+			case "mcmmo" :
+				mcMMOHelp.open(player);
+				return true;
+			case "silkspawners" :
+				silkSpawnersHelp.open(player);
+				return true;
+			case "towny" :
+				townyHelp.open(player);
+				return true;
+			case "sellingitems" :
+				sellingItemsHelp.open(player);
+				return true;
+			case "graves" :
+				gravesHelp.open(player);
+				return true;
+			case "events" :
+				eventsHelp.open(player);
+				return true;
+			case "pronouns" :
+				pronounsHelp.open(player);
+				return true;
 			case "" :
 			default :
 				// Pronouns mainHelp item
@@ -54,7 +87,7 @@ public class HelpCommand implements CommandExecutor {
 						.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 				mainHelp.setItem(3, 6,
 						ItemBuilder.from(createHead(player)).name(pronouns).lore(pronounsLore).asGuiItem(event -> {
-							/* Event Handling Here */
+							pronounsHelp.open(player);
 						}));
 
 				mainHelp.open(player);
@@ -66,10 +99,6 @@ public class HelpCommand implements CommandExecutor {
 	public HelpCommand() {
 		// Create ItemStack for Discord head
 		ItemStack discordHead = createHead("b722098ae79c7abf002fe9684c773ea71db8919bb2ef2053ea0c0684c5a1ce4f");
-		ItemMeta discordMeta = discordHead.getItemMeta();
-		discordMeta.displayName(Component.text("Discord"));
-		discordMeta.lore(Arrays.asList(Component.text(""), Component.text("")));
-		discordHead.setItemMeta(discordMeta);
 
 		// Create ItemStack for Mob Spawner
 		ItemStack mobSpawner = new ItemStack(Material.SPAWNER);
@@ -80,9 +109,10 @@ public class HelpCommand implements CommandExecutor {
 		mobSpawnerMeta.setBlockState(spawner);
 		mobSpawner.setItemMeta(mobSpawnerMeta);
 
-		/*
-		 * Main help menu
-		 */
+		// ====================
+		// Main help menu
+		// ====================
+
 		// TextComponents for item names
 		Component general = Component.text("General").color(TextColor.color(colorUltraViolet))
 				.decorate(TextDecoration.BOLD);
@@ -141,87 +171,130 @@ public class HelpCommand implements CommandExecutor {
 
 		// Events mainHelp item
 		mainHelp.setItem(4, 5, ItemBuilder.from(Material.PHANTOM_MEMBRANE).name(events)
-				.lore(Arrays.asList(eventsLore1, eventsLore2, eventsLore3, eventsLore4)).asGuiItem(event -> {
-					/* Event Handling Here */
+				.lore(List.of(eventsLore1, eventsLore2, eventsLore3, eventsLore4)).asGuiItem(event -> {
+					eventsHelp.open(player);
 				}));
 
 		// Lock items mainHelp item
 		mainHelp.setItem(2, 2, ItemBuilder.from(Material.CHEST).name(lockItems).lore(lockItemsLore).asGuiItem(event -> {
-			/* Event Handling Here */
+			lockItemsHelp.open(player);
 		}));
 
 		// Lunar eclipses mainHelp item
 		mainHelp.setItem(5, 2,
 				ItemBuilder.from(Material.CLOCK).name(lunarEclipses).lore(lunarEclipsesLore).asGuiItem(event -> {
-					/* Event Handling Here */
+					lunarEclipsesHelp.open(player);
 				}));
 
+		// mcMMO mainHelp item
 		mainHelp.setItem(4, 3,
 				ItemBuilder.from(Material.EXPERIENCE_BOTTLE).name(mcMMO).lore(mcMMOLore).asGuiItem(event -> {
-					/* Event Handling Here */
+					mcMMOHelp.open(player);
 				}));
 
 		// Silk spawners mainHelp item
 		mainHelp.setItem(3, 4,
 				ItemBuilder.from(mobSpawner).name(silkSpawners).lore(silkSpawnersLore).asGuiItem(event -> {
-					/* Event Handling Here */
+					silkSpawnersHelp.open(player);
 				}));
 
 		// Towny mainHelp item
 		mainHelp.setItem(4, 7, ItemBuilder.from(Material.FILLED_MAP).name(towny).lore(townyLore).asGuiItem(event -> {
-			/* Event Handling Here */
+			townyHelp.open(player);
 		}));
 
 		// Selling items mainHelp item
 		mainHelp.setItem(2, 8, ItemBuilder.from(Material.GOLD_INGOT).name(sellingItems)
-				.lore(Arrays.asList(sellingItemsLore1, sellingItemsLore2)).asGuiItem(event -> {
-					/* Event Handling Here */
+				.lore(List.of(sellingItemsLore1, sellingItemsLore2)).asGuiItem(event -> {
+					sellingItemsHelp.open(player);
 				}));
 
 		// Graves mainHelp item
 		mainHelp.setItem(5, 8, ItemBuilder.from(Material.SKELETON_SKULL).name(graves)
-				.lore(Arrays.asList(gravesLore1, gravesLore2)).asGuiItem(event -> {
-					/* Event Handling Here */
+				.lore(List.of(gravesLore1, gravesLore2)).asGuiItem(event -> {
+					gravesHelp.open(player);
 				}));
 
-		/*
-		 * General help menu
-		 */
-		// Moving between servers help item
-		generalHelp.setItem(2, 5, ItemBuilder.from(Material.NETHER_STAR).name(Component.text("Moving between servers"))
-				.lore(Arrays.asList(Component.text("We have a hub server that you can use to move between servers"),
-						Component.text("You can use /server to see what servers are available"),
-						Component.text("To connect to other servers, use /server [name] to connect to your server")))
-				.asGuiItem());
+		// ====================
+		// General help menu
+		// ====================
 
-		GuiItem rulesItem = ItemBuilder.from(Material.WRITTEN_BOOK).name(Component.text("Rules"))
-				.lore(Arrays.asList(Component.text("1. No stealing, griefing, or hacking"),
-						Component.text("2. If a player wants you to leave their area, you must leave"),
-						Component.text("3. Replant crops in spawn farms"),
-						Component.text("4. Don't build any base next to spawn, it is a community area"),
-						Component.text("5. Follow Discord rules")))
-				.asGuiItem(event -> {
-					player.performCommand("rules");
-				});
+		// TextComponents for item names
+		Component serverMove = Component.text("Moving between servers").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component rules = Component.text("Rules").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component pvp = Component.text("PvP").color(TextColor.color(colorUltraViolet)).decorate(TextDecoration.BOLD);
+		Component tickets = Component.text("Tickets").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component teleporting = Component.text("Teleporting").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component discord = Component.text("Discord").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+
+		// TextComponents for Lore on each item
+		Component serverMoveLore1 = Component.text("We have a hub server that you can use to move between servers")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component serverMoveLore2 = Component.text("You can use /server to see what servers are available")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component serverMoveLore3 = Component
+				.text("To connect to other servers, use /server [name] to connect to your server")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component rulesLore1 = Component.text("1. No stealing, griefing, or hacking")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component rulesLore2 = Component.text("2. If a player wants you to leave their area, you must leave")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component rulesLore3 = Component.text("3. Replant crops in spawn farms")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component rulesLore4 = Component.text("4. Don't build any base next to spawn, it is a community area")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component rulesLore5 = Component.text("5. Follow Discord rules").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component pvpLore1 = Component.text("").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component pvpLore2 = Component.text("").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component ticketsLore1 = Component.text("").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component ticketsLore2 = Component.text("").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component teleportingLore1 = Component.text("").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component teleportingLore2 = Component.text("").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component discordLore1 = Component.text("").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component discordLore2 = Component.text("").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component discordMessage = Component.text("").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+
+		// Moving between servers help item
+		generalHelp.setItem(2, 5, ItemBuilder.from(Material.NETHER_STAR).name(serverMove)
+				.lore(List.of(serverMoveLore1, serverMoveLore2, serverMoveLore3)).asGuiItem());
 
 		// Rules help item
-		generalHelp.setItem(3, 3, rulesItem);
+		generalHelp.setItem(3, 3, ItemBuilder.from(Material.WRITTEN_BOOK).name(rules)
+				.lore(List.of(rulesLore1, rulesLore2, rulesLore3, rulesLore4, rulesLore5)).asGuiItem(event -> {
+					player.performCommand("rules");
+				}));
 
 		// PvP help item
-		generalHelp.setItem(3, 7, ItemBuilder.from(Material.NETHERITE_SWORD).name(Component.text("PvP"))
-				.lore(Arrays.asList(Component.text(""), Component.text(""))).asGuiItem());
+		generalHelp.setItem(3, 7,
+				ItemBuilder.from(Material.NETHERITE_SWORD).name(pvp).lore(List.of(pvpLore1, pvpLore2)).asGuiItem());
 
 		// Ticket help item
-		generalHelp.setItem(4, 4, ItemBuilder.from(Material.NAME_TAG).name(Component.text("Tickets"))
-				.lore(Arrays.asList(Component.text(""), Component.text(""))).asGuiItem());
+		generalHelp.setItem(4, 4, ItemBuilder.from(Material.NAME_TAG).name(tickets)
+				.lore(List.of(ticketsLore1, ticketsLore2)).asGuiItem());
 
 		// Teleport help item
-		generalHelp.setItem(4, 6, ItemBuilder.from(Material.COMPASS).name(Component.text("Teleporting"))
-				.lore(Arrays.asList(Component.text(""), Component.text(""))).asGuiItem());
+		generalHelp.setItem(4, 6, ItemBuilder.from(Material.COMPASS).name(teleporting)
+				.lore(List.of(teleportingLore1, teleportingLore2)).asGuiItem());
 
-		generalHelp.setItem(5, 5, new GuiItem(discordHead, event -> {
-			player.sendMessage(Component.text());
-		}));
+		generalHelp.setItem(5, 5, ItemBuilder.from(discordHead).name(discord).lore(List.of(discordLore1, discordLore2))
+				.asGuiItem(event -> {
+					player.sendMessage(discordMessage);
+				}));
 	}
 
 	/**
@@ -244,6 +317,11 @@ public class HelpCommand implements CommandExecutor {
 		Component titleComponent = Component.text(title).color(TextColor.color(colorSpaceCadet))
 				.decorate(TextDecoration.BOLD);
 
+		// Create components for back button
+		Component back = Component.text("Back").color(TextColor.color(colorUltraViolet)).decorate(TextDecoration.BOLD);
+		Component backLore = Component.text("Click to go back to the main help menu")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+
 		// Create GUI
 		Gui gui = Gui.gui().title(titleComponent).rows(rows).create();
 
@@ -265,17 +343,8 @@ public class HelpCommand implements CommandExecutor {
 
 		// Fill empty slots with pink and purple glass panes
 		gui.getFiller()
-				.fill(Arrays.asList(ItemBuilder.from(Material.PINK_STAINED_GLASS_PANE).name(emptyComponent).asGuiItem(),
+				.fill(List.of(ItemBuilder.from(Material.PINK_STAINED_GLASS_PANE).name(emptyComponent).asGuiItem(),
 						ItemBuilder.from(Material.PURPLE_STAINED_GLASS_PANE).name(emptyComponent).asGuiItem()));
-
-		// Add back button to some GUIs if specified
-		if (addBackButton) {
-			// Add back button to some GUIs
-			gui.setItem(rows, 5, ItemBuilder.from(Material.BARRIER).name(Component.text("Back"))
-					.lore(List.of(Component.text("Click to go back to the main help menu"))).asGuiItem(event -> {
-						player.performCommand("help");
-					}));
-		}
 
 		// Add white pane filler for some GUIs if specified
 		if (fillWhitePanes) {
@@ -285,6 +354,14 @@ public class HelpCommand implements CommandExecutor {
 				gui.setItem(coordsEntry[0], coordsEntry[1],
 						ItemBuilder.from(Material.WHITE_STAINED_GLASS_PANE).name(emptyComponent).asGuiItem());
 			}
+		}
+
+		// Add back button to some GUIs if specified
+		if (addBackButton) {
+			// Add back button to some GUIs
+			gui.setItem(rows, 5, ItemBuilder.from(Material.BARRIER).name(back).lore(backLore).asGuiItem(event -> {
+				player.performCommand("help");
+			}));
 		}
 		return gui;
 	}
