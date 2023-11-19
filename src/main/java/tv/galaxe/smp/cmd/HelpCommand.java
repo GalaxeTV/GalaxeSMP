@@ -114,104 +114,104 @@ public class HelpCommand implements CommandExecutor {
 		// ====================
 
 		// TextComponents for item names
-		Component general = Component.text("General").color(TextColor.color(colorUltraViolet))
+		Component mainGeneral = Component.text("General").color(TextColor.color(colorUltraViolet))
 				.decorate(TextDecoration.BOLD);
-		Component lockItems = Component.text("Locking Items").color(TextColor.color(colorUltraViolet))
+		Component mainLockItems = Component.text("Locking Items").color(TextColor.color(colorUltraViolet))
 				.decorate(TextDecoration.BOLD);
-		Component lunarEclipses = Component.text("Lunar Eclipses").color(TextColor.color(colorUltraViolet))
+		Component mainLunarEclipses = Component.text("Lunar Eclipses").color(TextColor.color(colorUltraViolet))
 				.decorate(TextDecoration.BOLD);
-		Component mcMMO = Component.text("mcMMO").color(TextColor.color(colorUltraViolet))
+		Component mainMcmmo = Component.text("mcMMO").color(TextColor.color(colorUltraViolet))
 				.decorate(TextDecoration.BOLD);
-		Component silkSpawners = Component.text("Silk Spawners").color(TextColor.color(colorUltraViolet))
+		Component mainSilkSpawners = Component.text("Silk Spawners").color(TextColor.color(colorUltraViolet))
 				.decorate(TextDecoration.BOLD);
-		Component towny = Component.text("Towny").color(TextColor.color(colorUltraViolet))
+		Component mainTowny = Component.text("Towny").color(TextColor.color(colorUltraViolet))
 				.decorate(TextDecoration.BOLD);
-		Component sellingItems = Component.text("Selling Items").color(TextColor.color(colorUltraViolet))
+		Component mainEconomy = Component.text("Economy").color(TextColor.color(colorUltraViolet))
 				.decorate(TextDecoration.BOLD);
-		Component graves = Component.text("Graves").color(TextColor.color(colorUltraViolet))
+		Component mainGraves = Component.text("Graves").color(TextColor.color(colorUltraViolet))
 				.decorate(TextDecoration.BOLD);
-		Component events = Component.text("Events").color(TextColor.color(colorUltraViolet))
+		Component mainEvents = Component.text("Events").color(TextColor.color(colorUltraViolet))
 				.decorate(TextDecoration.BOLD);
 
 		// TextComponents for Lore on each item
-		Component generalLore = Component.text("General information about the server")
+		Component mainGeneralLore = Component.text("General information about the server")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component lockItemsLore = Component.text("How to lock your items like Fort Knox")
+		Component mainLockItemsLore = Component.text("How to lock your items like Fort Knox")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component lunarEclipsesLore = Component.text("Why do I hear boss music?")
+		Component mainLunarEclipsesLore = Component.text("Why do I hear boss music?")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component mcMMOLore = Component.text("Hey, you. You're finally awake.").color(TextColor.color(colorLightOrange))
+		Component mainMcmmoLore = Component.text("Hey, you. You're finally awake.").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
-		Component silkSpawnersLore = Component.text("Manmade horrors beyond comprehension")
+		Component mainSilkSpawnersLore = Component.text("Manmade horrors beyond comprehension")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component townyLore = Component.text("If City Skylines just Minecraft").color(TextColor.color(colorLightOrange))
+		Component mainTownyLore = Component.text("If City Skylines just Minecraft").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
-		Component sellingItemsLore1 = Component.text("How to start your own multi-billion")
+		Component mainEconomyLore1 = Component.text("How to start your own multi-billion")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component sellingItemsLore2 = Component.text("dollar company inside of the GalaxeSMP")
+		Component mainEconomyLore2 = Component.text("dollar company inside of the GalaxeSMP")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component gravesLore1 = Component.text("Have you or a loved one has been diagnosed with death?")
+		Component mainGravesLore1 = Component.text("Have you or a loved one has been diagnosed with death?")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component gravesLore2 = Component.text("You may be entitled to financial compensation!")
+		Component mainGravesLore2 = Component.text("You may be entitled to financial compensation!")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component eventsLore1 = Component.text("\"So you just gonna bring me a birthday gift")
+		Component mainEventsLore1 = Component.text("\"So you just gonna bring me a birthday gift")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component eventsLore2 = Component.text("on my birthday to my birthday party")
+		Component mainEventsLore2 = Component.text("on my birthday to my birthday party")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component eventsLore3 = Component.text("on my birthday with a birthday gift?\"")
+		Component mainEventsLore3 = Component.text("on my birthday with a birthday gift?\"")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component eventsLore4 = Component.text(" - Tyler, The Creator").color(TextColor.color(colorLightOrange))
+		Component mainEventsLore4 = Component.text(" - Tyler, The Creator").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
 
 		// General mainHelp item
 		mainHelp.setItem(2, 5,
-				ItemBuilder.from(Material.DIAMOND_PICKAXE).name(general).lore(generalLore).asGuiItem(event -> {
+				ItemBuilder.from(Material.DIAMOND_PICKAXE).name(mainGeneral).lore(mainGeneralLore).asGuiItem(event -> {
 					generalHelp.open(player);
 				}));
 
 		// Events mainHelp item
-		mainHelp.setItem(4, 5, ItemBuilder.from(Material.PHANTOM_MEMBRANE).name(events)
-				.lore(List.of(eventsLore1, eventsLore2, eventsLore3, eventsLore4)).asGuiItem(event -> {
+		mainHelp.setItem(4, 5, ItemBuilder.from(Material.PHANTOM_MEMBRANE).name(mainEvents)
+				.lore(List.of(mainEventsLore1, mainEventsLore2, mainEventsLore3, mainEventsLore4)).asGuiItem(event -> {
 					eventsHelp.open(player);
 				}));
 
 		// Lock items mainHelp item
-		mainHelp.setItem(2, 2, ItemBuilder.from(Material.CHEST).name(lockItems).lore(lockItemsLore).asGuiItem(event -> {
+		mainHelp.setItem(2, 2, ItemBuilder.from(Material.CHEST).name(mainLockItems).lore(mainLockItemsLore).asGuiItem(event -> {
 			lockItemsHelp.open(player);
 		}));
 
 		// Lunar eclipses mainHelp item
 		mainHelp.setItem(5, 2,
-				ItemBuilder.from(Material.CLOCK).name(lunarEclipses).lore(lunarEclipsesLore).asGuiItem(event -> {
+				ItemBuilder.from(Material.CLOCK).name(mainLunarEclipses).lore(mainLunarEclipsesLore).asGuiItem(event -> {
 					lunarEclipsesHelp.open(player);
 				}));
 
 		// mcMMO mainHelp item
 		mainHelp.setItem(4, 3,
-				ItemBuilder.from(Material.EXPERIENCE_BOTTLE).name(mcMMO).lore(mcMMOLore).asGuiItem(event -> {
+				ItemBuilder.from(Material.EXPERIENCE_BOTTLE).name(mainMcmmo).lore(mainMcmmoLore).asGuiItem(event -> {
 					mcMMOHelp.open(player);
 				}));
 
 		// Silk spawners mainHelp item
 		mainHelp.setItem(3, 4,
-				ItemBuilder.from(mobSpawner).name(silkSpawners).lore(silkSpawnersLore).asGuiItem(event -> {
+				ItemBuilder.from(mobSpawner).name(mainSilkSpawners).lore(mainSilkSpawnersLore).asGuiItem(event -> {
 					silkSpawnersHelp.open(player);
 				}));
 
 		// Towny mainHelp item
-		mainHelp.setItem(4, 7, ItemBuilder.from(Material.FILLED_MAP).name(towny).lore(townyLore).asGuiItem(event -> {
+		mainHelp.setItem(4, 7, ItemBuilder.from(Material.FILLED_MAP).name(mainTowny).lore(mainTownyLore).asGuiItem(event -> {
 			townyHelp.open(player);
 		}));
 
 		// Selling items mainHelp item
-		mainHelp.setItem(2, 8, ItemBuilder.from(Material.GOLD_INGOT).name(sellingItems)
-				.lore(List.of(sellingItemsLore1, sellingItemsLore2)).asGuiItem(event -> {
+		mainHelp.setItem(2, 8, ItemBuilder.from(Material.GOLD_INGOT).name(mainEconomy)
+				.lore(List.of(mainEconomyLore1, mainEconomyLore2)).asGuiItem(event -> {
 					economyHelp.open(player);
 				}));
 
 		// Graves mainHelp item
-		mainHelp.setItem(5, 8, ItemBuilder.from(Material.SKELETON_SKULL).name(graves)
-				.lore(List.of(gravesLore1, gravesLore2)).asGuiItem(event -> {
+		mainHelp.setItem(5, 8, ItemBuilder.from(Material.SKELETON_SKULL).name(mainGraves)
+				.lore(List.of(mainGravesLore1, mainGravesLore2)).asGuiItem(event -> {
 					gravesHelp.open(player);
 				}));
 
@@ -220,81 +220,81 @@ public class HelpCommand implements CommandExecutor {
 		// ====================
 
 		// TextComponents for item names
-		Component serverMove = Component.text("Moving between servers").color(TextColor.color(colorUltraViolet))
+		Component generalServerMove = Component.text("Moving between servers").color(TextColor.color(colorUltraViolet))
 				.decorate(TextDecoration.BOLD);
-		Component rules = Component.text("Rules").color(TextColor.color(colorUltraViolet))
+		Component generalRules = Component.text("Rules").color(TextColor.color(colorUltraViolet))
 				.decorate(TextDecoration.BOLD);
-		Component pvp = Component.text("PvP").color(TextColor.color(colorUltraViolet)).decorate(TextDecoration.BOLD);
-		Component tickets = Component.text("Tickets").color(TextColor.color(colorUltraViolet))
+		Component generalPvp = Component.text("PvP").color(TextColor.color(colorUltraViolet)).decorate(TextDecoration.BOLD);
+		Component generalTickets = Component.text("Tickets").color(TextColor.color(colorUltraViolet))
 				.decorate(TextDecoration.BOLD);
-		Component teleporting = Component.text("Teleporting").color(TextColor.color(colorUltraViolet))
+		Component generalTeleporting = Component.text("Teleporting").color(TextColor.color(colorUltraViolet))
 				.decorate(TextDecoration.BOLD);
-		Component discord = Component.text("Discord").color(TextColor.color(colorUltraViolet))
+		Component generalDiscord = Component.text("Discord").color(TextColor.color(colorUltraViolet))
 				.decorate(TextDecoration.BOLD);
 
 		// TextComponents for Lore on each item
-		Component serverMoveLore1 = Component.text("We have a hub server that you can use to move between servers")
+		Component generalServerMoveLore1 = Component.text("We have a hub server that you can use to move between servers")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component serverMoveLore2 = Component.text("You can use /server to see what servers are available")
+		Component generalServerMoveLore2 = Component.text("You can use /server to see what servers are available")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component serverMoveLore3 = Component
+		Component generalServerMoveLore3 = Component
 				.text("To connect to other servers, use /server [name] to connect to your server")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component rulesLore1 = Component.text("1. No stealing, griefing, or hacking")
+		Component generalRulesLore1 = Component.text("1. No stealing, griefing, or hacking")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component rulesLore2 = Component.text("2. If a player wants you to leave their area, you must leave")
+		Component generalRulesLore2 = Component.text("2. If a player wants you to leave their area, you must leave")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component rulesLore3 = Component.text("3. Replant crops in spawn farms")
+		Component generalRulesLore3 = Component.text("3. Replant crops in spawn farms")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component rulesLore4 = Component.text("4. Don't build any base next to spawn, it is a community area")
+		Component generalRulesLore4 = Component.text("4. Don't build any base next to spawn, it is a community area")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component rulesLore5 = Component.text("5. Follow Discord rules").color(TextColor.color(colorLightOrange))
+		Component generalRulesLore5 = Component.text("5. Follow Discord rules").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
-		Component pvpLore1 = Component.text("").color(TextColor.color(colorLightOrange))
+		Component generalPvpLore1 = Component.text("").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
-		Component pvpLore2 = Component.text("").color(TextColor.color(colorLightOrange))
+		Component generalPvpLore2 = Component.text("").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
-		Component ticketsLore1 = Component.text("").color(TextColor.color(colorLightOrange))
+		Component generalTicketsLore1 = Component.text("").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
-		Component ticketsLore2 = Component.text("").color(TextColor.color(colorLightOrange))
+		Component generalTicketsLore2 = Component.text("").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
-		Component teleportingLore1 = Component.text("").color(TextColor.color(colorLightOrange))
+		Component generalTeleportingLore1 = Component.text("").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
-		Component teleportingLore2 = Component.text("").color(TextColor.color(colorLightOrange))
+		Component generalTeleportingLore2 = Component.text("").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
-		Component discordLore1 = Component.text("").color(TextColor.color(colorLightOrange))
+		Component generalDiscordLore1 = Component.text("").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
-		Component discordLore2 = Component.text("").color(TextColor.color(colorLightOrange))
+		Component generalDiscordLore2 = Component.text("").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
-		Component discordMessage = Component.text("").color(TextColor.color(colorLightOrange))
+		Component generalDiscordMessage = Component.text("").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
 
 		// Help Items
 		// Moving between servers help item
-		generalHelp.setItem(2, 5, ItemBuilder.from(Material.NETHER_STAR).name(serverMove)
-				.lore(List.of(serverMoveLore1, serverMoveLore2, serverMoveLore3)).asGuiItem());
+		generalHelp.setItem(2, 5, ItemBuilder.from(Material.NETHER_STAR).name(generalServerMove)
+				.lore(List.of(generalServerMoveLore1, generalServerMoveLore2, generalServerMoveLore3)).asGuiItem());
 
 		// Rules help item
-		generalHelp.setItem(3, 3, ItemBuilder.from(Material.WRITTEN_BOOK).name(rules)
-				.lore(List.of(rulesLore1, rulesLore2, rulesLore3, rulesLore4, rulesLore5)).asGuiItem(event -> {
+		generalHelp.setItem(3, 3, ItemBuilder.from(Material.WRITTEN_BOOK).name(generalRules)
+				.lore(List.of(generalRulesLore1, generalRulesLore2, generalRulesLore3, generalRulesLore4, generalRulesLore5)).asGuiItem(event -> {
 					player.performCommand("rules");
 				}));
 
 		// PvP help item
 		generalHelp.setItem(3, 7,
-				ItemBuilder.from(Material.NETHERITE_SWORD).name(pvp).lore(List.of(pvpLore1, pvpLore2)).asGuiItem());
+				ItemBuilder.from(Material.NETHERITE_SWORD).name(generalPvp).lore(List.of(generalPvpLore1, generalPvpLore2)).asGuiItem());
 
 		// Ticket help item
-		generalHelp.setItem(4, 4, ItemBuilder.from(Material.NAME_TAG).name(tickets)
-				.lore(List.of(ticketsLore1, ticketsLore2)).asGuiItem());
+		generalHelp.setItem(4, 4, ItemBuilder.from(Material.NAME_TAG).name(generalTickets)
+				.lore(List.of(generalTicketsLore1, generalTicketsLore2)).asGuiItem());
 
 		// Teleport help item
-		generalHelp.setItem(4, 6, ItemBuilder.from(Material.COMPASS).name(teleporting)
-				.lore(List.of(teleportingLore1, teleportingLore2)).asGuiItem());
+		generalHelp.setItem(4, 6, ItemBuilder.from(Material.COMPASS).name(generalTeleporting)
+				.lore(List.of(generalTeleportingLore1, generalTeleportingLore2)).asGuiItem());
 
-		generalHelp.setItem(5, 5, ItemBuilder.from(discordHead).name(discord).lore(List.of(discordLore1, discordLore2))
+		generalHelp.setItem(5, 5, ItemBuilder.from(discordHead).name(generalDiscord).lore(List.of(generalDiscordLore1, generalDiscordLore2))
 				.asGuiItem(event -> {
-					player.sendMessage(discordMessage);
+					player.sendMessage(generalDiscordMessage);
 				}));
 
 		// ====================
@@ -302,61 +302,63 @@ public class HelpCommand implements CommandExecutor {
 		// ====================
 
 		// TextComponents for item names
-		Component lockItem = Component.text("Locking an item").color(TextColor.color(colorUltraViolet))
+		Component lwcExplained = Component.text("What is LWC?").color(TextColor.color(colorUltraViolet))
 				.decorate(TextDecoration.BOLD);
-		Component unlockItem = Component.text("Unlocking an item").color(TextColor.color(colorUltraViolet))
+		Component lwcLockItem = Component.text("Locking an item").color(TextColor.color(colorUltraViolet))
 				.decorate(TextDecoration.BOLD);
-		Component shareLockedItem = Component.text("Sharing a locked item").color(TextColor.color(colorUltraViolet))
+		Component lwcUnlockItem = Component.text("Unlocking an item").color(TextColor.color(colorUltraViolet))
 				.decorate(TextDecoration.BOLD);
-		Component disableAutoLock = Component.text("Disabling/enabling auto-lock")
+		Component lwcShareLockedItem = Component.text("Sharing a locked item").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component lwcDisableAutoLock = Component.text("Disabling/enabling auto-lock")
 				.color(TextColor.color(colorUltraViolet)).decorate(TextDecoration.BOLD);
-		Component protectionFlags = Component.text("Protection flags").color(TextColor.color(colorUltraViolet))
+		Component lwcProtectionFlags = Component.text("Protection flags").color(TextColor.color(colorUltraViolet))
 				.decorate(TextDecoration.BOLD);
-		Component typesOfLocking = Component.text("Types of locking an item").color(TextColor.color(colorUltraViolet))
+		Component lwcTypesOfLocking = Component.text("Types of protection").color(TextColor.color(colorUltraViolet))
 				.decorate(TextDecoration.BOLD);
-		Component lockableItems = Component.text("Lockable items").color(TextColor.color(colorUltraViolet))
+		Component lwcLockableItems = Component.text("Lockable items").color(TextColor.color(colorUltraViolet))
 				.decorate(TextDecoration.BOLD);
 
 		// TextComponents for Lore on each item
-		Component lockItemLore1 = Component.text("").color(TextColor.color(colorLightOrange))
+		Component lwcLockItemLore1 = Component.text("").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
-		Component lockItemLore2 = Component.text("").color(TextColor.color(colorLightOrange))
+		Component lwcLockItemLore2 = Component.text("").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
-		Component lockItemLore3 = Component.text("").color(TextColor.color(colorLightOrange))
+		Component lwcLockItemLore3 = Component.text("").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
-		Component unlockItemLore1 = Component.text("").color(TextColor.color(colorLightOrange))
+		Component lwcUnlockItemLore1 = Component.text("").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
-		Component unlockItemLore2 = Component.text("").color(TextColor.color(colorLightOrange))
+		Component lwcUnlockItemLore2 = Component.text("").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
-		Component unlockItemLore3 = Component.text("").color(TextColor.color(colorLightOrange))
+		Component lwcUnlockItemLore3 = Component.text("").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
-		Component shareLockedItemLore1 = Component.text("").color(TextColor.color(colorLightOrange))
+		Component lwcShareLockedItemLore1 = Component.text("").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
-		Component shareLockedItemLore2 = Component.text("").color(TextColor.color(colorLightOrange))
+		Component lwcShareLockedItemLore2 = Component.text("").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
-		Component shareLockedItemLore3 = Component.text("").color(TextColor.color(colorLightOrange))
+		Component lwcShareLockedItemLore3 = Component.text("").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
-		Component disableAutoLockLore1 = Component.text("").color(TextColor.color(colorLightOrange))
+		Component lwcDisableAutoLockLore1 = Component.text("").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
-		Component disableAutoLockLore2 = Component.text("").color(TextColor.color(colorLightOrange))
+		Component lwcDisableAutoLockLore2 = Component.text("").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
-		Component protectionFlagsLore1 = Component.text("").color(TextColor.color(colorLightOrange))
+		Component lwcProtectionFlagsLore1 = Component.text("").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
-		Component protectionFlagsLore2 = Component.text("").color(TextColor.color(colorLightOrange))
+		Component lwcProtectionFlagsLore2 = Component.text("").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
-		Component protectionFlagsLore3 = Component.text("").color(TextColor.color(colorLightOrange))
+		Component lwcProtectionFlagsLore3 = Component.text("").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
-		Component typesOfLockingLore1 = Component.text("").color(TextColor.color(colorLightOrange))
+		Component lwcTypesOfLockingLore1 = Component.text("").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
-		Component typesOfLockingLore2 = Component.text("").color(TextColor.color(colorLightOrange))
+		Component lwcTypesOfLockingLore2 = Component.text("").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
-		Component typesOfLockingLore3 = Component.text("").color(TextColor.color(colorLightOrange))
+		Component lwcTypesOfLockingLore3 = Component.text("").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
-		Component lockableItemsLore1 = Component.text("").color(TextColor.color(colorLightOrange))
+		Component lwcLockableItemsLore1 = Component.text("").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
-		Component lockableItemsLore2 = Component.text("").color(TextColor.color(colorLightOrange))
+		Component lwcLockableItemsLore2 = Component.text("").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
-		Component lockableItemsLore3 = Component.text("").color(TextColor.color(colorLightOrange))
+		Component lwcLockableItemsLore3 = Component.text("").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
 		// Help Items
 
@@ -471,11 +473,11 @@ public class HelpCommand implements CommandExecutor {
 		// ====================
 
 		// TextComponents for item names
-		Component sellingItemsExplained = Component.text("Why money?").color(TextColor.color(colorUltraViolet))
+		Component ecoExplained = Component.text("Why money?").color(TextColor.color(colorUltraViolet))
 				.decorate(TextDecoration.BOLD);
 
 		// TextComponents for Lore on each item
-		Component sellingItemsExplainedLore1 = Component.text("").color(TextColor.color(colorLightOrange))
+		Component ecoExplainedLore1 = Component.text("").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
 
 		// Help Items
