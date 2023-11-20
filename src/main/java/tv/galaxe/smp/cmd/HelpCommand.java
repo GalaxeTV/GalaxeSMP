@@ -31,7 +31,7 @@ public class HelpCommand implements CommandExecutor {
 	private static Gui mainHelp = createGui("GalaxeSMP Help Menu", 6, true, false);
 	private static Gui generalHelp = createGui("GalaxeSMP General Help", 6, true, true);
 	private static Gui lockItemsHelp = createGui("GalaxeSMP Locking Items Help", 6, true, true);
-	private static Gui lunarEclipsesHelp = createGui("GalaxeSMP Lunar Eclipses Help", 6, false, true);
+	private static Gui lunarEclipsesHelp = createGui("GalaxeSMP Lunar Eclipses Help", 6, true, true);
 	private static Gui mcMMOHelp = createGui("GalaxeSMP mcMMO Help", 6, false, true);
 	private static Gui silkSpawnersHelp = createGui("GalaxeSMP Silk Spawners Help", 6, false, true);
 	private static Gui townyHelp = createGui("GalaxeSMP Towny Help", 6, false, true);
@@ -503,64 +503,105 @@ public class HelpCommand implements CommandExecutor {
 		// ====================
 
 		// TextComponents for item names
-		Component lunarEclipseExplained = Component.text("What is a lunar eclipse?")
+		Component lunarEclipseExplained = Component.text("What is a Lunar Eclipse?")
 				.color(TextColor.color(colorUltraViolet)).decorate(TextDecoration.BOLD);
 		Component lunarEclipseLoot = Component.text("Lunar eclipse loot").color(TextColor.color(colorUltraViolet))
 				.decorate(TextDecoration.BOLD);
-		Component lunarEclipseSchedule = Component.text("Lunar eclipse schedule")
+		Component lunarEclipseSchedule = Component.text("When does a Lunar eclipse happen?")
 				.color(TextColor.color(colorUltraViolet)).decorate(TextDecoration.BOLD);
-		Component lunarEclipseMobs = Component.text("Lunar eclipse mobs").color(TextColor.color(colorUltraViolet))
+		Component lunarEclipseMobs = Component.text("The Monsters that will kill you")
+				.color(TextColor.color(colorUltraViolet)).decorate(TextDecoration.BOLD);
+		Component lunarEclipseHordes = Component.text("Hordes and hordes").color(TextColor.color(colorUltraViolet))
 				.decorate(TextDecoration.BOLD);
-		Component lunarEclipseHordes = Component.text("Lunar eclipse hordes").color(TextColor.color(colorUltraViolet))
-				.decorate(TextDecoration.BOLD);
-		Component lunarEclipseBosses = Component.text("Lunar eclipse bosses").color(TextColor.color(colorUltraViolet))
-				.decorate(TextDecoration.BOLD);
-		Component lunarEclipseTips = Component.text("Lunar eclipse tips").color(TextColor.color(colorUltraViolet))
-				.decorate(TextDecoration.BOLD);
+		Component lunarEclipseAftermath = Component.text("After a Lunar Eclipse")
+				.color(TextColor.color(colorUltraViolet)).decorate(TextDecoration.BOLD);
+		Component lunarEclipseTips = Component.text("Tips and Tricks to not die")
+				.color(TextColor.color(colorUltraViolet)).decorate(TextDecoration.BOLD);
 
 		// TextComponents for Lore on each item
-		Component lunarEclipseExplainedLore1 = Component.text("").color(TextColor.color(colorLightOrange))
+		Component lunarEclipseExplainedLore1 = Component.text("Lunar Eclipses are a server-wide event on the SMP")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lunarEclipseExplainedLore2 = Component.text("where mobs are stronger and have more health,")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lunarEclipseExplainedLore3 = Component
+				.text("but drop much better loot as a bonus for fighting hordes")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lunarEclipseLootLore1 = Component
+				.text("Loot dropped can be many different combinations but consist of")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lunarEclipseLootLore2 = Component.text("Iron nuggets and ingots, Gold nuggets and ingots, Emeralds,")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lunarEclipseLootLore3 = Component.text("Diamonds, Netherite scrap or Netherite ingots")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lunarEclipseScheduleLore1 = Component.text("Each Lunar Eclipse happens every 21 Minecraft Days")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lunarEclipseScheduleLore2 = Component
+				.text("You will also get messages on how much time before it happens")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lunarEclipseMobsLore1 = Component.text("Mobs are much stronger and have unique buffs for each")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lunarEclipseMobsLore2 = Component.text("mob, but be careful as mobs will deal 2x damage and")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lunarEclipseMobsLore3 = Component.text("have 3x the health the mob normally has")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lunarEclipseHordesLore1 = Component
+				.text("Hordes of mobs are even more dangerous, as instead of a single mob,")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lunarEclipseHordesLore2 = Component.text("a large number of mobs spawn, all trying to do one thing:")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lunarEclipseHordesLore3 = Component.text("Kill you").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
-		Component lunarEclipseExplainedLore2 = Component.text("").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lunarEclipseExplainedLore3 = Component.text("").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lunarEclipseLootLore1 = Component.text("").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lunarEclipseLootLore2 = Component.text("").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lunarEclipseLootLore3 = Component.text("").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lunarEclipseScheduleLore1 = Component.text("").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lunarEclipseScheduleLore2 = Component.text("").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lunarEclipseMobsLore1 = Component.text("").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lunarEclipseMobsLore2 = Component.text("").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lunarEclipseMobsLore3 = Component.text("").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lunarEclipseHordesLore1 = Component.text("").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lunarEclipseHordesLore2 = Component.text("").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lunarEclipseHordesLore3 = Component.text("").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lunarEclipseBossesLore1 = Component.text("").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lunarEclipseBossesLore2 = Component.text("").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lunarEclipseBossesLore3 = Component.text("").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lunarEclipseTipsLore1 = Component.text("").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lunarEclipseTipsLore2 = Component.text("").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lunarEclipseTipsLore3 = Component.text("").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
+		Component lunarEclipseAftermathLore1 = Component
+				.text("Once a Lunar Eclipse has passed, you will have until the next")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lunarEclipseAftermathLore2 = Component.text("one to prepare, but you get a full heal and also")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lunarEclipseAftermathLore3 = Component.text("Luck and Hero Of The Village for a bit to recover")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lunarEclipseTipsLore1 = Component.text("Here's some tips to not die")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lunarEclipseTipsLore2 = Component.text("\u2727 Bring some food with you, keep that hunger up")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lunarEclipseTipsLore3 = Component.text("\u2727 Never fight alone, friendship is magic ya know")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lunarEclipseTipsLore4 = Component.text("\u2727 Get some good armor and weapons, you'll need it")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lunarEclipseTipsLore5 = Component
+				.text("\u2727 Don't be afraid to run, you can always come back later")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 
 		// Help Items
+		// Explaining Lunar Eclipses help item
+		lunarEclipsesHelp.setItem(2, 5, ItemBuilder.from(Material.CRYING_OBSIDIAN).name(lunarEclipseExplained)
+				.lore(List.of(lunarEclipseExplainedLore1, lunarEclipseExplainedLore2, lunarEclipseExplainedLore3))
+				.asGuiItem());
+
+		// Loot help item
+		lunarEclipsesHelp.setItem(3, 4, ItemBuilder.from(Material.GOLD_INGOT).name(lunarEclipseLoot)
+				.lore(List.of(lunarEclipseLootLore1, lunarEclipseLootLore2, lunarEclipseLootLore3)).asGuiItem());
+
+		// Schedule help item
+		lunarEclipsesHelp.setItem(3, 6, ItemBuilder.from(Material.CLOCK).name(lunarEclipseSchedule)
+				.lore(List.of(lunarEclipseScheduleLore1, lunarEclipseScheduleLore2)).asGuiItem());
+
+		// Mobs help item
+		lunarEclipsesHelp.setItem(3, 4, ItemBuilder.from(Material.ZOMBIE_HEAD).name(lunarEclipseMobs)
+				.lore(List.of(lunarEclipseMobsLore1, lunarEclipseMobsLore2, lunarEclipseMobsLore3)).asGuiItem());
+
+		// Hordes help item
+		lunarEclipsesHelp.setItem(4, 3, ItemBuilder.from(Material.SKELETON_SKULL).name(lunarEclipseHordes)
+				.lore(List.of(lunarEclipseHordesLore1, lunarEclipseHordesLore2, lunarEclipseHordesLore3)).asGuiItem());
+
+		// Aftermath help item
+		lunarEclipsesHelp.setItem(4, 7, ItemBuilder.from(Material.GOLDEN_APPLE).name(lunarEclipseAftermath)
+				.lore(List.of(lunarEclipseAftermathLore1, lunarEclipseAftermathLore2, lunarEclipseAftermathLore3))
+				.asGuiItem());
+
+		// Tips help item
+		lunarEclipsesHelp.setItem(5, 5,
+				ItemBuilder.from(Material.ENCHANTED_BOOK).name(lunarEclipseTips).lore(List.of(lunarEclipseTipsLore1,
+						lunarEclipseTipsLore2, lunarEclipseTipsLore3, lunarEclipseTipsLore4, lunarEclipseTipsLore5))
+						.asGuiItem());
 
 		// ====================
 		// mcMMO help menu
