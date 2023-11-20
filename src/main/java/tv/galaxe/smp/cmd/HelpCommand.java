@@ -30,15 +30,15 @@ public class HelpCommand implements CommandExecutor {
 	private static Player player;
 	private static Gui mainHelp = createGui("GalaxeSMP Help Menu", 6, true, false);
 	private static Gui generalHelp = createGui("GalaxeSMP General Help", 6, true, true);
-	private static Gui lockItemsHelp = createGui("GalaxeSMP Locking Items Help", 6, true, true);
-	private static Gui lunarEclipsesHelp = createGui("GalaxeSMP Lunar Eclipses Help", 6, true, true);
-	private static Gui mcMMOHelp = createGui("GalaxeSMP mcMMO Help", 6, false, true);
-	private static Gui silkSpawnersHelp = createGui("GalaxeSMP Silk Spawners Help", 6, false, true);
-	private static Gui townyHelp = createGui("GalaxeSMP Towny Help", 6, false, true);
-	private static Gui economyHelp = createGui("GalaxeSMP Economy Help", 6, false, true);
-	private static Gui gravesHelp = createGui("GalaxeSMP Graves Help", 6, false, true);
-	private static Gui eventsHelp = createGui("GalaxeSMP Events Help", 6, false, true);
-	private static Gui pronounsHelp = createGui("GalaxeSMP Pronouns Help", 6, false, true);
+	private static Gui lockItemsHelp = createGui("GalaxeSMP Locking Items", 6, true, true);
+	private static Gui lunarEclipsesHelp = createGui("GalaxeSMP Lunar Eclipses", 6, true, true);
+	private static Gui mcmmoHelp = createGui("GalaxeSMP mcMMO Help", 6, true, true);
+	private static Gui silkSpawnersHelp = createGui("GalaxeSMP Silk Spawners", 6, false, true);
+	private static Gui townyHelp = createGui("GalaxeSMP Towny", 6, false, true);
+	private static Gui economyHelp = createGui("GalaxeSMP Economy", 6, false, true);
+	private static Gui gravesHelp = createGui("GalaxeSMP Graves", 6, false, true);
+	private static Gui eventsHelp = createGui("GalaxeSMP Events", 6, false, true);
+	private static Gui pronounsHelp = createGui("GalaxeSMP Pronouns", 6, false, true);
 	private static final int colorUltraViolet = 0x515979;
 	private static final int colorSpaceCadet = 0x262F58;
 	private static final int colorLightOrange = 0xFFDAB6;
@@ -62,7 +62,7 @@ public class HelpCommand implements CommandExecutor {
 				lunarEclipsesHelp.open(player);
 				return true;
 			case "mcmmo" :
-				mcMMOHelp.open(player);
+				mcmmoHelp.open(player);
 				return true;
 			case "silkspawners" :
 				silkSpawnersHelp.open(player);
@@ -70,7 +70,7 @@ public class HelpCommand implements CommandExecutor {
 			case "towny" :
 				townyHelp.open(player);
 				return true;
-			case "sellingitems" :
+			case "economy" :
 				economyHelp.open(player);
 				return true;
 			case "graves" :
@@ -182,7 +182,7 @@ public class HelpCommand implements CommandExecutor {
 		// mcMMO mainHelp item
 		mainHelp.setItem(4, 3,
 				ItemBuilder.from(Material.EXPERIENCE_BOTTLE).name(mainMcmmo).lore(mainMcmmoLore).asGuiItem(event -> {
-					mcMMOHelp.open(player);
+					mcmmoHelp.open(player);
 				}));
 
 		// Create ItemStack for Mob Spawner
@@ -608,14 +608,79 @@ public class HelpCommand implements CommandExecutor {
 		// ====================
 
 		// TextComponents for item names
-		Component mcMMOExplained = Component.text("What is mcMMO?").color(TextColor.color(colorUltraViolet))
+		Component mcmmoExplained = Component.text("What is mcMMO?").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component mcmmoSkills = Component.text("Skills").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component mcmmoParty = Component.text("Parties").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component mcmmoAbilities = Component.text("Abilities").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component mcmmoLeaderboards = Component.text("Leaderboards").color(TextColor.color(colorUltraViolet))
 				.decorate(TextDecoration.BOLD);
 
 		// TextComponents for Lore on each item
-		Component mcMMOExplainedLore1 = Component.text("").color(TextColor.color(colorLightOrange))
+		Component mcmmoExplainedLore1 = Component.text("mcMMO is a plugin that allows for special skills for normal gameplay").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component mcmmoExplainedLore2 = Component.text("such as mining, woodcutting, and more!").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component mcmmoSkillsLore1 = Component.text("There are many skills to level up, such as:").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component mcmmoSkillsLore2 = Component.text("\u2727 Mining").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component mcmmoSkillsLore3 = Component.text("\u2727 Woodcutting").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component mcmmoSkillsLore4 = Component.text("\u2727 Herbalism").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component mcmmoSkillsLore5 = Component.text("\u2727 Excavation").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component mcmmoSkillsLore6 = Component.text("\u2727 Fishing").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component mcmmoSkillsLore7 = Component.text("\u2727 Repair").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component mcmmoSkillsLore8 = Component.text("... and so much more").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component mcmmoPartyLore1 = Component.text("You can create a party with your friends to level up skills together").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component mcmmoPartyLore2 = Component.text("and share experience with each other!").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component mcmmoPartyLore3 = Component.text("You can create a party by running /party").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component mcmmoAbilitiesLore1 = Component.text("As you level up your skills, you can unlock special abilities").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component mcmmoAbilitiesLore2 = Component.text("to help you in your adventures! More levels mean better abilities.").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component mcmmoAbilitiesLore3 = Component.text("You can check your abilities by running /inspect [player]").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component mcmmoAbilitiesLore4 = Component.text("You can also check others abilities by running /mctop").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component mcmmoLeaderboardsLore1 = Component.text("You can see who is the most powerful player by checking the leaderboards!").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component mcmmoLeaderboardsLore2 = Component.text("You can check the leaderboards by running /mctop").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component mcmmoLeaderboardsLore3 = Component.text("You can also check the leaderboards for a specific skill by running /mctop [skill]").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
 
 		// Help Items
+		// Explaining mcMMO help item
+		mcmmoHelp.setItem(2, 5, ItemBuilder.from(Material.ENCHANTED_BOOK).name(mcmmoExplained)
+				.lore(List.of(mcmmoExplainedLore1, mcmmoExplainedLore2)).asGuiItem());
+
+		// Skills help item
+		mcmmoHelp.setItem(3, 4, ItemBuilder.from(Material.DIAMOND_PICKAXE).name(mcmmoSkills)
+				.lore(List.of(mcmmoSkillsLore1, mcmmoSkillsLore2, mcmmoSkillsLore3, mcmmoSkillsLore4, mcmmoSkillsLore5, mcmmoSkillsLore6, mcmmoSkillsLore7, mcmmoSkillsLore8)).asGuiItem());
+
+		// Party help item
+		mcmmoHelp.setItem(3, 6, ItemBuilder.from(Material.CAKE).name(mcmmoParty)
+				.lore(List.of(mcmmoPartyLore1, mcmmoPartyLore2, mcmmoPartyLore3)).asGuiItem());
+
+		// Abilities help item
+		mcmmoHelp.setItem(4, 3, ItemBuilder.from(Material.DRAGON_BREATH).name(mcmmoAbilities)
+				.lore(List.of(mcmmoAbilitiesLore1, mcmmoAbilitiesLore2, mcmmoAbilitiesLore3, mcmmoAbilitiesLore4)).asGuiItem());
+
+		// Leaderboards help item
+		mcmmoHelp.setItem(4, 7, ItemBuilder.from(Material.PLAYER_HEAD).name(mcmmoLeaderboards)
+				.lore(List.of(mcmmoLeaderboardsLore1, mcmmoLeaderboardsLore2, mcmmoLeaderboardsLore3)).asGuiItem());
 
 		// ====================
 		// Silk spawners help menu
