@@ -18,6 +18,7 @@ import org.bukkit.block.CreatureSpawner;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BlockStateMeta;
@@ -100,18 +101,6 @@ public class HelpCommand implements CommandExecutor {
 
 	// Constructor to prevent instantiation
 	public HelpCommand() {
-		// Create ItemStack for Discord head
-		ItemStack discordHead = createHead("b722098ae79c7abf002fe9684c773ea71db8919bb2ef2053ea0c0684c5a1ce4f");
-
-		// Create ItemStack for Mob Spawner
-		ItemStack mobSpawner = new ItemStack(Material.SPAWNER);
-		BlockStateMeta mobSpawnerMeta = (BlockStateMeta) mobSpawner.getItemMeta();
-		CreatureSpawner spawner = (CreatureSpawner) mobSpawnerMeta.getBlockState();
-
-		spawner.setSpawnedType(org.bukkit.entity.EntityType.PLAYER);
-		mobSpawnerMeta.setBlockState(spawner);
-		mobSpawner.setItemMeta(mobSpawnerMeta);
-
 		// ====================
 		// Main help menu
 		// ====================
@@ -196,6 +185,16 @@ public class HelpCommand implements CommandExecutor {
 					mcMMOHelp.open(player);
 				}));
 
+				
+		// Create ItemStack for Mob Spawner
+		ItemStack mobSpawner = new ItemStack(Material.SPAWNER);
+		BlockStateMeta mobSpawnerMeta = (BlockStateMeta) mobSpawner.getItemMeta();
+		CreatureSpawner spawner = (CreatureSpawner) mobSpawnerMeta.getBlockState();
+		
+		spawner.setSpawnedType(org.bukkit.entity.EntityType.PLAYER);
+		mobSpawnerMeta.setBlockState(spawner);
+		mobSpawner.setItemMeta(mobSpawnerMeta);
+				
 		// Silk spawners mainHelp item
 		mainHelp.setItem(3, 4,
 				ItemBuilder.from(mobSpawner).name(mainSilkSpawners).lore(mainSilkSpawnersLore).asGuiItem(event -> {
@@ -318,6 +317,10 @@ public class HelpCommand implements CommandExecutor {
 		generalHelp.setItem(4, 6, ItemBuilder.from(Material.COMPASS).name(generalTeleporting)
 				.lore(List.of(generalTeleportingLore1, generalTeleportingLore2, generalTeleportingLore3)).asGuiItem());
 
+		// Create ItemStack for Discord head
+		ItemStack discordHead = createHead("b722098ae79c7abf002fe9684c773ea71db8919bb2ef2053ea0c0684c5a1ce4f");
+		
+		// Discord help item
 		generalHelp.setItem(5, 5, ItemBuilder.from(discordHead).name(generalDiscord)
 				.lore(List.of(generalDiscordLore1, generalDiscordLore2)).asGuiItem(event -> {
 					player.sendMessage(generalDiscordMessage);
@@ -433,6 +436,52 @@ public class HelpCommand implements CommandExecutor {
 				.text("Doors, Trapdoors, Signs, Fence Gates, Banners, and Composters")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		// Help Items
+		// Explaining protections help item
+		lockItemsHelp.setItem(2, 5, ItemBuilder.from(Material.TRIPWIRE_HOOK).name(lwcExplained)
+				.lore(List.of(lwcExplainedLore1, lwcExplainedLore2, lwcExplainedLore3, lwcExplainedLore4))
+				.asGuiItem(event -> {
+					player.performCommand("lwc");
+				}));
+
+		// Locking items help item
+		lockItemsHelp.setItem(3, 3, ItemBuilder.from(Material.IRON_DOOR).name(lwcLockItem)
+				.lore(List.of(lwcLockItemLore1, lwcLockItemLore2)).asGuiItem(event -> {
+					player.performCommand("cprivate");
+				}));
+		
+		// Unlocking items help item
+		lockItemsHelp.setItem(3, 7, ItemBuilder.from(Material.OAK_DOOR).name(lwcUnlockItem)
+		.lore(List.of(lwcUnlockItemLore1, lwcUnlockItemLore2, lwcUnlockItemLore3)).asGuiItem(event -> {
+			player.performCommand("cremove");
+		}));
+
+		// Sharing locked items help item
+		lockItemsHelp.setItem(4, 4, ItemBuilder.from(Material.PAPER).name(lwcShareLockedItem)
+				.lore(List.of(lwcShareLockedItemLore1, lwcShareLockedItemLore2, lwcShareLockedItemLore3))
+				.asGuiItem(event -> {
+					player.performCommand("cmodify");
+				}));
+
+		// Disabling auto-lock help item
+		lockItemsHelp.setItem(4, 6, ItemBuilder.from(Material.STRUCTURE_VOID).name(lwcDisableAutoLock)
+				.lore(List.of(lwcDisableAutoLockLore1, lwcDisableAutoLockLore2, lwcDisableAutoLockLore3))
+				.asGuiItem(event -> {
+					player.performCommand("cnolock");
+				}));
+
+		// Create ItemStack for enchanted book with Protection IV
+		ItemStack enchantedBookItemStack = new ItemStack(Material.ENCHANTED_BOOK);
+		enchantedBookItemStack.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 10);
+
+		// Types of locks help item
+		lockItemsHelp.setItem(5, 5, ItemBuilder.from(Material.KNOWLEDGE_BOOK).name(lwcProtectionFlags)
+		.lore(List.of(lwcProtectionFlagsLore1, lwcProtectionFlagsLore2, lwcProtectionFlagsLore3, lwcProtectionFlagsLore4, lwcProtectionFlagsLore5, lwcProtectionFlagsLore6, lwcProtectionFlagsLore7, lwcProtectionFlagsLore8)).asGuiItem(event -> {
+			player.performCommand("lwc flag");
+		}));
+
+		// Lockable items help item
+		lockItemsHelp.setItem(2, 8, ItemBuilder.from(Material.CHEST).name(lwcLockableItems)
+				.lore(List.of(lwcLockableItemsLore1, lwcLockableItemsLore2, lwcLockableItemsLore3)).asGuiItem());
 
 		// ====================
 		// Lunar eclipses help menu
