@@ -346,72 +346,92 @@ public class HelpCommand implements CommandExecutor {
 				.decorate(TextDecoration.BOLD);
 
 		// TextComponents for Lore on each item
-		Component lwcExplainedLore1 = Component.text("Protecting your items in your base is quite important. On").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lwcExplainedLore2 = Component.text("the GalaxeSMP, you can protect your chests, doors, and other items").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lwcExplainedLore3 = Component.text("with a couple of commands, and even give your friends access").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lwcExplainedLore4 = Component.text("to your protected items!").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lwcLockItemLore1 = Component.text("To lock an item, run /cprivate to prevent other players to access").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lwcLockItemLore2 = Component.text("your chest/door/etc. You then punch the block you want to protect").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lwcUnlockItemLore1 = Component.text("To unlock an item to allow others to freely access your chest,").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lwcUnlockItemLore2 = Component.text("run /cremove to remove a protected block, and punch the block").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lwcUnlockItemLore3 = Component.text("you want to not protect anymore.").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lwcShareLockedItemLore1 = Component.text("To share a protected chest with someone, run /cmodify. This will").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lwcShareLockedItemLore2 = Component.text("show you all types of options for adding or removing your friends").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lwcShareLockedItemLore3 = Component.text("to a registered protection").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lwcDisableAutoLockLore1 = Component.text("Locking blocks is enabled by default to help protect all your items.").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lwcDisableAutoLockLore2 = Component.text("If you do not want to have this, run /cnolock to disable this action.").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lwcDisableAutoLockLore3 = Component.text("To re-enable this, run /cnolock again to toggle it back on.").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lwcProtectionFlagsLore1 = Component.text("You can use all sorts of nice granular protection flags to make life easier").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lwcProtectionFlagsLore2 = Component.text("for you or everyone. Redstone, automatic closing doors, hoppers, etc.").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lwcProtectionFlagsLore3 = Component.text("can be used to make things easier for you.").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lwcProtectionFlagsLore4 = Component.text("/credstone allows redstone to interact with this protection").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lwcProtectionFlagsLore5 = Component.text("/cmagnet allows items dropped to be sucked into a chest or nearby items").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lwcProtectionFlagsLore6 = Component.text("/chopper allows hoppers to be used with a chest (for granular control, use /lwc flag hopperin/hopperout)").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lwcProtectionFlagsLore7 = Component.text("/cautoclose automagically closes a door if opened.").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lwcProtectionFlagsLore8 = Component.text("To see all the flags, run /lwc flag").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lwcTypesOfLockingLore1 = Component.text("There are many types of protections to use for your specific needs").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lwcTypesOfLockingLore2 = Component.text("Private: Only you can access your protected item, you have to allow your friends to access it.").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lwcTypesOfLockingLore3 = Component.text("Public: Anyone can take or place items from this protection, like a community chest").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lwcTypesOfLockingLore4 = Component.text("Password: You need to provide a password to access the protection, once entered you won't need it until you log off and log back on.").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lwcTypesOfLockingLore5 = Component.text("Donation: Anyone can place items into the protection but cannot take anything out of the protection, like a mailbox").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lwcTypesOfLockingLore6 = Component.text("Display: Anyone can see the contents of a protection, but cannot take or place anything into the protection, great for lecterns").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lwcTypesOfLockingLore7 = Component.text("Supply: Anyone can take the contents of the protection but not add anything to it, like a supply crate.").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lwcLockableItemsLore1 = Component.text("A whole lot of items can be locked, such as:").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lwcLockableItemsLore2 = Component.text("Chests, Furnaces, Dispensers, Droppers, Barrels, Hoppers, Lecterns, Shulker Boxes").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component lwcLockableItemsLore3 = Component.text("Doors, Trapdoors, Signs, Fence Gates, Banners, and Composters").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
+		Component lwcExplainedLore1 = Component.text("Protecting your items in your base is quite important. On")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lwcExplainedLore2 = Component
+				.text("the GalaxeSMP, you can protect your chests, doors, and other items")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lwcExplainedLore3 = Component.text("with a couple of commands, and even give your friends access")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lwcExplainedLore4 = Component.text("to your protected items!")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lwcLockItemLore1 = Component.text("To lock an item, run /cprivate to prevent other players to access")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lwcLockItemLore2 = Component.text("your chest/door/etc. You then punch the block you want to protect")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lwcUnlockItemLore1 = Component.text("To unlock an item to allow others to freely access your chest,")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lwcUnlockItemLore2 = Component.text("run /cremove to remove a protected block, and punch the block")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lwcUnlockItemLore3 = Component.text("you want to not protect anymore.")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lwcShareLockedItemLore1 = Component
+				.text("To share a protected chest with someone, run /cmodify. This will")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lwcShareLockedItemLore2 = Component
+				.text("show you all types of options for adding or removing your friends")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lwcShareLockedItemLore3 = Component.text("to a registered protection")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lwcDisableAutoLockLore1 = Component
+				.text("Locking blocks is enabled by default to help protect all your items.")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lwcDisableAutoLockLore2 = Component
+				.text("If you do not want to have this, run /cnolock to disable this action.")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lwcDisableAutoLockLore3 = Component
+				.text("To re-enable this, run /cnolock again to toggle it back on.")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lwcProtectionFlagsLore1 = Component
+				.text("You can use all sorts of nice granular protection flags to make life easier")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lwcProtectionFlagsLore2 = Component
+				.text("for you or everyone. Redstone, automatic closing doors, hoppers, etc.")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lwcProtectionFlagsLore3 = Component.text("can be used to make things easier for you.")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lwcProtectionFlagsLore4 = Component
+				.text("/credstone allows redstone to interact with this protection")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lwcProtectionFlagsLore5 = Component
+				.text("/cmagnet allows items dropped to be sucked into a chest or nearby items")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lwcProtectionFlagsLore6 = Component.text(
+				"/chopper allows hoppers to be used with a chest (for granular control, use /lwc flag hopperin/hopperout)")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lwcProtectionFlagsLore7 = Component.text("/cautoclose automagically closes a door if opened.")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lwcProtectionFlagsLore8 = Component.text("To see all the flags, run /lwc flag")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lwcTypesOfLockingLore1 = Component
+				.text("There are many types of protections to use for your specific needs")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lwcTypesOfLockingLore2 = Component
+				.text("Private: Only you can access your protected item, you have to allow your friends to access it.")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lwcTypesOfLockingLore3 = Component
+				.text("Public: Anyone can take or place items from this protection, like a community chest")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lwcTypesOfLockingLore4 = Component.text(
+				"Password: You need to provide a password to access the protection, once entered you won't need it until you log off and log back on.")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lwcTypesOfLockingLore5 = Component.text(
+				"Donation: Anyone can place items into the protection but cannot take anything out of the protection, like a mailbox")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lwcTypesOfLockingLore6 = Component.text(
+				"Display: Anyone can see the contents of a protection, but cannot take or place anything into the protection, great for lecterns")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lwcTypesOfLockingLore7 = Component.text(
+				"Supply: Anyone can take the contents of the protection but not add anything to it, like a supply crate.")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lwcLockableItemsLore1 = Component.text("A whole lot of items can be locked, such as:")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lwcLockableItemsLore2 = Component
+				.text("Chests, Furnaces, Dispensers, Droppers, Barrels, Hoppers, Lecterns, Shulker Boxes")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lwcLockableItemsLore3 = Component
+				.text("Doors, Trapdoors, Signs, Fence Gates, Banners, and Composters")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		// Help Items
 
 		// ====================
