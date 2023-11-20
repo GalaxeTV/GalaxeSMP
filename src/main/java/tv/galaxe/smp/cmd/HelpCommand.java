@@ -30,7 +30,7 @@ public class HelpCommand implements CommandExecutor {
 	private static Player player;
 	private static Gui mainHelp = createGui("GalaxeSMP Help Menu", 6, true, false);
 	private static Gui generalHelp = createGui("GalaxeSMP General Help", 6, true, true);
-	private static Gui lockItemsHelp = createGui("GalaxeSMP Locking Items Help", 6, false, true);
+	private static Gui lockItemsHelp = createGui("GalaxeSMP Locking Items Help", 6, true, true);
 	private static Gui lunarEclipsesHelp = createGui("GalaxeSMP Lunar Eclipses Help", 6, false, true);
 	private static Gui mcMMOHelp = createGui("GalaxeSMP mcMMO Help", 6, false, true);
 	private static Gui silkSpawnersHelp = createGui("GalaxeSMP Silk Spawners Help", 6, false, true);
@@ -185,16 +185,15 @@ public class HelpCommand implements CommandExecutor {
 					mcMMOHelp.open(player);
 				}));
 
-				
 		// Create ItemStack for Mob Spawner
 		ItemStack mobSpawner = new ItemStack(Material.SPAWNER);
 		BlockStateMeta mobSpawnerMeta = (BlockStateMeta) mobSpawner.getItemMeta();
 		CreatureSpawner spawner = (CreatureSpawner) mobSpawnerMeta.getBlockState();
-		
+
 		spawner.setSpawnedType(org.bukkit.entity.EntityType.PLAYER);
 		mobSpawnerMeta.setBlockState(spawner);
 		mobSpawner.setItemMeta(mobSpawnerMeta);
-				
+
 		// Silk spawners mainHelp item
 		mainHelp.setItem(3, 4,
 				ItemBuilder.from(mobSpawner).name(mainSilkSpawners).lore(mainSilkSpawnersLore).asGuiItem(event -> {
@@ -319,7 +318,7 @@ public class HelpCommand implements CommandExecutor {
 
 		// Create ItemStack for Discord head
 		ItemStack discordHead = createHead("b722098ae79c7abf002fe9684c773ea71db8919bb2ef2053ea0c0684c5a1ce4f");
-		
+
 		// Discord help item
 		generalHelp.setItem(5, 5, ItemBuilder.from(discordHead).name(generalDiscord)
 				.lore(List.of(generalDiscordLore1, generalDiscordLore2)).asGuiItem(event -> {
@@ -394,94 +393,110 @@ public class HelpCommand implements CommandExecutor {
 		Component lwcProtectionFlagsLore3 = Component.text("can be used to make things easier for you.")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component lwcProtectionFlagsLore4 = Component
-				.text("/credstone allows redstone to interact with this protection")
+				.text("\u2727 /credstone allows redstone to interact with this protection")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component lwcProtectionFlagsLore5 = Component
-				.text("/cmagnet allows items dropped to be sucked into a chest or nearby items")
+				.text("\u2727 /cmagnet allows items dropped to be sucked into a chest or nearby items")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component lwcProtectionFlagsLore6 = Component.text(
-				"/chopper allows hoppers to be used with a chest (for granular control, use /lwc flag hopperin/hopperout)")
+		Component lwcProtectionFlagsLore6 = Component.text("\u2727 /chopper allows hoppers to be used with a chest")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component lwcProtectionFlagsLore7 = Component.text("/cautoclose automagically closes a door if opened.")
+		Component lwcProtectionFlagsLore7 = Component.text("\u2727 /cautoclose automagically closes a door if opened.")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component lwcProtectionFlagsLore8 = Component.text("To see all the flags, run /lwc flag")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component lwcTypesOfLockingLore1 = Component
 				.text("There are many types of protections to use for your specific needs")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component lwcTypesOfLockingLore2 = Component
-				.text("Private: Only you can access your protected item, you have to allow your friends to access it.")
+		Component lwcTypesOfLockingLore2 = Component.text("\u2727 Private: Only you can access your protected item.")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component lwcTypesOfLockingLore3 = Component
-				.text("Public: Anyone can take or place items from this protection, like a community chest")
+		Component lwcTypesOfLockingLore3 = Component.text("\u2727 Public: Anyone can freely access your protected item")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component lwcTypesOfLockingLore4 = Component.text(
-				"Password: You need to provide a password to access the protection, once entered you won't need it until you log off and log back on.")
+		Component lwcTypesOfLockingLore4 = Component
+				.text("\u2727 Password: Input a password to access your protected item")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component lwcTypesOfLockingLore5 = Component.text(
-				"Donation: Anyone can place items into the protection but cannot take anything out of the protection, like a mailbox")
+		Component lwcTypesOfLockingLore5 = Component
+				.text("\u2727 Donation: Anyone can put items in but cannot take out, like a mailbox")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component lwcTypesOfLockingLore6 = Component.text(
-				"Display: Anyone can see the contents of a protection, but cannot take or place anything into the protection, great for lecterns")
+		Component lwcTypesOfLockingLore6 = Component
+				.text("\u2727 Display: Everyone can only see what is inside, great for lecterns")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component lwcTypesOfLockingLore7 = Component.text(
-				"Supply: Anyone can take the contents of the protection but not add anything to it, like a supply crate.")
+		Component lwcTypesOfLockingLore7 = Component
+				.text("\u2727 Supply: Anyone can take items but cannot put anything in, like a supply crate.")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component lwcLockableItemsLore1 = Component.text("A whole lot of items can be locked, such as:")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component lwcLockableItemsLore2 = Component
-				.text("Chests, Furnaces, Dispensers, Droppers, Barrels, Hoppers, Lecterns, Shulker Boxes")
+		Component lwcLockableItemsLore2 = Component.text("Chests, Furnaces, Dispensers, Droppers,")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component lwcLockableItemsLore3 = Component
-				.text("Doors, Trapdoors, Signs, Fence Gates, Banners, and Composters")
+		Component lwcLockableItemsLore3 = Component.text("Barrels, Hoppers, Lecterns, Shulker Boxes,")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lwcLockableItemsLore4 = Component.text("Doors, Trapdoors, Gates, Trapdoors,")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component lwcLockableItemsLore5 = Component.text("Fence Gates, Signs Banners, and Banners")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		// Help Items
-		// Explaining protections help item
-		lockItemsHelp.setItem(2, 5, ItemBuilder.from(Material.TRIPWIRE_HOOK).name(lwcExplained)
-				.lore(List.of(lwcExplainedLore1, lwcExplainedLore2, lwcExplainedLore3, lwcExplainedLore4))
-				.asGuiItem(event -> {
-					player.performCommand("lwc");
-				}));
-
 		// Locking items help item
-		lockItemsHelp.setItem(3, 3, ItemBuilder.from(Material.IRON_DOOR).name(lwcLockItem)
+		lockItemsHelp.setItem(2, 3, ItemBuilder.from(Material.IRON_DOOR).name(lwcLockItem)
 				.lore(List.of(lwcLockItemLore1, lwcLockItemLore2)).asGuiItem(event -> {
 					player.performCommand("cprivate");
 				}));
-		
-		// Unlocking items help item
-		lockItemsHelp.setItem(3, 7, ItemBuilder.from(Material.OAK_DOOR).name(lwcUnlockItem)
-		.lore(List.of(lwcUnlockItemLore1, lwcUnlockItemLore2, lwcUnlockItemLore3)).asGuiItem(event -> {
-			player.performCommand("cremove");
-		}));
 
-		// Sharing locked items help item
-		lockItemsHelp.setItem(4, 4, ItemBuilder.from(Material.PAPER).name(lwcShareLockedItem)
-				.lore(List.of(lwcShareLockedItemLore1, lwcShareLockedItemLore2, lwcShareLockedItemLore3))
-				.asGuiItem(event -> {
-					player.performCommand("cmodify");
+		// Explaining protections help item
+		lockItemsHelp.setItem(2, 5,
+				ItemBuilder.from(Material.TRIPWIRE_HOOK).name(lwcExplained)
+						.lore(List.of(lwcExplainedLore1, lwcExplainedLore2, lwcExplainedLore3, lwcExplainedLore4))
+						.asGuiItem(event -> {
+							player.performCommand("lwc");
+						}));
+
+		// Unlocking items help item
+		lockItemsHelp.setItem(2, 7, ItemBuilder.from(Material.OAK_DOOR).name(lwcUnlockItem)
+				.lore(List.of(lwcUnlockItemLore1, lwcUnlockItemLore2, lwcUnlockItemLore3)).asGuiItem(event -> {
+					player.performCommand("cremove");
 				}));
 
+		// Sharing locked items help item
+		lockItemsHelp.setItem(3, 4,
+				ItemBuilder.from(Material.PAPER).name(lwcShareLockedItem)
+						.lore(List.of(lwcShareLockedItemLore1, lwcShareLockedItemLore2, lwcShareLockedItemLore3))
+						.asGuiItem(event -> {
+							player.performCommand("cmodify");
+						}));
+
 		// Disabling auto-lock help item
-		lockItemsHelp.setItem(4, 6, ItemBuilder.from(Material.STRUCTURE_VOID).name(lwcDisableAutoLock)
-				.lore(List.of(lwcDisableAutoLockLore1, lwcDisableAutoLockLore2, lwcDisableAutoLockLore3))
+		lockItemsHelp.setItem(3, 6,
+				ItemBuilder.from(Material.STRUCTURE_VOID).name(lwcDisableAutoLock)
+						.lore(List.of(lwcDisableAutoLockLore1, lwcDisableAutoLockLore2, lwcDisableAutoLockLore3))
+						.asGuiItem(event -> {
+							player.performCommand("cnolock");
+						}));
+
+		// Types of locking help item
+		lockItemsHelp.setItem(4, 5, ItemBuilder.from(Material.LECTERN).name(lwcTypesOfLocking)
+				.lore(List.of(lwcTypesOfLockingLore1, lwcTypesOfLockingLore2, lwcTypesOfLockingLore3,
+						lwcTypesOfLockingLore4, lwcTypesOfLockingLore5, lwcTypesOfLockingLore6, lwcTypesOfLockingLore7))
 				.asGuiItem(event -> {
-					player.performCommand("cnolock");
+					player.performCommand("lwc create");
 				}));
 
 		// Create ItemStack for enchanted book with Protection IV
 		ItemStack enchantedBookItemStack = new ItemStack(Material.ENCHANTED_BOOK);
 		enchantedBookItemStack.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 10);
 
-		// Types of locks help item
-		lockItemsHelp.setItem(5, 5, ItemBuilder.from(Material.KNOWLEDGE_BOOK).name(lwcProtectionFlags)
-		.lore(List.of(lwcProtectionFlagsLore1, lwcProtectionFlagsLore2, lwcProtectionFlagsLore3, lwcProtectionFlagsLore4, lwcProtectionFlagsLore5, lwcProtectionFlagsLore6, lwcProtectionFlagsLore7, lwcProtectionFlagsLore8)).asGuiItem(event -> {
-			player.performCommand("lwc flag");
-		}));
+		// Protection flags help item
+		lockItemsHelp.setItem(5, 3,
+				ItemBuilder.from(Material.KNOWLEDGE_BOOK).name(lwcProtectionFlags)
+						.lore(List.of(lwcProtectionFlagsLore1, lwcProtectionFlagsLore2, lwcProtectionFlagsLore3,
+								lwcProtectionFlagsLore4, lwcProtectionFlagsLore5, lwcProtectionFlagsLore6,
+								lwcProtectionFlagsLore7, lwcProtectionFlagsLore8))
+						.asGuiItem(event -> {
+							player.performCommand("lwc flag");
+						}));
 
 		// Lockable items help item
-		lockItemsHelp.setItem(2, 8, ItemBuilder.from(Material.CHEST).name(lwcLockableItems)
-				.lore(List.of(lwcLockableItemsLore1, lwcLockableItemsLore2, lwcLockableItemsLore3)).asGuiItem());
+		lockItemsHelp.setItem(5, 7,
+				ItemBuilder.from(Material.CHEST).name(lwcLockableItems).lore(List.of(lwcLockableItemsLore1,
+						lwcLockableItemsLore2, lwcLockableItemsLore3, lwcLockableItemsLore4, lwcLockableItemsLore5))
+						.asGuiItem());
 
 		// ====================
 		// Lunar eclipses help menu
