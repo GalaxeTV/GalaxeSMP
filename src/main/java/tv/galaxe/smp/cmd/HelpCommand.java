@@ -620,12 +620,13 @@ public class HelpCommand implements CommandExecutor {
 				.decorate(TextDecoration.BOLD);
 
 		// TextComponents for Lore on each item
-		Component mcmmoExplainedLore1 = Component.text("mcMMO is a plugin that allows for special skills for normal gameplay").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component mcmmoExplainedLore2 = Component.text("such as mining, woodcutting, and more!").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component mcmmoSkillsLore1 = Component.text("There are many skills to level up, such as:").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
+		Component mcmmoExplainedLore1 = Component
+				.text("mcMMO is a plugin that allows for special skills for normal gameplay")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component mcmmoExplainedLore2 = Component.text("such as mining, woodcutting, and more!")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component mcmmoSkillsLore1 = Component.text("There are many skills to level up, such as:")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component mcmmoSkillsLore2 = Component.text("\u2727 Mining").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
 		Component mcmmoSkillsLore3 = Component.text("\u2727 Woodcutting").color(TextColor.color(colorLightOrange))
@@ -640,26 +641,30 @@ public class HelpCommand implements CommandExecutor {
 				.decorate(TextDecoration.ITALIC);
 		Component mcmmoSkillsLore8 = Component.text("... and so much more").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
-		Component mcmmoPartyLore1 = Component.text("You can create a party with your friends to level up skills together").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component mcmmoPartyLore2 = Component.text("and share experience with each other!").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component mcmmoPartyLore3 = Component.text("You can create a party by running /party").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component mcmmoAbilitiesLore1 = Component.text("As you level up your skills, you can unlock special abilities").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component mcmmoAbilitiesLore2 = Component.text("to help you in your adventures! More levels mean better abilities.").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component mcmmoAbilitiesLore3 = Component.text("You can check your abilities by running /inspect [player]").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component mcmmoAbilitiesLore4 = Component.text("You can also check others abilities by running /mctop").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component mcmmoLeaderboardsLore1 = Component.text("You can see who is the most powerful player by checking the leaderboards!").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component mcmmoLeaderboardsLore2 = Component.text("You can check the leaderboards by running /mctop").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component mcmmoLeaderboardsLore3 = Component.text("You can also check the leaderboards for a specific skill by running /mctop [skill]").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
+		Component mcmmoPartyLore1 = Component
+				.text("You can create a party with your friends to level up skills together")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component mcmmoPartyLore2 = Component.text("and share experience with each other!")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component mcmmoPartyLore3 = Component.text("You can create a party by running /party")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component mcmmoAbilitiesLore1 = Component.text("As you level up your skills, you can unlock special abilities")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component mcmmoAbilitiesLore2 = Component
+				.text("to help you in your adventures! More levels mean better abilities.")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component mcmmoAbilitiesLore3 = Component.text("You can check your abilities by running /inspect [player]")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component mcmmoAbilitiesLore4 = Component.text("You can also check others abilities by running /mctop")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component mcmmoLeaderboardsLore1 = Component
+				.text("You can see who is the most powerful player by checking the leaderboards!")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component mcmmoLeaderboardsLore2 = Component.text("You can check the leaderboards by running /mctop")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component mcmmoLeaderboardsLore3 = Component
+				.text("You can also check the leaderboards for a specific skill by running /mctop [skill]")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 
 		// Help Items
 		// Explaining mcMMO help item
@@ -667,16 +672,22 @@ public class HelpCommand implements CommandExecutor {
 				.lore(List.of(mcmmoExplainedLore1, mcmmoExplainedLore2)).asGuiItem());
 
 		// Skills help item
-		mcmmoHelp.setItem(3, 4, ItemBuilder.from(Material.DIAMOND_PICKAXE).name(mcmmoSkills)
-				.lore(List.of(mcmmoSkillsLore1, mcmmoSkillsLore2, mcmmoSkillsLore3, mcmmoSkillsLore4, mcmmoSkillsLore5, mcmmoSkillsLore6, mcmmoSkillsLore7, mcmmoSkillsLore8)).asGuiItem());
+		mcmmoHelp
+				.setItem(3, 4,
+						ItemBuilder.from(Material.DIAMOND_PICKAXE).name(mcmmoSkills)
+								.lore(List.of(mcmmoSkillsLore1, mcmmoSkillsLore2, mcmmoSkillsLore3, mcmmoSkillsLore4,
+										mcmmoSkillsLore5, mcmmoSkillsLore6, mcmmoSkillsLore7, mcmmoSkillsLore8))
+								.asGuiItem());
 
 		// Party help item
 		mcmmoHelp.setItem(3, 6, ItemBuilder.from(Material.CAKE).name(mcmmoParty)
 				.lore(List.of(mcmmoPartyLore1, mcmmoPartyLore2, mcmmoPartyLore3)).asGuiItem());
 
 		// Abilities help item
-		mcmmoHelp.setItem(4, 3, ItemBuilder.from(Material.DRAGON_BREATH).name(mcmmoAbilities)
-				.lore(List.of(mcmmoAbilitiesLore1, mcmmoAbilitiesLore2, mcmmoAbilitiesLore3, mcmmoAbilitiesLore4)).asGuiItem());
+		mcmmoHelp.setItem(4, 3,
+				ItemBuilder.from(Material.DRAGON_BREATH).name(mcmmoAbilities).lore(
+						List.of(mcmmoAbilitiesLore1, mcmmoAbilitiesLore2, mcmmoAbilitiesLore3, mcmmoAbilitiesLore4))
+						.asGuiItem());
 
 		// Leaderboards help item
 		mcmmoHelp.setItem(4, 7, ItemBuilder.from(Material.PLAYER_HEAD).name(mcmmoLeaderboards)
@@ -689,12 +700,64 @@ public class HelpCommand implements CommandExecutor {
 		// TextComponents for item names
 		Component silkSpawnersExplained = Component.text("What are Silk Spawners?")
 				.color(TextColor.color(colorUltraViolet)).decorate(TextDecoration.BOLD);
+		Component silkSpawnersObtaining = Component.text("Obtaining a Silk Spawner")
+				.color(TextColor.color(colorUltraViolet)).decorate(TextDecoration.BOLD);
+		Component silkSpawnersPlacing = Component.text("Placing a Silk Spawner")
+				.color(TextColor.color(colorUltraViolet)).decorate(TextDecoration.BOLD);
+		Component silkSpawnerscChanging = Component.text("Changing a Silk Spawner")
+				.color(TextColor.color(colorUltraViolet)).decorate(TextDecoration.BOLD);
 
 		// TextComponents for Lore on each item
-		Component silkSpawnersExplainedLore1 = Component.text("").color(TextColor.color(colorLightOrange))
+		Component silkSpawnersExplainedLore1 = Component.text("Spawners before couldn't be mined, which is not great").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
-
+		Component silkSpawnersExplainedLore2 = Component.text("when you want to move a spawner to a new location").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component silkSpawnersExplainedLore3 = Component.text("or to make a farm. With Silk Spawners, you can mine").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component silkSpawnersExplainedLore4 = Component.text("spawners with a Silk Touch pickaxe to get the spawner").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component silkSpawnersExplainedLore5 = Component.text("item, which can be placed down again.").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component silkSpawnersObtainingLore1 = Component.text("To obtain a Silk Spawner, you need to mine a spawner").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component silkSpawnersObtainingLore2 = Component.text("with a Silk Touch pickaxe. You can also buy a spawner").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component silkSpawnersObtainingLore3 = Component.text("from other players.").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component silkSpawnersPlacingLore1 = Component.text("To place a Silk Spawner, just place it on any block.").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component silkSpawnersPlacingLore2 = Component.text("Ya silly little goober.").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component silkSpawnersChangingLore1 = Component.text("To change a Silk Spawner, you need to have a spawn egg").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component silkSpawnersChangingLore2 = Component.text("of the mob you want to change it to. You can get").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component silkSpawnersChangingLore3 = Component.text("spawn eggs from the shop or from other players.").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component silkSpawnersChangingLore4 = Component.text("You can also change the spawner with a command.").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component silkSpawnersChangingLore5 = Component.text("To change a spawner with a command, run /silkspawners set [mob]").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
 		// Help Items
+		// Explaining Silk Spawners help item
+		silkSpawnersHelp.setItem(2, 5, ItemBuilder.from(Material.SPAWNER).name(silkSpawnersExplained)
+				.lore(List.of(silkSpawnersExplainedLore1, silkSpawnersExplainedLore2, silkSpawnersExplainedLore3, silkSpawnersExplainedLore4, silkSpawnersExplainedLore5))
+				.asGuiItem());
+		
+		// Obtaining a Silk Spawner help item
+		silkSpawnersHelp.setItem(3, 4, ItemBuilder.from(Material.IRON_INGOT).name(silkSpawnersObtaining)
+				.lore(List.of(silkSpawnersObtainingLore1, silkSpawnersObtainingLore2, silkSpawnersObtainingLore3))
+				.asGuiItem());
+		
+		// Placing a Silk Spawner help item
+		silkSpawnersHelp.setItem(3, 6, ItemBuilder.from(Material.WRITABLE_BOOK).name(silkSpawnersPlacing)
+				.lore(List.of(silkSpawnersPlacingLore1, silkSpawnersPlacingLore2))
+				.asGuiItem());
+		
+		// Changing a Silk Spawner help item
+		silkSpawnersHelp.setItem(4, 3, ItemBuilder.from(Material.CREEPER_SPAWN_EGG).name(silkSpawnerscChanging)
+				.lore(List.of(silkSpawnersChangingLore1, silkSpawnersChangingLore2, silkSpawnersChangingLore3, silkSpawnersChangingLore4, silkSpawnersChangingLore5))
+				.asGuiItem());
 
 		// ====================
 		// Towny help menu
