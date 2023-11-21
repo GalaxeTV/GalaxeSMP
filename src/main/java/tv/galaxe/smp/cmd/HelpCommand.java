@@ -708,56 +708,61 @@ public class HelpCommand implements CommandExecutor {
 				.color(TextColor.color(colorUltraViolet)).decorate(TextDecoration.BOLD);
 
 		// TextComponents for Lore on each item
-		Component silkSpawnersExplainedLore1 = Component.text("Spawners before couldn't be mined, which is not great").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component silkSpawnersExplainedLore2 = Component.text("when you want to move a spawner to a new location").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component silkSpawnersExplainedLore3 = Component.text("or to make a farm. With Silk Spawners, you can mine").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component silkSpawnersExplainedLore4 = Component.text("spawners with a Silk Touch pickaxe to get the spawner").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component silkSpawnersExplainedLore5 = Component.text("item, which can be placed down again.").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component silkSpawnersObtainingLore1 = Component.text("To obtain a Silk Spawner, you need to mine a spawner").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component silkSpawnersObtainingLore2 = Component.text("with a Silk Touch pickaxe. You can also buy a spawner").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component silkSpawnersObtainingLore3 = Component.text("from other players.").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component silkSpawnersPlacingLore1 = Component.text("To place a Silk Spawner, just place it on any block.").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component silkSpawnersPlacingLore2 = Component.text("Ya silly little goober.").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component silkSpawnersChangingLore1 = Component.text("To change a Silk Spawner, you need to have a spawn egg").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component silkSpawnersChangingLore2 = Component.text("of the mob you want to change it to. You can get").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component silkSpawnersChangingLore3 = Component.text("spawn eggs from the shop or from other players.").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component silkSpawnersChangingLore4 = Component.text("You can also change the spawner with a command.").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		Component silkSpawnersChangingLore5 = Component.text("To change a spawner with a command, run /silkspawners set [mob]").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
+		Component silkSpawnersExplainedLore1 = Component.text("Spawners before couldn't be mined, which is not great")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component silkSpawnersExplainedLore2 = Component.text("when you want to move a spawner to a new location")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component silkSpawnersExplainedLore3 = Component.text("or to make a farm. With Silk Spawners, you can mine")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component silkSpawnersExplainedLore4 = Component.text("spawners with a Silk Touch pickaxe to get the spawner")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component silkSpawnersExplainedLore5 = Component.text("item, which can be placed down again.")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component silkSpawnersObtainingLore1 = Component.text("To obtain a Silk Spawner, you need to mine a spawner")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component silkSpawnersObtainingLore2 = Component.text("with a Silk Touch pickaxe. You can also buy a spawner")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component silkSpawnersObtainingLore3 = Component.text("from other players.")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component silkSpawnersPlacingLore1 = Component.text("To place a Silk Spawner, just place it on any block.")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component silkSpawnersPlacingLore2 = Component.text("Ya silly little goober.")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component silkSpawnersChangingLore1 = Component.text("To change a Silk Spawner, you need to have a spawn egg")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component silkSpawnersChangingLore2 = Component.text("of the mob you want to change it to. You can get")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component silkSpawnersChangingLore3 = Component.text("spawn eggs from the shop or from other players.")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component silkSpawnersChangingLore4 = Component.text("You can also change the spawner with a command.")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component silkSpawnersChangingLore5 = Component
+				.text("To change a spawner with a command, run /silkspawners set [mob]")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		// Help Items
 		// Explaining Silk Spawners help item
-		silkSpawnersHelp.setItem(2, 5, ItemBuilder.from(Material.SPAWNER).name(silkSpawnersExplained)
-				.lore(List.of(silkSpawnersExplainedLore1, silkSpawnersExplainedLore2, silkSpawnersExplainedLore3, silkSpawnersExplainedLore4, silkSpawnersExplainedLore5))
-				.asGuiItem());
-		
+		silkSpawnersHelp.setItem(2, 5,
+				ItemBuilder.from(Material.SPAWNER).name(silkSpawnersExplained)
+						.lore(List.of(silkSpawnersExplainedLore1, silkSpawnersExplainedLore2,
+								silkSpawnersExplainedLore3, silkSpawnersExplainedLore4, silkSpawnersExplainedLore5))
+						.asGuiItem());
+
 		// Obtaining a Silk Spawner help item
-		silkSpawnersHelp.setItem(3, 4, ItemBuilder.from(Material.IRON_INGOT).name(silkSpawnersObtaining)
-				.lore(List.of(silkSpawnersObtainingLore1, silkSpawnersObtainingLore2, silkSpawnersObtainingLore3))
-				.asGuiItem());
-		
+		silkSpawnersHelp.setItem(3, 4,
+				ItemBuilder.from(Material.IRON_INGOT).name(silkSpawnersObtaining).lore(
+						List.of(silkSpawnersObtainingLore1, silkSpawnersObtainingLore2, silkSpawnersObtainingLore3))
+						.asGuiItem());
+
 		// Placing a Silk Spawner help item
 		silkSpawnersHelp.setItem(3, 6, ItemBuilder.from(Material.WRITABLE_BOOK).name(silkSpawnersPlacing)
-				.lore(List.of(silkSpawnersPlacingLore1, silkSpawnersPlacingLore2))
-				.asGuiItem());
-		
+				.lore(List.of(silkSpawnersPlacingLore1, silkSpawnersPlacingLore2)).asGuiItem());
+
 		// Changing a Silk Spawner help item
-		silkSpawnersHelp.setItem(4, 3, ItemBuilder.from(Material.CREEPER_SPAWN_EGG).name(silkSpawnerscChanging)
-				.lore(List.of(silkSpawnersChangingLore1, silkSpawnersChangingLore2, silkSpawnersChangingLore3, silkSpawnersChangingLore4, silkSpawnersChangingLore5))
-				.asGuiItem());
+		silkSpawnersHelp.setItem(4, 5,
+				ItemBuilder.from(Material.CREEPER_SPAWN_EGG).name(silkSpawnerscChanging)
+						.lore(List.of(silkSpawnersChangingLore1, silkSpawnersChangingLore2, silkSpawnersChangingLore3,
+								silkSpawnersChangingLore4, silkSpawnersChangingLore5))
+						.asGuiItem());
 
 		// ====================
 		// Towny help menu
