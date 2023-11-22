@@ -33,7 +33,7 @@ public class HelpCommand implements CommandExecutor {
 	private static Gui lockItemsHelp = createGui("GalaxeSMP Locking Items", 6, true, true);
 	private static Gui lunarEclipsesHelp = createGui("GalaxeSMP Lunar Eclipses", 6, true, true);
 	private static Gui mcmmoHelp = createGui("GalaxeSMP mcMMO Help", 6, true, true);
-	private static Gui silkSpawnersHelp = createGui("GalaxeSMP Silk Spawners", 6, false, true);
+	private static Gui silkSpawnersHelp = createGui("GalaxeSMP Silk Spawners", 6, true, true);
 	private static Gui townyHelp = createGui("GalaxeSMP Towny", 6, false, true);
 	private static Gui economyHelp = createGui("GalaxeSMP Economy", 6, false, true);
 	private static Gui gravesHelp = createGui("GalaxeSMP Graves", 6, false, true);
@@ -266,7 +266,7 @@ public class HelpCommand implements CommandExecutor {
 				.decorate(TextDecoration.ITALIC).append(Component.text("#smp-tickets")
 						.color(TextColor.color(colorDiscordBlurple)).decorate(TextDecoration.ITALIC));
 		Component generalTicketHover = Component
-				.text("Please give a description on what you are experiencing so we can resolve this quickly.")
+				.text("Please give a description on what you are experiencing so we can resolve this quickly")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component generalTicketMessage = Component.text("Direct link to #smp-tickets")
 				.color(TextColor.color(colorDiscordBlurple)).decorate(TextDecoration.ITALIC)
@@ -365,10 +365,10 @@ public class HelpCommand implements CommandExecutor {
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component lwcUnlockItemLore2 = Component.text("run /cremove to remove a protected block, and punch the block")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component lwcUnlockItemLore3 = Component.text("you want to not protect anymore.")
+		Component lwcUnlockItemLore3 = Component.text("you want to not protect anymore")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component lwcShareLockedItemLore1 = Component
-				.text("To share a protected chest with someone, run /cmodify. This will")
+				.text("To share a protected chest with someone, run /cmodify, this will")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component lwcShareLockedItemLore2 = Component
 				.text("show you all types of options for adding or removing your friends")
@@ -376,10 +376,10 @@ public class HelpCommand implements CommandExecutor {
 		Component lwcShareLockedItemLore3 = Component.text("to a registered protection")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component lwcDisableAutoLockLore1 = Component
-				.text("Locking blocks is enabled by default to help protect all your items.")
+				.text("Locking blocks is enabled by default to help protect all your items")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component lwcDisableAutoLockLore2 = Component
-				.text("If you do not want to have this, run /cnolock to disable this action.")
+				.text("If you do not want to have this, run /cnolock to disable this action")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component lwcDisableAutoLockLore3 = Component
 				.text("To re-enable this, run /cnolock again to toggle it back on.")
@@ -390,7 +390,7 @@ public class HelpCommand implements CommandExecutor {
 		Component lwcProtectionFlagsLore2 = Component
 				.text("for you or everyone. Redstone, automatic closing doors, hoppers, etc.")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component lwcProtectionFlagsLore3 = Component.text("can be used to make things easier for you.")
+		Component lwcProtectionFlagsLore3 = Component.text("can be used to make things easier for you")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component lwcProtectionFlagsLore4 = Component
 				.text("\u2727 /credstone allows redstone to interact with this protection")
@@ -400,28 +400,28 @@ public class HelpCommand implements CommandExecutor {
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component lwcProtectionFlagsLore6 = Component.text("\u2727 /chopper allows hoppers to be used with a chest")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component lwcProtectionFlagsLore7 = Component.text("\u2727 /cautoclose automagically closes a door if opened.")
+		Component lwcProtectionFlagsLore7 = Component.text("\u2727 /cautoclose automagically closes a door if opened")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component lwcProtectionFlagsLore8 = Component.text("To see all the flags, run /lwc flag")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component lwcTypesOfLockingLore1 = Component
 				.text("There are many types of protections to use for your specific needs")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component lwcTypesOfLockingLore2 = Component.text("\u2727 Private: Only you can access your protected item.")
+		Component lwcTypesOfLockingLore2 = Component.text("\u2727 Private: Only the owner can access the protected item")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component lwcTypesOfLockingLore3 = Component.text("\u2727 Public: Anyone can freely access your protected item")
+		Component lwcTypesOfLockingLore3 = Component.text("\u2727 Public: Anyone can freely access the protected item")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component lwcTypesOfLockingLore4 = Component
-				.text("\u2727 Password: Input a password to access your protected item")
+				.text("\u2727 Password: Requires a password for access")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component lwcTypesOfLockingLore5 = Component
-				.text("\u2727 Donation: Anyone can put items in but cannot take out, like a mailbox")
+				.text("\u2727 Donation: Others can deposit items, but withdrawals are restricted (e.g., mailbox)")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component lwcTypesOfLockingLore6 = Component
-				.text("\u2727 Display: Everyone can only see what is inside, great for lecterns")
+				.text("\u2727 Display: Items are visible to everyone (e.g., great for lecterns)")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component lwcTypesOfLockingLore7 = Component
-				.text("\u2727 Supply: Anyone can take items but cannot put anything in, like a supply crate.")
+				.text("\u2727 Supply: Open for withdrawals, but no deposits allowed (e.g., supply crate)")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component lwcLockableItemsLore1 = Component.text("A whole lot of items can be locked, such as:")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
@@ -429,17 +429,10 @@ public class HelpCommand implements CommandExecutor {
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component lwcLockableItemsLore3 = Component.text("Barrels, Hoppers, Lecterns, Shulker Boxes,")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component lwcLockableItemsLore4 = Component.text("Doors, Trapdoors, Gates, Trapdoors,")
+		Component lwcLockableItemsLore4 = Component.text("Doors, Trapdoors, Gates, Signs, and Banners")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component lwcLockableItemsLore5 = Component.text("Fence Gates, Signs Banners, and Banners")
-				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		// Help Items
-		// Locking items help item
-		lockItemsHelp.setItem(2, 3, ItemBuilder.from(Material.IRON_DOOR).name(lwcLockItem)
-				.lore(List.of(lwcLockItemLore1, lwcLockItemLore2)).asGuiItem(event -> {
-					player.performCommand("cprivate");
-				}));
 
+		// Help Items
 		// Explaining protections help item
 		lockItemsHelp.setItem(2, 5,
 				ItemBuilder.from(Material.TRIPWIRE_HOOK).name(lwcExplained)
@@ -447,6 +440,13 @@ public class HelpCommand implements CommandExecutor {
 						.asGuiItem(event -> {
 							player.performCommand("lwc");
 						}));
+
+		// Locking items help item
+		lockItemsHelp.setItem(2, 3, ItemBuilder.from(Material.IRON_DOOR).name(lwcLockItem)
+				.lore(List.of(lwcLockItemLore1, lwcLockItemLore2)).asGuiItem(event -> {
+					player.performCommand("cprivate");
+				}));
+
 
 		// Unlocking items help item
 		lockItemsHelp.setItem(2, 7, ItemBuilder.from(Material.OAK_DOOR).name(lwcUnlockItem)
@@ -495,7 +495,7 @@ public class HelpCommand implements CommandExecutor {
 		// Lockable items help item
 		lockItemsHelp.setItem(5, 7,
 				ItemBuilder.from(Material.CHEST).name(lwcLockableItems).lore(List.of(lwcLockableItemsLore1,
-						lwcLockableItemsLore2, lwcLockableItemsLore3, lwcLockableItemsLore4, lwcLockableItemsLore5))
+						lwcLockableItemsLore2, lwcLockableItemsLore3, lwcLockableItemsLore4))
 						.asGuiItem());
 
 		// ====================
@@ -651,7 +651,7 @@ public class HelpCommand implements CommandExecutor {
 		Component mcmmoAbilitiesLore1 = Component.text("As you level up your skills, you can unlock special abilities")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component mcmmoAbilitiesLore2 = Component
-				.text("to help you in your adventures! More levels mean better abilities.")
+				.text("to help you in your adventures! More levels mean better abilities")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component mcmmoAbilitiesLore3 = Component.text("You can check your abilities by running /inspect [player]")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
@@ -716,7 +716,7 @@ public class HelpCommand implements CommandExecutor {
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component silkSpawnersExplainedLore4 = Component.text("spawners with a Silk Touch pickaxe to get the spawner")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component silkSpawnersExplainedLore5 = Component.text("item, which can be placed down again.")
+		Component silkSpawnersExplainedLore5 = Component.text("item, which can be placed down again")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component silkSpawnersObtainingLore1 = Component.text("To obtain a Silk Spawner, you need to mine a spawner")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
@@ -724,21 +724,17 @@ public class HelpCommand implements CommandExecutor {
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component silkSpawnersObtainingLore3 = Component.text("from other players.")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component silkSpawnersPlacingLore1 = Component.text("To place a Silk Spawner, just place it on any block.")
+		Component silkSpawnersPlacingLore1 = Component.text("To place a Silk Spawner, just place it on any block")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component silkSpawnersPlacingLore2 = Component.text("Ya silly little goober.")
+		Component silkSpawnersPlacingLore2 = Component.text("Ya silly little goober")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component silkSpawnersChangingLore1 = Component.text("To change a Silk Spawner, you need to have a spawn egg")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component silkSpawnersChangingLore2 = Component.text("of the mob you want to change it to. You can get")
+		Component silkSpawnersChangingLore2 = Component.text("of the mob you want to change it to, you can also get")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component silkSpawnersChangingLore3 = Component.text("spawn eggs from the shop or from other players.")
+		Component silkSpawnersChangingLore3 = Component.text("spawn eggs from the shop or from other players")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component silkSpawnersChangingLore4 = Component.text("You can also change the spawner with a command.")
-				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component silkSpawnersChangingLore5 = Component
-				.text("To change a spawner with a command, run /silkspawners set [mob]")
-				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+
 		// Help Items
 		// Explaining Silk Spawners help item
 		silkSpawnersHelp.setItem(2, 5,
@@ -760,8 +756,7 @@ public class HelpCommand implements CommandExecutor {
 		// Changing a Silk Spawner help item
 		silkSpawnersHelp.setItem(4, 5,
 				ItemBuilder.from(Material.CREEPER_SPAWN_EGG).name(silkSpawnerscChanging)
-						.lore(List.of(silkSpawnersChangingLore1, silkSpawnersChangingLore2, silkSpawnersChangingLore3,
-								silkSpawnersChangingLore4, silkSpawnersChangingLore5))
+						.lore(List.of(silkSpawnersChangingLore1, silkSpawnersChangingLore2, silkSpawnersChangingLore3))
 						.asGuiItem());
 
 		// ====================
@@ -785,12 +780,113 @@ public class HelpCommand implements CommandExecutor {
 		// TextComponents for item names
 		Component ecoExplained = Component.text("Why money?").color(TextColor.color(colorUltraViolet))
 				.decorate(TextDecoration.BOLD);
+		Component ecoSellingItems = Component.text("Selling items").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component ecoBuyingItems = Component.text("Buying items").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component ecoBank = Component.text("Bank").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component ecoShop = Component.text("Shop").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component ecoItemWorth = Component.text("Item Values").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
 
 		// TextComponents for Lore on each item
-		Component ecoExplainedLore1 = Component.text("").color(TextColor.color(colorLightOrange))
+		Component ecoExplainedLore1 = Component.text("Outside of trading items for goods or services,")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component ecoExplainedLore2 = Component.text("money is a great way to get what you need quickly")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component ecoExplainedLore3 = Component.text("You can earn money by selling items to the server")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component ecoExplainedLore4 = Component.text("or other players, or by trading items for money")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component ecoSellingItemsLore1 = Component.text("You can sell items to the server by running /sell,")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component ecoSellingItemsLore2 = Component.text("you can specify an item with an amount, what is")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component ecoSellingItemsLore3 = Component.text("in your hand, or all items in your inventory")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component ecoBuyingItemsLore1 = Component.text("You can buy items from the server by going to the server shop")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component ecoBuyingItemsLore2 = Component.text("You can also buy items from other players either directly through")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component ecoBuyingItemsLore3 = Component.text("/pay or a player-run sign shop").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
+		Component ecoBankLore1 = Component.text("All money you earn is stored in a bank automatically for you")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component ecoBankLore2 = Component.text("You can check your balance by running /balance")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component ecoBankLore3 = Component.text("There is also a leaderboard on who has the most money")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component ecoBankLore4 = Component.text("You can check the leaderboard by running /baltop")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component ecoShopLore1 = Component.text("The server will have a shop where you can buy items,")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component ecoShopLore2 = Component.text("but you can also make your own shop to sell items to other players")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component ecoShopLore3 = Component.text("You can make a sign shop by placing a sign and typing [Trade] on the first line")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component ecoShopLore4 = Component.text("Then, set the price of the item you want to sell on the second line")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component ecoShopLore5 = Component.text("Then, set what you are giving in return for money on the third line, and the amount you want to load into the sign")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component ecoShopLore6 = Component.text("Keep the fourth line blank").color(TextColor.color(colorLightOrange))
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component ecoShopMessage1 = Component.text("Trade Sign Example:").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component ecoShopMessage2 = Component.text("[Trade]").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component ecoShopMessage3 = Component.text("$69420").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component ecoShopMessage4 = Component.text("1 dirt:794").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component ecoShopMessage5 = Component.text("").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		
+		Component ecoItemWorthLore1 = Component.text("You can check the value of an item by running /worth")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 
 		// Help Items
+		// Explaining money help item
+		economyHelp.setItem(2, 5,
+				ItemBuilder.from(Material.GOLD_INGOT).name(ecoExplained)
+						.lore(List.of(ecoExplainedLore1, ecoExplainedLore2, ecoExplainedLore3, ecoExplainedLore4))
+						.asGuiItem());
+
+		// Selling items help item
+		economyHelp.setItem(3, 4,
+				ItemBuilder.from(Material.DIAMOND).name(ecoSellingItems)
+						.lore(List.of(ecoSellingItemsLore1, ecoSellingItemsLore2, ecoSellingItemsLore3)).asGuiItem());
+
+		// Buying items help item
+		economyHelp.setItem(3, 6,
+				ItemBuilder.from(Material.EMERALD).name(ecoBuyingItems)
+						.lore(List.of(ecoBuyingItemsLore1, ecoBuyingItemsLore2, ecoBuyingItemsLore3)).asGuiItem());
+
+		// Bank help item
+		economyHelp.setItem(4, 5,
+				ItemBuilder.from(Material.WRITABLE_BOOK).name(ecoBank).lore(List.of(ecoBankLore1, ecoBankLore2, ecoBankLore3, ecoBankLore4))
+						.asGuiItem(
+								event -> {
+									player.performCommand("balance");
+								}
+						));
+
+		// Shop help item
+		economyHelp.setItem(4, 7,
+				ItemBuilder.from(Material.BARREL).name(ecoShop).lore(List.of(ecoShopLore1, ecoShopLore2, ecoShopLore3, ecoShopLore4, ecoShopLore5, ecoShopLore6))
+						.asGuiItem(
+								event -> {
+									for (Component message : List.of(ecoShopMessage1, ecoShopMessage2, ecoShopMessage3, ecoShopMessage4, ecoShopMessage5)) {
+										player.sendMessage(message);
+									}
+								}
+						));
+
+		// Item worth help item
+		economyHelp.setItem(5, 5,
+				ItemBuilder.from(Material.LAPIS_LAZULI).name(ecoItemWorth)
+						.lore(List.of(ecoItemWorthLore1, ecoItemWorthLore1)).asGuiItem());
 
 		// ====================
 		// Graves help menu
