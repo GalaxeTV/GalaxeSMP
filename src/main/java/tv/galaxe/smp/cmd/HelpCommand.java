@@ -838,14 +838,7 @@ public class HelpCommand implements CommandExecutor {
 		Component ecoShopLore2 = Component.text("but you can also make your own shop to sell items to other players")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component ecoShopLore3 = Component
-				.text("You can make a sign shop by placing a sign and typing [Trade] on the first line")
-				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component ecoShopLore4 = Component.text("Then, set the price of the item you want to sell on the second line")
-				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component ecoShopLore5 = Component.text(
-				"Then, set what you are giving in return for money on the third line, and the amount you want to load into the sign")
-				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component ecoShopLore6 = Component.text("Keep the fourth line blank").color(TextColor.color(colorLightOrange))
+				.text("You can make a sign shop by looking at the example by clicking on this item")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component ecoShopMessage1 = Component.text("Trade Sign Example:").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
@@ -882,7 +875,7 @@ public class HelpCommand implements CommandExecutor {
 		// Shop help item
 		economyHelp.setItem(4, 7,
 				ItemBuilder.from(Material.BARREL).name(ecoShop).lore(
-						List.of(ecoShopLore1, ecoShopLore2, ecoShopLore3, ecoShopLore4, ecoShopLore5, ecoShopLore6))
+						List.of(ecoShopLore1, ecoShopLore2, ecoShopLore3))
 						.asGuiItem(event -> {
 							for (Component message : List.of(ecoShopMessage1, ecoShopMessage2, ecoShopMessage3,
 									ecoShopMessage4, ecoShopMessage5)) {
