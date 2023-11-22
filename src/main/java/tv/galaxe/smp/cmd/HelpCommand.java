@@ -35,10 +35,10 @@ public class HelpCommand implements CommandExecutor {
 	private static Gui mcmmoHelp = createGui("GalaxeSMP mcMMO Help", 6, true, true);
 	private static Gui silkSpawnersHelp = createGui("GalaxeSMP Silk Spawners", 6, true, true);
 	private static Gui townyHelp = createGui("GalaxeSMP Towny", 6, false, true);
-	private static Gui economyHelp = createGui("GalaxeSMP Economy", 6, false, true);
+	private static Gui economyHelp = createGui("GalaxeSMP Economy", 6, true, true);
 	private static Gui gravesHelp = createGui("GalaxeSMP Graves", 6, false, true);
 	private static Gui eventsHelp = createGui("GalaxeSMP Events", 6, false, true);
-	private static Gui pronounsHelp = createGui("GalaxeSMP Pronouns", 6, false, true);
+	private static Gui pronounsHelp = createGui("GalaxeSMP Pronouns", 6, true, true);
 	private static final int colorUltraViolet = 0x515979;
 	private static final int colorSpaceCadet = 0x262F58;
 	private static final int colorLightOrange = 0xFFDAB6;
@@ -407,12 +407,12 @@ public class HelpCommand implements CommandExecutor {
 		Component lwcTypesOfLockingLore1 = Component
 				.text("There are many types of protections to use for your specific needs")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component lwcTypesOfLockingLore2 = Component.text("\u2727 Private: Only the owner can access the protected item")
+		Component lwcTypesOfLockingLore2 = Component
+				.text("\u2727 Private: Only the owner can access the protected item")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component lwcTypesOfLockingLore3 = Component.text("\u2727 Public: Anyone can freely access the protected item")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component lwcTypesOfLockingLore4 = Component
-				.text("\u2727 Password: Requires a password for access")
+		Component lwcTypesOfLockingLore4 = Component.text("\u2727 Password: Requires a password for access")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component lwcTypesOfLockingLore5 = Component
 				.text("\u2727 Donation: Others can deposit items, but withdrawals are restricted (e.g., mailbox)")
@@ -446,7 +446,6 @@ public class HelpCommand implements CommandExecutor {
 				.lore(List.of(lwcLockItemLore1, lwcLockItemLore2)).asGuiItem(event -> {
 					player.performCommand("cprivate");
 				}));
-
 
 		// Unlocking items help item
 		lockItemsHelp.setItem(2, 7, ItemBuilder.from(Material.OAK_DOOR).name(lwcUnlockItem)
@@ -493,10 +492,12 @@ public class HelpCommand implements CommandExecutor {
 						}));
 
 		// Lockable items help item
-		lockItemsHelp.setItem(5, 7,
-				ItemBuilder.from(Material.CHEST).name(lwcLockableItems).lore(List.of(lwcLockableItemsLore1,
-						lwcLockableItemsLore2, lwcLockableItemsLore3, lwcLockableItemsLore4))
-						.asGuiItem());
+		lockItemsHelp
+				.setItem(5, 7,
+						ItemBuilder
+								.from(Material.CHEST).name(lwcLockableItems).lore(List.of(lwcLockableItemsLore1,
+										lwcLockableItemsLore2, lwcLockableItemsLore3, lwcLockableItemsLore4))
+								.asGuiItem());
 
 		// ====================
 		// Lunar eclipses help menu
@@ -681,17 +682,25 @@ public class HelpCommand implements CommandExecutor {
 
 		// Party help item
 		mcmmoHelp.setItem(3, 6, ItemBuilder.from(Material.CAKE).name(mcmmoParty)
-				.lore(List.of(mcmmoPartyLore1, mcmmoPartyLore2, mcmmoPartyLore3)).asGuiItem());
+				.lore(List.of(mcmmoPartyLore1, mcmmoPartyLore2, mcmmoPartyLore3)).asGuiItem(event -> {
+					player.performCommand("party");
+				}));
 
 		// Abilities help item
 		mcmmoHelp.setItem(4, 3,
 				ItemBuilder.from(Material.DRAGON_BREATH).name(mcmmoAbilities).lore(
 						List.of(mcmmoAbilitiesLore1, mcmmoAbilitiesLore2, mcmmoAbilitiesLore3, mcmmoAbilitiesLore4))
-						.asGuiItem());
+						.asGuiItem(event -> {
+							player.performCommand("inspect " + player.getName());
+						}));
 
 		// Leaderboards help item
-		mcmmoHelp.setItem(4, 7, ItemBuilder.from(Material.PLAYER_HEAD).name(mcmmoLeaderboards)
-				.lore(List.of(mcmmoLeaderboardsLore1, mcmmoLeaderboardsLore2, mcmmoLeaderboardsLore3)).asGuiItem());
+		mcmmoHelp.setItem(4, 7,
+				ItemBuilder.from(Material.PLAYER_HEAD).name(mcmmoLeaderboards)
+						.lore(List.of(mcmmoLeaderboardsLore1, mcmmoLeaderboardsLore2, mcmmoLeaderboardsLore3))
+						.asGuiItem(event -> {
+							player.performCommand("mctop");
+						}));
 
 		// ====================
 		// Silk spawners help menu
@@ -772,6 +781,9 @@ public class HelpCommand implements CommandExecutor {
 				.decorate(TextDecoration.ITALIC);
 
 		// Help Items
+		// Explaining Towny help item
+		townyHelp.setItem(2, 5, ItemBuilder.from(Material.ENCHANTED_BOOK).name(townyExplained)
+				.lore(List.of(townyExplainedLore1)).asGuiItem());
 
 		// ====================
 		// Economy help menu
@@ -808,10 +820,11 @@ public class HelpCommand implements CommandExecutor {
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component ecoBuyingItemsLore1 = Component.text("You can buy items from the server by going to the server shop")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component ecoBuyingItemsLore2 = Component.text("You can also buy items from other players either directly through")
+		Component ecoBuyingItemsLore2 = Component
+				.text("You can also buy items from other players either directly through")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component ecoBuyingItemsLore3 = Component.text("/pay or a player-run sign shop").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
+		Component ecoBuyingItemsLore3 = Component.text("/pay or a player-run sign shop")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component ecoBankLore1 = Component.text("All money you earn is stored in a bank automatically for you")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component ecoBankLore2 = Component.text("You can check your balance by running /balance")
@@ -824,11 +837,13 @@ public class HelpCommand implements CommandExecutor {
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component ecoShopLore2 = Component.text("but you can also make your own shop to sell items to other players")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component ecoShopLore3 = Component.text("You can make a sign shop by placing a sign and typing [Trade] on the first line")
+		Component ecoShopLore3 = Component
+				.text("You can make a sign shop by placing a sign and typing [Trade] on the first line")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component ecoShopLore4 = Component.text("Then, set the price of the item you want to sell on the second line")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component ecoShopLore5 = Component.text("Then, set what you are giving in return for money on the third line, and the amount you want to load into the sign")
+		Component ecoShopLore5 = Component.text(
+				"Then, set what you are giving in return for money on the third line, and the amount you want to load into the sign")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component ecoShopLore6 = Component.text("Keep the fourth line blank").color(TextColor.color(colorLightOrange))
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
@@ -840,53 +855,50 @@ public class HelpCommand implements CommandExecutor {
 				.decorate(TextDecoration.ITALIC);
 		Component ecoShopMessage4 = Component.text("1 dirt:794").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
-		Component ecoShopMessage5 = Component.text("").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
-		
+		Component ecoShopMessage5 = Component.text("For more information, click here")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component ecoItemWorthLore1 = Component.text("You can check the value of an item by running /worth")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 
 		// Help Items
 		// Explaining money help item
-		economyHelp.setItem(2, 5,
-				ItemBuilder.from(Material.GOLD_INGOT).name(ecoExplained)
-						.lore(List.of(ecoExplainedLore1, ecoExplainedLore2, ecoExplainedLore3, ecoExplainedLore4))
-						.asGuiItem());
+		economyHelp.setItem(2, 5, ItemBuilder.from(Material.GOLD_INGOT).name(ecoExplained)
+				.lore(List.of(ecoExplainedLore1, ecoExplainedLore2, ecoExplainedLore3, ecoExplainedLore4)).asGuiItem());
 
 		// Selling items help item
-		economyHelp.setItem(3, 4,
-				ItemBuilder.from(Material.DIAMOND).name(ecoSellingItems)
-						.lore(List.of(ecoSellingItemsLore1, ecoSellingItemsLore2, ecoSellingItemsLore3)).asGuiItem());
+		economyHelp.setItem(3, 4, ItemBuilder.from(Material.DIAMOND).name(ecoSellingItems)
+				.lore(List.of(ecoSellingItemsLore1, ecoSellingItemsLore2, ecoSellingItemsLore3)).asGuiItem());
 
 		// Buying items help item
-		economyHelp.setItem(3, 6,
-				ItemBuilder.from(Material.EMERALD).name(ecoBuyingItems)
-						.lore(List.of(ecoBuyingItemsLore1, ecoBuyingItemsLore2, ecoBuyingItemsLore3)).asGuiItem());
+		economyHelp.setItem(3, 6, ItemBuilder.from(Material.EMERALD).name(ecoBuyingItems)
+				.lore(List.of(ecoBuyingItemsLore1, ecoBuyingItemsLore2, ecoBuyingItemsLore3)).asGuiItem());
 
 		// Bank help item
-		economyHelp.setItem(4, 5,
-				ItemBuilder.from(Material.WRITABLE_BOOK).name(ecoBank).lore(List.of(ecoBankLore1, ecoBankLore2, ecoBankLore3, ecoBankLore4))
-						.asGuiItem(
-								event -> {
-									player.performCommand("balance");
-								}
-						));
+		economyHelp.setItem(4, 3, ItemBuilder.from(Material.WRITABLE_BOOK).name(ecoBank)
+				.lore(List.of(ecoBankLore1, ecoBankLore2, ecoBankLore3, ecoBankLore4)).asGuiItem(event -> {
+					player.performCommand("balance");
+				}));
 
 		// Shop help item
 		economyHelp.setItem(4, 7,
-				ItemBuilder.from(Material.BARREL).name(ecoShop).lore(List.of(ecoShopLore1, ecoShopLore2, ecoShopLore3, ecoShopLore4, ecoShopLore5, ecoShopLore6))
-						.asGuiItem(
-								event -> {
-									for (Component message : List.of(ecoShopMessage1, ecoShopMessage2, ecoShopMessage3, ecoShopMessage4, ecoShopMessage5)) {
-										player.sendMessage(message);
-									}
-								}
-						));
+				ItemBuilder.from(Material.BARREL).name(ecoShop).lore(
+						List.of(ecoShopLore1, ecoShopLore2, ecoShopLore3, ecoShopLore4, ecoShopLore5, ecoShopLore6))
+						.asGuiItem(event -> {
+							for (Component message : List.of(ecoShopMessage1, ecoShopMessage2, ecoShopMessage3,
+									ecoShopMessage4, ecoShopMessage5)) {
+								player.sendMessage(message
+										.hoverEvent(HoverEvent.showText(Component.text("Click to go to the wiki")
+												.color(TextColor.color(colorLightOrange))))
+										.clickEvent(ClickEvent
+												.openUrl("https://wiki.mc-ess.net/wiki/Sign_Tutorial#Trade_Sign")));
+							}
+						}));
 
 		// Item worth help item
-		economyHelp.setItem(5, 5,
-				ItemBuilder.from(Material.LAPIS_LAZULI).name(ecoItemWorth)
-						.lore(List.of(ecoItemWorthLore1, ecoItemWorthLore1)).asGuiItem());
+		economyHelp.setItem(5, 5, ItemBuilder.from(Material.LAPIS_LAZULI).name(ecoItemWorth)
+				.lore(List.of(ecoItemWorthLore1)).asGuiItem(event -> {
+					player.performCommand("worth inventory");
+				}));
 
 		// ====================
 		// Graves help menu
@@ -907,7 +919,7 @@ public class HelpCommand implements CommandExecutor {
 		// ====================
 
 		// TextComponents for item names
-		Component eventsExplained = Component.text("").color(TextColor.color(colorUltraViolet))
+		Component eventsExplained = Component.text("Events").color(TextColor.color(colorUltraViolet))
 				.decorate(TextDecoration.BOLD);
 
 		// TextComponents for Lore on each item
@@ -921,14 +933,78 @@ public class HelpCommand implements CommandExecutor {
 		// ====================
 
 		// TextComponents for item names
-		Component pronounsExplained = Component.text("").color(TextColor.color(colorUltraViolet))
+		Component pronounsExplained = Component.text("Pronouns").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component pronounsSet = Component.text("Setting your pronouns").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component pronounsView = Component.text("Viewing other's pronouns").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component pronounsList = Component.text("List of pronouns").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component pronounsClear = Component.text("Clearing your pronouns").color(TextColor.color(colorUltraViolet))
 				.decorate(TextDecoration.BOLD);
 
 		// TextComponents for Lore on each item
-		Component pronounsExplainedLore1 = Component.text("").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
+		Component pronounsExplainedLore1 = Component
+				.text("We believe in inclusivity and respecting individual identities,")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component pronounsExplainedLore2 = Component
+				.text("to help with this, we have a pronouns system to allow you to set your pronouns")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component pronounsExplainedLore3 = Component.text("Express yourself freely and comfortably, just be you!")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component pronounsSetLore1 = Component.text("To set your pronouns, run /pronouns set [pronouns]")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component pronounsSetLore2 = Component
+				.text("You can also set your pronouns by running /pronouns set and clicking on the pronouns you want")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component pronounsViewLore1 = Component
+				.text("Viewing someone's pronouns is seen through every single chat message.")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component pronounsViewLore2 = Component.text("You can also view your own pronouns using /pronouns view")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component pronounsListLore1 = Component
+				.text("To prevent abuse of pronouns, we have a set list of valid pronouns")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component pronounsListLore2 = Component.text("You can view the full list of pronouns by running /pronouns list")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component pronounsListLore3 = Component
+				.text("If you don't see your pronouns, please make a ticket so we can add your pronouns to the server")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component pronounsClearLore1 = Component.text("To clear your pronouns, run /pronouns clear")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component pronounsClearLore2 = Component
+				.text("This will remove your pronouns from chat and other menus and items")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 
 		// Help Items
+		// Explaining pronouns help item
+		pronounsHelp.setItem(2, 5, ItemBuilder.from(Material.PAPER).name(pronounsExplained)
+				.lore(List.of(pronounsExplainedLore1, pronounsExplainedLore2, pronounsExplainedLore3)).asGuiItem());
+
+		// Setting your pronouns help item
+		pronounsHelp.setItem(3, 4, ItemBuilder.from(Material.WRITABLE_BOOK).name(pronounsSet)
+				.lore(List.of(pronounsSetLore1, pronounsSetLore2)).asGuiItem(event -> {
+					player.performCommand("pronouns set");
+				}));
+
+		// Viewing other's pronouns help item
+		pronounsHelp.setItem(3, 6, ItemBuilder.from(Material.PLAYER_HEAD).name(pronounsView)
+				.lore(List.of(pronounsViewLore1, pronounsViewLore2)).asGuiItem(event -> {
+					player.performCommand("pronouns view " + player.getName());
+				}));
+
+		// List of pronouns help item
+		pronounsHelp.setItem(4, 3, ItemBuilder.from(Material.BOOK).name(pronounsList)
+				.lore(List.of(pronounsListLore1, pronounsListLore2, pronounsListLore3)).asGuiItem(event -> {
+					player.performCommand("pronouns list");
+				}));
+
+		// Clearing your pronouns help item
+		pronounsHelp.setItem(4, 7, ItemBuilder.from(Material.STRUCTURE_VOID).name(pronounsClear)
+				.lore(List.of(pronounsClearLore1, pronounsClearLore2)).asGuiItem(event -> {
+					player.performCommand("pronouns clear");
+				}));
 	}
 
 	/**
