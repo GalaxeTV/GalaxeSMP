@@ -933,10 +933,9 @@ public class HelpCommand implements CommandExecutor {
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component townyWikiLore4 = Component.text("So please, please, PLEASE, read the wiki")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component townyWikiMessage = Component
-				.text("Here is the encyclopedia of Towny: https://github.com/TownyAdvanced/Towny/wiki/How-Towny-Works")
+		Component townyWikiMessage = Component.text("Click here for the encyclopedia of Towny")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component townyWikiHover = Component.text("Good luck, it's going to be a bit")
+		Component townyWikiHover = Component.text("By the time you are finished, you are going to be galaxy brain")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 
 		// Help Items
@@ -1028,7 +1027,7 @@ public class HelpCommand implements CommandExecutor {
 						}));
 
 		// Wiki help item
-		townyHelp.setItem(5, 5, ItemBuilder.from(Material.ENCHANTED_BOOK).name(townyWiki)
+		townyHelp.setItem(5, 5, ItemBuilder.from(Material.KNOWLEDGE_BOOK).name(townyWiki)
 				.lore(List.of(townyWikiLore1, townyWikiLore2, townyWikiLore3, townyWikiLore4)).asGuiItem(event -> {
 					player.sendMessage(townyWikiMessage.hoverEvent(HoverEvent.showText(townyWikiHover)).clickEvent(
 							ClickEvent.openUrl("https://github.com/TownyAdvanced/Towny/wiki/How-Towny-Works")));
@@ -1175,7 +1174,7 @@ public class HelpCommand implements CommandExecutor {
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component gravesLootingLore2 = Component.text("However, other people can get your items after 5 minutes")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component gravesLootingLore3 = Component.text("You can also loot other people's graves after 5 minutes")
+		Component gravesLootingLore3 = Component.text("You can loot other graves by breaking them")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component gravesLocationLore1 = Component
 				.text("When you die, you can see the location of your grave with a compass")
@@ -1209,14 +1208,94 @@ public class HelpCommand implements CommandExecutor {
 		// ====================
 
 		// TextComponents for item names
-		Component eventsExplained = Component.text("Events").color(TextColor.color(colorUltraViolet))
+		Component eventsExplained = Component.text("Server-wide events").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component eventsAnnouncement = Component.text("Announcements").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component eventsCreate = Component.text("Creating events").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component eventsJoin = Component.text("Joining events").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component eventsSupport = Component.text("Getting support for events").color(TextColor.color(colorUltraViolet))
 				.decorate(TextDecoration.BOLD);
 
 		// TextComponents for Lore on each item
-		Component eventsExplainedLore1 = Component.text("").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
+		Component eventsExplainedLore1 = Component.text("We have some very special events that run throughout the")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component eventsExplainedLore2 = Component
+				.text("year thanks to our community. These events are fun to be a part of")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component eventsExplainedLore3 = Component.text("and are a great way to get to know the community better")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component eventsExplainedLore4 = Component
+				.text("You can also create your own events for the community to enjoy")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component eventsAnnouncementLore1 = Component
+				.text("When an event is happening, an announcement will be made on Discord")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component eventsAnnouncementLore2 = Component
+				.text("This announcement will tell you what the event is, when it is")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component eventsAnnouncementLore3 = Component.text("and what special things go along with it")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component eventsCreateLore1 = Component.text("Creating an event is as simple as just making it known to people")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component eventsCreateLore2 = Component.text("You can also make a ticket to get support for your event")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component eventsCreateLore3 = Component.text("to help get visibility for your event")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component eventsJoinLore1 = Component.text("To join an event, you can just join the server and participate")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component eventsJoinLore2 = Component
+				.text("No commands, just /tp to who is at the event and now you are participating")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component eventsJoinLore3 = Component.text("Ya silly goober, just have fun!")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component eventsSupportLore1 = Component.text("If you need support for an event, you can make a ticket")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component eventsSupportLore2 = Component
+				.text("This will help get visibility for your event and get people to join")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component eventsSupportLore3 = Component.text(
+				"You can also have some staff members help you with some aspect of the event, such as block protection,")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component eventsSupportLore4 = Component
+				.text("special items you can't get, or even just to help you with the event")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component eventsSupportLore5 = Component.text("We are here to make your event as fun as possible!")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component eventsSupportMessage = Component.text("Direct link to #smp-tickets")
+				.color(TextColor.color(colorDiscordBlurple)).decorate(TextDecoration.ITALIC);
 
 		// Help Items
+		// Explaining events help item
+		eventsHelp.setItem(2, 5,
+				ItemBuilder.from(Material.FIREWORK_ROCKET).name(eventsExplained).lore(
+						List.of(eventsExplainedLore1, eventsExplainedLore2, eventsExplainedLore3, eventsExplainedLore4))
+						.asGuiItem());
+
+		// Announcements help item
+		eventsHelp.setItem(3, 4, ItemBuilder.from(Material.PAPER).name(eventsAnnouncement)
+				.lore(List.of(eventsAnnouncementLore1, eventsAnnouncementLore2, eventsAnnouncementLore3)).asGuiItem());
+
+		// Creating events help item
+		eventsHelp.setItem(3, 6, ItemBuilder.from(Material.WRITABLE_BOOK).name(eventsCreate)
+				.lore(List.of(eventsCreateLore1, eventsCreateLore2, eventsCreateLore3)).asGuiItem());
+
+		// Joining events help item
+		eventsHelp.setItem(4, 3, ItemBuilder.from(Material.CAKE).name(eventsJoin)
+				.lore(List.of(eventsJoinLore1, eventsJoinLore2, eventsJoinLore3)).asGuiItem());
+
+		// Support for events help item
+		eventsHelp
+				.setItem(4, 7,
+						ItemBuilder
+								.from(Material.BOOK).name(eventsSupport).lore(List.of(eventsSupportLore1,
+										eventsSupportLore2, eventsSupportLore3, eventsSupportLore4, eventsSupportLore5))
+								.asGuiItem(event -> {
+									player.sendMessage(eventsSupportMessage.clickEvent(ClickEvent.openUrl(
+											"https://discord.com/channels/791759753000622602/791759753000622605")));
+								}));
 
 		// ====================
 		// Pronouns help menu
