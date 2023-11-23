@@ -28,17 +28,17 @@ import tv.galaxe.smp.Core;
 
 public class HelpCommand implements CommandExecutor {
 	private static Player player;
-	private static Gui mainHelp = createGui("GalaxeSMP Help Menu", 6, true, false);
-	private static Gui generalHelp = createGui("GalaxeSMP General Help", 6, true, true);
-	private static Gui lockItemsHelp = createGui("GalaxeSMP Locking Items", 6, true, true);
-	private static Gui lunarEclipsesHelp = createGui("GalaxeSMP Lunar Eclipses", 6, true, true);
-	private static Gui mcmmoHelp = createGui("GalaxeSMP mcMMO Help", 6, true, true);
-	private static Gui silkSpawnersHelp = createGui("GalaxeSMP Silk Spawners", 6, true, true);
-	private static Gui townyHelp = createGui("GalaxeSMP Towny", 6, false, true);
-	private static Gui economyHelp = createGui("GalaxeSMP Economy", 6, true, true);
-	private static Gui gravesHelp = createGui("GalaxeSMP Graves", 6, false, true);
-	private static Gui eventsHelp = createGui("GalaxeSMP Events", 6, false, true);
-	private static Gui pronounsHelp = createGui("GalaxeSMP Pronouns", 6, true, true);
+	private static Gui mainHelp = createGui("GalaxeSMP Help Menu", 6, false);
+	private static Gui generalHelp = createGui("GalaxeSMP General Help", 6, true);
+	private static Gui lockItemsHelp = createGui("GalaxeSMP Locking Items", 6, true);
+	private static Gui lunarEclipsesHelp = createGui("GalaxeSMP Lunar Eclipses", 6, true);
+	private static Gui mcmmoHelp = createGui("GalaxeSMP mcMMO Help", 6, true);
+	private static Gui silkSpawnersHelp = createGui("GalaxeSMP Silk Spawners", 6, true);
+	private static Gui townyHelp = createGui("GalaxeSMP Towny", 6, true);
+	private static Gui economyHelp = createGui("GalaxeSMP Economy", 6, true);
+	private static Gui gravesHelp = createGui("GalaxeSMP Graves", 6, true);
+	private static Gui eventsHelp = createGui("GalaxeSMP Events", 6, true);
+	private static Gui pronounsHelp = createGui("GalaxeSMP Pronouns", 6, true);
 	private static final int colorUltraViolet = 0x515979;
 	private static final int colorSpaceCadet = 0x262F58;
 	private static final int colorLightOrange = 0xFFDAB6;
@@ -696,7 +696,7 @@ public class HelpCommand implements CommandExecutor {
 
 		// Leaderboards help item
 		mcmmoHelp.setItem(4, 7,
-				ItemBuilder.from(Material.PLAYER_HEAD).name(mcmmoLeaderboards)
+				ItemBuilder.from(Material.NETHER_STAR).name(mcmmoLeaderboards)
 						.lore(List.of(mcmmoLeaderboardsLore1, mcmmoLeaderboardsLore2, mcmmoLeaderboardsLore3))
 						.asGuiItem(event -> {
 							player.performCommand("mctop");
@@ -775,15 +775,264 @@ public class HelpCommand implements CommandExecutor {
 		// TextComponents for item names
 		Component townyExplained = Component.text("What is Towny?").color(TextColor.color(colorUltraViolet))
 				.decorate(TextDecoration.BOLD);
+		Component townyClaiming = Component.text("Claiming").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component townyTowns = Component.text("Towns").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component townyNations = Component.text("Nations").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component townyJoinTown = Component.text("Joining a Town").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component townyGrowTown = Component.text("Growing a Town").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component townyJoinNation = Component.text("Joining a Nation").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component townyMoney = Component.text("Money").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component townyNomad = Component.text("Nomad").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component townyRuins = Component.text("Ruins").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component townyPlots = Component.text("Plots").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component townyResident = Component.text("Resident").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component townyMayor = Component.text("Mayor").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component townyKing = Component.text("Nation Leader").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component townyWiki = Component.text("Wiki").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
 
 		// TextComponents for Lore on each item
-		Component townyExplainedLore1 = Component.text("").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
+		Component townyExplainedLore1 = Component.text("Ever wanted to rule the world?")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyExplainedLore2 = Component.text("Well, now you can! You can be just like Fallen Kingdom")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyExplainedLore3 = Component.text("and rule your own kingdom! (minus the CaptainSparklez)")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyClaimingLore1 = Component.text("You can claim land by using a golden shovel")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyClaimingLore2 = Component.text("and right clicking two corners of the area you want to claim")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyClaimingLore3 = Component.text("You can also unclaim land by using a golden shovel")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyClaimingLore4 = Component.text("and right clicking a corner of the area you want to unclaim")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyTownsLore1 = Component.text("You can create a town by running /town new [town name]")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyTownsLore2 = Component
+				.text("If you want to delete your town, you can by running /town delete [town name]")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyTownsLore3 = Component
+				.text("Rename your town if the name isn't fitting by running /town set name [town name]")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyTownsLore4 = Component.text("You can also set the town spawn by running /town set spawn")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyTownsLore5 = Component
+				.text("There is an ungodly amount of things you can do with Towns, so please refer to the Wiki!")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyNationsLore1 = Component.text("You can create a nation by running /nation new [nation name]")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyNationsLore2 = Component
+				.text("If you want to delete your nation, you can by running /nation delete [nation name]")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyNationsLore3 = Component
+				.text("Rename your nation if the name isn't fitting by running /nation set name [nation name]")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyNationsLore4 = Component.text("You can also set the nation spawn by running /nation set spawn")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyNationsLore5 = Component.text(
+				"If you thought towns were a lot, nations have even more things, lots of studying to do on the Wiki")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyJoinTownLore1 = Component.text("You can join a town by running /town join [town name]")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyJoinTownLore2 = Component.text("You can also leave a town by running /town leave")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyJoinTownLore3 = Component.text("You can also check the town you are in by running /town")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyGrowTownLore1 = Component
+				.text("You can grow a town by inviting players to your town by running /town add [player]")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyGrowTownLore2 = Component
+				.text("You can also promote players to assistant by running /town rank add [player] assistant")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyGrowTownLore3 = Component
+				.text("You can also promote players to mayor by running /town rank add [player] mayor")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyJoinNationLore1 = Component
+				.text("As a mayor join a nation by running /nation join [nation name]")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyJoinNationLore2 = Component
+				.text("If this nation isn't for you, you can leave a nation by running /nation leave")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyJoinNationLore3 = Component.text("You can also check the nation you are in by running /nation")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyJoinNationLore4 = Component
+				.text("Nation leaders can also invite towns to their nation by running /nation add [town name]")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyMoneyLore1 = Component
+				.text("Depending on the town, there may be taxes or some fee to live there")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyMoneyLore2 = Component
+				.text("This fee will automatically be deducted, and you can check your balance by running /balance")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyMoneyLore3 = Component
+				.text("There is even a way for you to check taxes in general for the town with /towny prices")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyNomadLore1 = Component.text("If you don't want to join a town or nation, you can be a nomad")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyNomadLore2 = Component.text("Nomads just roam or live not in a town. You don't pay taxes, but")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyNomadLore3 = Component.text("you also don't get the benefits of being in a town or nation")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyRuinsLore1 = Component
+				.text("What happens if one stops paying taxes or the town no longer is active?")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyRuinsLore2 = Component
+				.text("Well, the town will be marked as ruins, and you can claim it by running /town claim")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyRuinsLore3 = Component
+				.text("Ruins are griefable, residents can't do anything really do much, and other debuffs.")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyPlotsLore1 = Component
+				.text("Want to buy a plot in a town? Run /plot claim to get a plot for a price")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyPlotsLore2 = Component.text("You can also sell plots in a town by running /plot forsale [price]")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyPlotsLore3 = Component.text("Stats of plots are always /plot")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyResidentLore1 = Component.text("You can check your towny status by running /resident")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyResidentLore2 = Component
+				.text("You can also check other players towny status by running /resident [player]")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyMayorLore1 = Component.text("Mayors run towns, kinda self explanatory...")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyMayorLore2 = Component.text("Mayors can also check the town bank by running /town bankhistory")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyMayorLore3 = Component
+				.text("If you're a mayor, make sure your town is running nice and smooth for everyone")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyKingLore1 = Component.text("Nation leaders, are in-fact, leaders of a nation")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyKingLore2 = Component
+				.text("Nation leaders can also check the nation bank by running /nation bankhistory")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyKingLore3 = Component
+				.text("Hope you leaders out there leading nations all are leading good towns and stuff")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyWikiLore1 = Component
+				.text("You know how much is not in this helpful little menu? A lot apparently")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyWikiLore2 = Component
+				.text("I am not joking, there is so much and I can only put in so much stuff here")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyWikiLore3 = Component
+				.text("and I seriously don't know how even after I put this all in here, there is still more")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyWikiLore4 = Component.text("So please, please, PLEASE, read the wiki")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyWikiMessage = Component
+				.text("Here is the encyclopedia of Towny: https://github.com/TownyAdvanced/Towny/wiki/How-Towny-Works")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component townyWikiHover = Component.text("Good luck, it's going to be a bit")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 
 		// Help Items
 		// Explaining Towny help item
-		townyHelp.setItem(2, 5, ItemBuilder.from(Material.ENCHANTED_BOOK).name(townyExplained)
-				.lore(List.of(townyExplainedLore1)).asGuiItem());
+		townyHelp.setItem(1, 5, ItemBuilder.from(Material.ENCHANTED_BOOK).name(townyExplained)
+				.lore(List.of(townyExplainedLore1, townyExplainedLore2, townyExplainedLore3)).asGuiItem(event -> {
+					player.performCommand("towny");
+				}));
+
+		// Claiming help item
+		townyHelp.setItem(2, 2,
+				ItemBuilder.from(Material.GOLDEN_SHOVEL).name(townyClaiming)
+						.lore(List.of(townyClaimingLore1, townyClaimingLore2, townyClaimingLore3, townyClaimingLore4))
+						.asGuiItem(event -> {
+							player.performCommand("town claim");
+						}));
+
+		// Towns help item
+		townyHelp.setItem(2, 4,
+				ItemBuilder.from(Material.BRICKS).name(townyTowns).lore(
+						List.of(townyTownsLore1, townyTownsLore2, townyTownsLore3, townyTownsLore4, townyTownsLore5))
+						.asGuiItem(event -> {
+							player.performCommand("town");
+						}));
+
+		// Nations help item
+		townyHelp.setItem(2, 6,
+				ItemBuilder.from(Material.GOLD_BLOCK).name(townyNations).lore(List.of(townyNationsLore1,
+						townyNationsLore2, townyNationsLore3, townyNationsLore4, townyNationsLore5))
+						.asGuiItem(event -> {
+							player.performCommand("nation");
+						}));
+
+		// Joining a Town help item
+		townyHelp.setItem(2, 8, ItemBuilder.from(Material.IRON_DOOR).name(townyJoinTown)
+				.lore(List.of(townyJoinTownLore1, townyJoinTownLore2, townyJoinTownLore3)).asGuiItem());
+
+		// Growing a Town help item
+		townyHelp.setItem(3, 1, ItemBuilder.from(Material.CRAFTING_TABLE).name(townyGrowTown)
+				.lore(List.of(townyGrowTownLore1, townyGrowTownLore2, townyGrowTownLore3)).asGuiItem());
+
+		// Joining a Nation help item
+		townyHelp.setItem(3, 3,
+				ItemBuilder.from(Material.LECTERN).name(townyJoinNation).lore(
+						List.of(townyJoinNationLore1, townyJoinNationLore2, townyJoinNationLore3, townyJoinNationLore4))
+						.asGuiItem());
+
+		// Money help item
+		townyHelp.setItem(3, 5, ItemBuilder.from(Material.GOLD_INGOT).name(townyMoney)
+				.lore(List.of(townyMoneyLore1, townyMoneyLore2, townyMoneyLore3)).asGuiItem(event -> {
+					player.performCommand("balance");
+				}));
+
+		// Ruins help item
+		townyHelp.setItem(3, 7, ItemBuilder.from(Material.MOSSY_COBBLESTONE).name(townyRuins)
+				.lore(List.of(townyRuinsLore1, townyRuinsLore2, townyRuinsLore3)).asGuiItem());
+
+		// Plots help item
+		townyHelp.setItem(3, 9, ItemBuilder.from(Material.SCAFFOLDING).name(townyPlots)
+				.lore(List.of(townyPlotsLore1, townyPlotsLore2, townyPlotsLore3)).asGuiItem(event -> {
+					player.performCommand("plot");
+				}));
+
+		// Nomad help item
+		townyHelp.setItem(4, 2, ItemBuilder.from(Material.LEATHER_BOOTS).name(townyNomad)
+				.lore(List.of(townyNomadLore1, townyNomadLore2, townyNomadLore3)).asGuiItem());
+
+		// Resident help item
+		townyHelp.setItem(4, 4,
+				ItemBuilder.from(createHead("126ec1ca185b47aad39f931db8b0a8500ded86a127a204886ed4b3783ad1775c"))
+						.name(townyResident).lore(List.of(townyResidentLore1, townyResidentLore2)).asGuiItem(event -> {
+							player.performCommand("resident");
+						}));
+
+		// Mayor help item
+		townyHelp.setItem(4, 6,
+				ItemBuilder.from(createHead("26599cbb8868237e3d864bb128ac51a0ec4a5a85e241232ee3ed6b0afac9b5c7"))
+						.name(townyMayor).lore(List.of(townyMayorLore1, townyMayorLore2, townyMayorLore3))
+						.asGuiItem(event -> {
+							player.performCommand("town");
+						}));
+
+		// King help item
+		townyHelp.setItem(4, 8,
+				ItemBuilder.from(createHead("6225dde9a1b16d7ab3bbba210dc786334b692e9be737068435686c87dc93d947"))
+						.name(townyKing).lore(List.of(townyKingLore1, townyKingLore2, townyKingLore3))
+						.asGuiItem(event -> {
+							player.performCommand("nation");
+						}));
+
+		// Wiki help item
+		townyHelp.setItem(5, 5, ItemBuilder.from(Material.ENCHANTED_BOOK).name(townyWiki)
+				.lore(List.of(townyWikiLore1, townyWikiLore2, townyWikiLore3, townyWikiLore4)).asGuiItem(event -> {
+					player.sendMessage(townyWikiMessage.hoverEvent(HoverEvent.showText(townyWikiHover)).clickEvent(
+							ClickEvent.openUrl("https://github.com/TownyAdvanced/Towny/wiki/How-Towny-Works")));
+				}));
 
 		// ====================
 		// Economy help menu
@@ -850,6 +1099,8 @@ public class HelpCommand implements CommandExecutor {
 				.decorate(TextDecoration.ITALIC);
 		Component ecoShopMessage5 = Component.text("For more information, click here")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component ecoShopHover = Component.text("Click to go to the wiki").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
 		Component ecoItemWorthLore1 = Component.text("You can check the value of an item by running /worth")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 
@@ -873,19 +1124,14 @@ public class HelpCommand implements CommandExecutor {
 				}));
 
 		// Shop help item
-		economyHelp.setItem(4, 7,
-				ItemBuilder.from(Material.BARREL).name(ecoShop).lore(
-						List.of(ecoShopLore1, ecoShopLore2, ecoShopLore3))
-						.asGuiItem(event -> {
-							for (Component message : List.of(ecoShopMessage1, ecoShopMessage2, ecoShopMessage3,
-									ecoShopMessage4, ecoShopMessage5)) {
-								player.sendMessage(message
-										.hoverEvent(HoverEvent.showText(Component.text("Click to go to the wiki")
-												.color(TextColor.color(colorLightOrange))))
-										.clickEvent(ClickEvent
-												.openUrl("https://wiki.mc-ess.net/wiki/Sign_Tutorial#Trade_Sign")));
-							}
-						}));
+		economyHelp.setItem(4, 7, ItemBuilder.from(Material.BARREL).name(ecoShop)
+				.lore(List.of(ecoShopLore1, ecoShopLore2, ecoShopLore3)).asGuiItem(event -> {
+					for (Component message : List.of(ecoShopMessage1, ecoShopMessage2, ecoShopMessage3, ecoShopMessage4,
+							ecoShopMessage5)) {
+						player.sendMessage(message.hoverEvent(HoverEvent.showText(ecoShopHover)).clickEvent(
+								ClickEvent.openUrl("https://wiki.mc-ess.net/wiki/Sign_Tutorial#Trade_Sign")));
+					}
+				}));
 
 		// Item worth help item
 		economyHelp.setItem(5, 5, ItemBuilder.from(Material.LAPIS_LAZULI).name(ecoItemWorth)
@@ -900,12 +1146,63 @@ public class HelpCommand implements CommandExecutor {
 		// TextComponents for item names
 		Component gravesExplained = Component.text("What are graves?").color(TextColor.color(colorUltraViolet))
 				.decorate(TextDecoration.BOLD);
+		Component gravesDeath = Component.text("Dying").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component gravesLooting = Component.text("Looting").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component gravesLocation = Component.text("Finding your grave").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
 
 		// TextComponents for Lore on each item
-		Component gravesExplainedLore1 = Component.text("").color(TextColor.color(colorLightOrange))
-				.decorate(TextDecoration.ITALIC);
+		Component gravesExplainedLore1 = Component.text("When you die, you respawn. Easy right?")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component gravesExplainedLore2 = Component.text("Well, what if you die in lava? Or in the void?")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component gravesExplainedLore3 = Component
+				.text("Or your items are so far away they will disappear and are lost?")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component gravesExplainedLore4 = Component.text("Well, with graves, you can get your items back!")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component gravesDeathLore1 = Component.text("When you die, a grave will spawn at your location")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component gravesDeathLore2 = Component.text("and your items will be stored in the grave")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component gravesDeathLore3 = Component.text("You can also see the location of your grave by running /graves")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component gravesDeathLore4 = Component.text("Be quick though, as your grave will disappear after 3 hours")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component gravesLootingLore1 = Component.text("You can loot your grave by right clicking on it")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component gravesLootingLore2 = Component.text("However, other people can get your items after 5 minutes")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component gravesLootingLore3 = Component.text("You can also loot other people's graves after 5 minutes")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component gravesLocationLore1 = Component
+				.text("When you die, you can see the location of your grave with a compass")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component gravesLocationLore2 = Component.text("The compass will show how far away your grave is")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component gravesLocationLore3 = Component.text("as well as the time left before your grave disappears")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 
 		// Help Items
+		// Explaining graves help item
+		gravesHelp.setItem(2, 5,
+				ItemBuilder.from(Material.GRAVEL).name(gravesExplained).lore(
+						List.of(gravesExplainedLore1, gravesExplainedLore2, gravesExplainedLore3, gravesExplainedLore4))
+						.asGuiItem());
+
+		// Dying help item
+		gravesHelp.setItem(3, 4, ItemBuilder.from(Material.BONE).name(gravesDeath)
+				.lore(List.of(gravesDeathLore1, gravesDeathLore2, gravesDeathLore3, gravesDeathLore4)).asGuiItem());
+
+		// Looting help item
+		gravesHelp.setItem(3, 6, ItemBuilder.from(Material.CHEST).name(gravesLooting)
+				.lore(List.of(gravesLootingLore1, gravesLootingLore2, gravesLootingLore3)).asGuiItem());
+
+		// Location help item
+		gravesHelp.setItem(4, 5, ItemBuilder.from(Material.COMPASS).name(gravesLocation)
+				.lore(List.of(gravesLocationLore1, gravesLocationLore2, gravesLocationLore3)).asGuiItem());
 
 		// ====================
 		// Events help menu
@@ -1015,7 +1312,7 @@ public class HelpCommand implements CommandExecutor {
 	 *            menu
 	 * @return The created GUI
 	 */
-	private static Gui createGui(String title, int rows, Boolean fillWhitePanes, Boolean addBackButton) {
+	private static Gui createGui(String title, int rows, Boolean addBackButton) {
 		// Create title Component for GUI
 		Component titleComponent = Component.text(title).color(TextColor.color(colorSpaceCadet))
 				.decorate(TextDecoration.BOLD);
@@ -1049,14 +1346,12 @@ public class HelpCommand implements CommandExecutor {
 				.fill(List.of(ItemBuilder.from(Material.PINK_STAINED_GLASS_PANE).name(emptyComponent).asGuiItem(),
 						ItemBuilder.from(Material.PURPLE_STAINED_GLASS_PANE).name(emptyComponent).asGuiItem()));
 
-		// Add white pane filler for some GUIs if specified
-		if (fillWhitePanes) {
-			// Format: {{row, column}, {row, column}, ...}
-			int[][] whitePaneCoords = {{1, 5}, {2, 4}, {2, 6}, {3, 3}, {3, 5}, {3, 7}, {4, 4}, {4, 6}, {5, 5}, {6, 5}};
-			for (int[] coordsEntry : whitePaneCoords) {
-				gui.setItem(coordsEntry[0], coordsEntry[1],
-						ItemBuilder.from(Material.WHITE_STAINED_GLASS_PANE).name(emptyComponent).asGuiItem());
-			}
+		// Add white pane filler
+		// Format: {{row, column}, {row, column}, ...}
+		int[][] whitePaneCoords = {{1, 5}, {2, 4}, {2, 6}, {3, 3}, {3, 5}, {3, 7}, {4, 4}, {4, 6}, {5, 5}, {6, 5}};
+		for (int[] coordsEntry : whitePaneCoords) {
+			gui.setItem(coordsEntry[0], coordsEntry[1],
+					ItemBuilder.from(Material.WHITE_STAINED_GLASS_PANE).name(emptyComponent).asGuiItem());
 		}
 
 		// Add back button to some GUIs if specified
