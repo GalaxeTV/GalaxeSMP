@@ -1333,7 +1333,7 @@ public class HelpCommand implements CommandExecutor {
 		Component pronounsViewLore2 = Component.text("You can also view your own pronouns using /pronouns view")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component pronounsListLore1 = Component
-				.text("To prevent abuse of pronouns, we have a set list of valid pronouns")
+				.text("To prevent abuse of pronouns, we have a set list of pre-approved pronouns")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component pronounsListLore2 = Component.text("You can view the full list of pronouns by running /pronouns list")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);

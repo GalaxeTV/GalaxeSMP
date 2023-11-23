@@ -41,7 +41,6 @@ public class Core extends JavaPlugin implements Listener {
 			}
 		});
 
-
 		// Listeners
 		getServer().getPluginManager().registerEvents(new SilkTouchAmethyst(), this);
 		getServer().getPluginManager().registerEvents(new StaffKill(), this);
