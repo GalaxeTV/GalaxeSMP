@@ -39,6 +39,7 @@ public class HelpCommand implements CommandExecutor {
 	private static Gui gravesHelp = createGui("GalaxeSMP Graves", 6, true);
 	private static Gui eventsHelp = createGui("GalaxeSMP Events", 6, true);
 	private static Gui pronounsHelp = createGui("GalaxeSMP Pronouns", 6, true);
+	private static Gui genesisHelp = createGui("GalaxeSMP Genesis", 6, true);
 	private static final int colorUltraViolet = 0x515979;
 	private static final int colorSpaceCadet = 0x262F58;
 	private static final int colorLightOrange = 0xFFDAB6;
@@ -82,6 +83,9 @@ public class HelpCommand implements CommandExecutor {
 			case "pronouns" :
 				pronounsHelp.open(player);
 				return true;
+			case "genesis" :
+				genesisHelp.open(player);
+				return true;
 			case "" :
 			default :
 				// Pronouns mainHelp item
@@ -124,6 +128,8 @@ public class HelpCommand implements CommandExecutor {
 				.decorate(TextDecoration.BOLD);
 		Component mainEvents = Component.text("Events").color(TextColor.color(colorUltraViolet))
 				.decorate(TextDecoration.BOLD);
+		Component mainGenesis = Component.text("Genesis").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
 
 		// TextComponents for Lore on each item
 		Component mainGeneralLore = Component.text("General information about the server")
@@ -153,6 +159,10 @@ public class HelpCommand implements CommandExecutor {
 		Component mainEventsLore3 = Component.text("on my birthday with a birthday gift?\"")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component mainEventsLore4 = Component.text(" - Tyler, The Creator").color(TextColor.color(colorLightOrange))
+				.decorate(TextDecoration.ITALIC);
+		Component mainGenesisLore1 = Component.text("It's morphin time!").color(TextColor.color(colorLightOrange))
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component mainGenesisLore2 = Component.text(" - Power Rangers").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
 
 		// General mainHelp item
@@ -216,6 +226,12 @@ public class HelpCommand implements CommandExecutor {
 		mainHelp.setItem(5, 8, ItemBuilder.from(Material.SKELETON_SKULL).name(mainGraves)
 				.lore(List.of(mainGravesLore1, mainGravesLore2)).asGuiItem(event -> {
 					gravesHelp.open(player);
+				}));
+
+		// Genesis mainHelp item
+		mainHelp.setItem(6, 5, ItemBuilder.from(Material.END_CRYSTAL).name(mainGenesis)
+				.lore(List.of(mainGenesisLore1, mainGenesisLore2)).asGuiItem(event -> {
+					genesisHelp.open(player);
 				}));
 
 		// ====================
@@ -1374,6 +1390,90 @@ public class HelpCommand implements CommandExecutor {
 				.lore(List.of(pronounsClearLore1, pronounsClearLore2)).asGuiItem(event -> {
 					player.performCommand("pronouns clear");
 				}));
+
+		// ====================
+		// Genesis help menu
+		// ====================
+		// TextComponents for item names
+		Component genesisExplained = Component.text("Genesis").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component genesisClasses = Component.text("Classes").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component genesisAbilities = Component.text("Abilities").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component genesisWeaknesses = Component.text("Weaknesses").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+		Component genesisSpawn = Component.text("Spawns").color(TextColor.color(colorUltraViolet))
+				.decorate(TextDecoration.BOLD);
+
+		// TextComponents for Lore on each item
+		Component genesisExplainedLore1 = Component.text("Genesis is a whole new plugin that we have developed")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component genesisExplainedLore2 = Component.text("to make playing Minecraft more... interesting")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component genesisExplainedLore3 = Component.text("You become the mob, and you can do mob things, like a mob")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component genesisExplainedLore4 = Component
+				.text("Special abilities are given to you, but debuffs are also given")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component genesisClassesLore1 = Component
+				.text("There is a list of classes that you can choose from through a menu")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component genesisClassesLore2 = Component
+				.text("Choosing a class through /genesis will show a menu for all classes to choose from")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component genesisClassesLore3 = Component.text("Once you pick a class, you can't change it for 10 days")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component genesisAbilitiesLore1 = Component.text("Each class has abilities that you can use to your advantage")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component genesisAbilitiesLore2 = Component.text("Some are passive, and some are activated with a button press")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component genesisAbilitiesLore3 = Component.text("Each class is unique, so try them all out!")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component genesisAbilitiesLore4 = Component.text("All abilities are listed in the Genesis menu")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component genesisWeaknessesLore1 = Component
+				.text("With these abilities, there are also weaknesses to make things interesting")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component genesisWeaknessesLore2 = Component
+				.text("Some may be losing a couple hearts, or not being able to stand in direct sunlight")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component genesisWeaknessesLore3 = Component.text("Choose wisely, as you can't change your class for 10 days")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component genesisSpawnLore1 = Component.text("When in the spawn of the survival server, you will not have")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component genesisSpawnLore2 = Component.text("your debuffs, but be careful as if you step outside of spawn,")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component genesisSpawnLore3 = Component.text("you will have your debuffs again")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+
+		// Help Items
+		// Explaining genesis help item
+		genesisHelp.setItem(2, 5,
+				ItemBuilder
+						.from(Material.END_CRYSTAL).name(genesisExplained).lore(List.of(genesisExplainedLore1,
+								genesisExplainedLore2, genesisExplainedLore3, genesisExplainedLore4))
+						.asGuiItem(event -> {
+							player.performCommand("genesis");
+						}));
+
+		// Classes help item
+		genesisHelp.setItem(5, 4, ItemBuilder.from(Material.TOTEM_OF_UNDYING).name(genesisClasses)
+				.lore(List.of(genesisClassesLore1, genesisClassesLore2, genesisClassesLore3)).asGuiItem());
+
+		// Abilities help item
+		genesisHelp.setItem(3, 3, ItemBuilder.from(Material.NETHERITE_SWORD).name(genesisAbilities).lore(
+				List.of(genesisAbilitiesLore1, genesisAbilitiesLore2, genesisAbilitiesLore3, genesisAbilitiesLore4))
+				.asGuiItem());
+
+		// Weaknesses help item
+		genesisHelp.setItem(3, 7, ItemBuilder.from(Material.WOODEN_SWORD).name(genesisWeaknesses)
+				.lore(List.of(genesisWeaknessesLore1, genesisWeaknessesLore2, genesisWeaknessesLore3)).asGuiItem());
+
+		// Spawn help item
+		genesisHelp.setItem(5, 6, ItemBuilder.from(Material.BEACON).name(genesisSpawn)
+				.lore(List.of(genesisSpawnLore1, genesisSpawnLore2, genesisSpawnLore3)).asGuiItem());
+
 	}
 
 	/**
