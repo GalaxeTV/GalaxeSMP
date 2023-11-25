@@ -160,7 +160,7 @@ public class HelpCommand implements CommandExecutor {
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component mainEventsLore4 = Component.text(" - Tyler, The Creator").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
-		Component mainGenesisLore1 = Component.text("It's morphin time!").color(TextColor.color(colorLightOrange))
+		Component mainGenesisLore1 = Component.text("\"It's morphin time!\"").color(TextColor.color(colorLightOrange))
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component mainGenesisLore2 = Component.text(" - Power Rangers").color(TextColor.color(colorLightOrange))
 				.decorate(TextDecoration.ITALIC);
