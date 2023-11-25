@@ -332,8 +332,11 @@ public class HelpCommand implements CommandExecutor {
 				}));
 
 		// Teleport help item
-		generalHelp.setItem(4, 6, ItemBuilder.from(Material.COMPASS).name(generalTeleporting)
-				.lore(List.of(generalTeleportingLore1, generalTeleportingLore2, generalTeleportingLore3, generalTeleportingLore4)).asGuiItem());
+		generalHelp.setItem(4, 6,
+				ItemBuilder
+						.from(Material.COMPASS).name(generalTeleporting).lore(List.of(generalTeleportingLore1,
+								generalTeleportingLore2, generalTeleportingLore3, generalTeleportingLore4))
+						.asGuiItem());
 
 		// Create ItemStack for Discord head
 		ItemStack discordHead = createHead("b722098ae79c7abf002fe9684c773ea71db8919bb2ef2053ea0c0684c5a1ce4f");
