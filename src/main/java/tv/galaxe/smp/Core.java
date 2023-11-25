@@ -8,7 +8,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
-import tv.galaxe.smp.cmd.HelpGUI;
+import tv.galaxe.smp.cmd.HelpCommand;
 import tv.galaxe.smp.cmd.InvisibleItemFrame;
 import tv.galaxe.smp.cmd.Pronouns;
 import tv.galaxe.smp.event.SilkTouchAmethyst;
@@ -31,7 +31,7 @@ public class Core extends JavaPlugin implements Listener {
 
 		// Commands
 		getCommand("invisibleitemframe").setExecutor(new InvisibleItemFrame());
-		getCommand("help").setExecutor(new HelpGUI());
+		getCommand("help").setExecutor(new HelpCommand());
 		getCommand("pronouns").setExecutor(new Pronouns());
 		getCommand("galaxereload").setExecutor(new CommandExecutor() {
 			public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
