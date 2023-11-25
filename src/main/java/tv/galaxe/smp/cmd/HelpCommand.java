@@ -289,14 +289,17 @@ public class HelpCommand implements CommandExecutor {
 				.hoverEvent(HoverEvent.showText(generalTicketHover))
 				.clickEvent(ClickEvent.openUrl("https://discord.com/channels/791759753000622602/791759753000622605"));
 		Component generalTeleportingLore1 = Component
-				.text("To teleport to someone, run /tp [player] to teleport to them")
+				.text("To teleport to someone, run /tpa [player] to teleport to them")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component generalTeleportingLore2 = Component
-				.text("after they accept the teleport request. You can also use /back")
+				.text("after they accept the teleport request, you can also use /back")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component generalTeleportingLore3 = Component.text("to teleport to your previous location.")
+		Component generalTeleportingLore3 = Component.text("to teleport to your previous location")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component generalDiscordLore1 = Component.text("Join the Discord chats for some chill Minecraft vibes")
+		Component generalTeleportingLore4 = Component
+				.text("To have other players teleport to you, run /tpahere [player]")
+				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
+		Component generalDiscordLore1 = Component.text("Join the Discord server for some chill Minecraft vibes")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component generalDiscordLore2 = Component.text("Grab some others to join you and talk and chill")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
@@ -330,7 +333,7 @@ public class HelpCommand implements CommandExecutor {
 
 		// Teleport help item
 		generalHelp.setItem(4, 6, ItemBuilder.from(Material.COMPASS).name(generalTeleporting)
-				.lore(List.of(generalTeleportingLore1, generalTeleportingLore2, generalTeleportingLore3)).asGuiItem());
+				.lore(List.of(generalTeleportingLore1, generalTeleportingLore2, generalTeleportingLore3, generalTeleportingLore4)).asGuiItem());
 
 		// Create ItemStack for Discord head
 		ItemStack discordHead = createHead("b722098ae79c7abf002fe9684c773ea71db8919bb2ef2053ea0c0684c5a1ce4f");
