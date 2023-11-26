@@ -28,18 +28,18 @@ import tv.galaxe.smp.Core;
 
 public class HelpCommand implements CommandExecutor {
 	private static Player player;
-	private static Gui mainHelp = createGui("GalaxeSMP Help Menu", 6, false);
-	private static Gui generalHelp = createGui("GalaxeSMP General Help", 6, true);
-	private static Gui lockItemsHelp = createGui("GalaxeSMP Locking Items", 6, true);
-	private static Gui lunarEclipsesHelp = createGui("GalaxeSMP Lunar Eclipses", 6, true);
-	private static Gui mcmmoHelp = createGui("GalaxeSMP mcMMO Help", 6, true);
-	private static Gui silkSpawnersHelp = createGui("GalaxeSMP Silk Spawners", 6, true);
-	private static Gui townyHelp = createGui("GalaxeSMP Towny", 6, true);
-	private static Gui economyHelp = createGui("GalaxeSMP Economy", 6, true);
-	private static Gui gravesHelp = createGui("GalaxeSMP Graves", 6, true);
-	private static Gui eventsHelp = createGui("GalaxeSMP Events", 6, true);
-	private static Gui pronounsHelp = createGui("GalaxeSMP Pronouns", 6, true);
-	private static Gui genesisHelp = createGui("GalaxeSMP Genesis", 6, true);
+	private static Gui mainHelp = createGui("GalaxeMC Help Menu", 6, false);
+	private static Gui generalHelp = createGui("GalaxeMC General Help", 6, true);
+	private static Gui lockItemsHelp = createGui("GalaxeMC Locking Items", 6, true);
+	private static Gui lunarEclipsesHelp = createGui("GalaxeMC Lunar Eclipses", 6, true);
+	private static Gui mcmmoHelp = createGui("GalaxeMC mcMMO Help", 6, true);
+	private static Gui silkSpawnersHelp = createGui("GalaxeMC Silk Spawners", 6, true);
+	private static Gui townyHelp = createGui("GalaxeMC Towny", 6, true);
+	private static Gui economyHelp = createGui("GalaxeMC Economy", 6, true);
+	private static Gui gravesHelp = createGui("GalaxeMC Graves", 6, true);
+	private static Gui eventsHelp = createGui("GalaxeMC Events", 6, true);
+	private static Gui pronounsHelp = createGui("GalaxeMC Pronouns", 6, true);
+	private static Gui genesisHelp = createGui("GalaxeMC Genesis", 6, true);
 	private static final int colorUltraViolet = 0x515979;
 	private static final int colorSpaceCadet = 0x262F58;
 	private static final int colorLightOrange = 0xFFDAB6;
@@ -146,7 +146,7 @@ public class HelpCommand implements CommandExecutor {
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component mainEconomyLore1 = Component.text("How to start your own multi-billion")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
-		Component mainEconomyLore2 = Component.text("dollar company inside of the GalaxeSMP")
+		Component mainEconomyLore2 = Component.text("dollar company inside of the GalaxeMC")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component mainGravesLore1 = Component.text("Have you or a loved one has been diagnosed with death?")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
@@ -373,7 +373,7 @@ public class HelpCommand implements CommandExecutor {
 		Component lwcExplainedLore1 = Component.text("Protecting your items in your base is quite important. On")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component lwcExplainedLore2 = Component
-				.text("the GalaxeSMP, you can protect your chests, doors, and other items")
+				.text("the GalaxeMC, you can protect your chests, doors, and other items")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
 		Component lwcExplainedLore3 = Component.text("with a couple of commands, and even give your friends access")
 				.color(TextColor.color(colorLightOrange)).decorate(TextDecoration.ITALIC);
