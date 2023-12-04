@@ -1,7 +1,7 @@
 package tv.galaxe.smp.cmd;
 
 import com.sk89q.worldedit.bukkit.BukkitAdapter;
-import com.sk89q.worldedit.world.World;
+import com.sk89q.worldguard.LocalPlayer;
 import com.sk89q.worldguard.WorldGuard;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import com.sk89q.worldguard.protection.ApplicableRegionSet;
@@ -16,6 +16,8 @@ import org.bukkit.entity.Player;
 import tv.galaxe.smp.Core;
 
 public final class InvisibleItemFrame implements CommandExecutor {
+	private static final RegionQuery query = WorldGuard.getInstance().getPlatform().getRegionContainer().createQuery();
+
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (!(sender instanceof Player)) { // Only allow players to run command
@@ -23,6 +25,7 @@ public final class InvisibleItemFrame implements CommandExecutor {
 			return false;
 		}
 		Player player = (Player) sender;
+		LocalPlayer localPlayer = WorldGuardPlugin.inst().wrapPlayer(player);
 		Entity lookingAt = player.getTargetEntity(10);
 		if (lookingAt == null) {
 			sender.sendMessage("You must be looking at an item frame!");
@@ -30,11 +33,9 @@ public final class InvisibleItemFrame implements CommandExecutor {
 		}
 
 		// Check if player has region permission to change item frame visibility
-		RegionQuery query = WorldGuard.getInstance().getPlatform().getRegionContainer().createQuery();
 		ApplicableRegionSet set = query.getApplicableRegions(BukkitAdapter.adapt(lookingAt.getLocation()));
-		if (!set.testState(WorldGuardPlugin.inst().wrapPlayer(player), Core.INVIS_ITEM_FRAME)
-				&& !WorldGuard.getInstance().getPlatform().getSessionManager()
-						.hasBypass(WorldGuardPlugin.inst().wrapPlayer(player), (World) player.getWorld())) {
+		if (!set.testState(WorldGuardPlugin.inst().wrapPlayer(player), Core.INVIS_ITEM_FRAME) && !WorldGuard
+				.getInstance().getPlatform().getSessionManager().hasBypass(localPlayer, localPlayer.getWorld())) {
 			sender.sendMessage("You do not have permission to do that here!");
 			return false;
 		}
