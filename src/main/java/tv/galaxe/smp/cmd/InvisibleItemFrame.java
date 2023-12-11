@@ -25,7 +25,6 @@ public final class InvisibleItemFrame implements CommandExecutor {
 			return false;
 		}
 		Player player = (Player) sender;
-		LocalPlayer localPlayer = WorldGuardPlugin.inst().wrapPlayer(player);
 		Entity lookingAt = player.getTargetEntity(10);
 		if (lookingAt == null) {
 			sender.sendMessage("You must be looking at an item frame!");
@@ -33,6 +32,7 @@ public final class InvisibleItemFrame implements CommandExecutor {
 		}
 
 		// Check if player has region permission to change item frame visibility
+		LocalPlayer localPlayer = WorldGuardPlugin.inst().wrapPlayer(player);
 		ApplicableRegionSet set = query.getApplicableRegions(BukkitAdapter.adapt(lookingAt.getLocation()));
 		if (!set.testState(WorldGuardPlugin.inst().wrapPlayer(player), Core.INVIS_ITEM_FRAME) && !WorldGuard
 				.getInstance().getPlatform().getSessionManager().hasBypass(localPlayer, localPlayer.getWorld())) {
