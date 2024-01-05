@@ -37,19 +37,19 @@ jobs:
     - name: Change Gradle Permissions
       run: chmod +x gradlew
     - name: Setup Gradle to generate and submit dependency graphs
-      uses: gradle/gradle-build-action@v2.10.0
+      uses: gradle/gradle-build-action@v2.11.1
       with:
         dependency-graph: generate-and-submit
     - name: Build with Gradle
-      uses: gradle/gradle-build-action@v2.10.0
+      uses: gradle/gradle-build-action@v2.11.1
       with:
         arguments: build
     - name: Shadow Jar
-      uses: gradle/gradle-build-action@v2.10.0
+      uses: gradle/gradle-build-action@v2.11.1
       with:
         arguments: clean shadowJar
     - name: Upload Artifact
-      uses: actions/upload-artifact@v3.1.3
+      uses: actions/upload-artifact@v4.0.0
       with:
         name: GalaxeSMP
         path: build/libs/*-all.jar
@@ -67,7 +67,7 @@ jobs:
           fetch-depth: 0
 
       - name: Download Artifact
-        uses: actions/download-artifact@v3.0.2
+        uses: actions/download-artifact@v4.1.0
         with:
           name: GalaxeSMP
           path: build/libs/
