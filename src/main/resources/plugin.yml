@@ -4,7 +4,7 @@ authors: [ garrettsummerfi3ld, josefbaltz ]
 version: '${version}'
 main: tv.galaxe.smp.Core
 prefix: GalaxeSMP
-depend: [ LuckPerms ]
+depend: [ LuckPerms, WorldGuard ]
 description: Custom GalaxeSMP Plugin
 website: https://github.com/GalaxeTV/GalaxeSMP-Plugin
 commands:

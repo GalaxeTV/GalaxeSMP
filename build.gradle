@@ -10,13 +10,14 @@ version = '2.0-SNAPSHOT'
 repositories {
     mavenCentral()
     maven { url = "https://repo.papermc.io/repository/maven-public" }
-    maven { url = "https://repo.mattstudios.me/artifactory/public/" }
+    maven { url = "https://maven.enginehub.org/repo/" }
 }
 
 dependencies {
+    compileOnly group: 'com.sk89q.worldguard', name: 'worldguard-bukkit', version: '7.0.9'
     compileOnly group: 'io.papermc.paper', name: 'paper-api', version: '1.20.2-R0.1-SNAPSHOT'
-    implementation group: 'dev.triumphteam', name: 'triumph-gui', version: '3.1.7'
     compileOnly group: 'net.luckperms', name: 'api', version: '5.4'
+    implementation group: 'dev.triumphteam', name: 'triumph-gui', version: '3.1.7'
 }
 
 def targetJavaVersion = 17
